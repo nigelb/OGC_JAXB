@@ -12,12 +12,25 @@
 		<developerConnection>${disy.scm.developerConnection}/ogc.project/trunk</developerConnection>
 	</scm-->
 	<modules>
+		<!-- WMS (Complete) -->
+		<module>wms/1.0.0</module>
+		<module>wms/1.0.7</module>
 		<module>wms/1.1.0</module>
 		<module>wms/1.1.1</module>
 		<module>wms/1.3.0</module>
 		<!--module>wms/wms</module-->
+
+		<!-- OWS (Complete) -->
+		<module>ows/0.3.0</module>
+		<module>ows/0.3.1</module>
+		<module>ows/0.3.2</module>
+		<module>ows/0.4.0</module>
 		<module>ows/1.0.0</module>
+		<module>ows/1.1.0</module>
+
+		<!-- GML -->
 		<module>gml/3.1.1</module>
+
 		<module>sweCommon/1.0.0</module>
 		<module>sensorML/1.0.0</module>
 		<!--module>filter/1.1.0</module>
