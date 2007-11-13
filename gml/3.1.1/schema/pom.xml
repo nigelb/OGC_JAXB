@@ -27,6 +27,7 @@
 					<schemaIncludes>
 						<value>gml/*/base/gml.xsd</value>
 					</schemaIncludes>
+					<episode>false</episode>
 				</configuration>
 			</plugin>
 		</plugins>
