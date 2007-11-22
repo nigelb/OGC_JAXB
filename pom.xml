@@ -44,8 +44,9 @@
 		<!-- OLS (Complete) -->
 		<module>ols/1.1.0</module>
 
-		<!-- SWE Common -->
+		<!-- SWE Common (Complete) -->
 		<module>sweCommon/1.0.0</module>
+		<module>sweCommon/1.0.1</module>
 
 		<!-- SensorML (Complete) -->
 		<module>sensorML/1.0.0</module>
