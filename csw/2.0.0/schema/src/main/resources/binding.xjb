@@ -1,0 +1,137 @@
+<jaxb:bindings version="1.0" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" 
+	jaxb:extensionBindingPrefixes="xjc">
+
+	<jaxb:bindings 
+		schemaLocation="csw/2.0.0/CSW-publication.xsd"
+		node="/xs:schema">
+		<jaxb:globalBindings
+			fixedAttributeAsConstantProperty="true"
+			typesafeEnumBase="xs:string"
+			typesafeEnumMemberName="generateName" 
+			generateIsSetMethod="true">
+			<xjc:noValidator />
+			<xjc:noValidatingUnmarshaller />
+		</jaxb:globalBindings>
+		<jaxb:schemaBindings>
+			<jaxb:package name="net.opengis.cat.csw.v_2_0_0"/>
+		</jaxb:schemaBindings>
+
+		<jaxb:bindings node="xs:complexType[@name='InsertType']//xs:element[@ref='csw:AbstractRecord']">
+			<xjc:dom/>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="xs:complexType[@name='UpdateType']//xs:element[@ref='csw:AbstractRecord']">
+			<xjc:dom/>
+		</jaxb:bindings>
+
+	</jaxb:bindings>
+
+
+	<jaxb:bindings 
+		schemaLocation="csw/2.0.0/rec-dcmes.xsd"
+		node="/xs:schema">
+		<jaxb:schemaBindings>
+			<jaxb:package name="org.purl.dc.elements.v_1_1"/>
+		</jaxb:schemaBindings>
+	</jaxb:bindings>
+
+	<jaxb:bindings 
+		schemaLocation="csw/2.0.0/rec-dcterms.xsd"
+		node="/xs:schema">
+		<jaxb:schemaBindings>
+			<jaxb:package name="org.purl.dc.terms"/>
+		</jaxb:schemaBindings>
+	</jaxb:bindings>
+
+	<!--jaxb:bindings 
+		schemaLocation="filter/1.1.0/filter.xsd"
+		node="/xs:schema">
+		<jaxb:schemaBindings>
+			<jaxb:package name="net.opengis.filter.v_1_1_0"/>
+		</jaxb:schemaBindings>
+		<jaxb:bindings node="xs:complexType[@name='BinaryLogicOpType']//xs:choice">
+			<jaxb:property name="Ops"/>
+		</jaxb:bindings>
+	</jaxb:bindings>
+
+	<jaxb:bindings 
+		schemaLocation="filter/1.1.0/filterCapabilities.xsd"
+		node="/xs:schema">
+		<jaxb:bindings node="xs:complexType[@name='ArithmeticOperatorsType']/xs:choice">
+			<jaxb:property name="Operators"/>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='Id_CapabilitiesType']/xs:choice">
+			<jaxb:property name="Ids"/>
+		</jaxb:bindings>
+	</jaxb:bindings>
+
+	<jaxb:bindings schemaLocation="gml/3.1.1/base/gmlBase.xsd" 
+		node="/xs:schema">
+		<jaxb:schemaBindings>
+			<jaxb:package name="net.opengis.gml.v_3_1_1"/>
+			<jaxb:nameXmlTransform>
+				<jaxb:elementName suffix="Element"/>
+			</jaxb:nameXmlTransform>
+		</jaxb:schemaBindings>
+		<jaxb:bindings node="xs:element[@name='_Object']">
+			<xjc:dom/>
+		</jaxb:bindings>
+	</jaxb:bindings>
+
+
+	<jaxb:bindings 
+		schemaLocation="gml/3.1.1/base/geometryPrimitives.xsd" 
+		node="/xs:schema">
+		<jaxb:schemaBindings>
+			<jaxb:package name="net.opengis.gml.v_3_1_1"/>
+			<jaxb:nameXmlTransform>
+				<jaxb:elementName suffix="Element"/>
+			</jaxb:nameXmlTransform>
+		</jaxb:schemaBindings>
+		<jaxb:bindings node="xs:element[@name='Solid']">
+			<jaxb:class name="ASolidElement"/>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:element[@name='Surface']">
+			<jaxb:class name="ASurfaceElement"/>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:element[@name='Curve']">
+			<jaxb:class name="ACurveElement"/>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:element[@name='Ring']">
+			<jaxb:class name="ARingElement"/>
+		</jaxb:bindings>
+	</jaxb:bindings>
+
+	<jaxb:bindings schemaLocation="ows/1.0.0/owsAll.xsd" 
+		node="/xs:schema">
+		<jaxb:schemaBindings>
+			<jaxb:package name="net.opengis.ows.v_1_0_0"/>
+		</jaxb:schemaBindings>
+	</jaxb:bindings>
+	<jaxb:bindings schemaLocation="ows/1.0.0/owsCommon.xsd" 
+		node="/xs:schema">
+		<jaxb:bindings node="xs:element[@name='AbstractMetaData']">
+			<xjc:dom/>
+		</jaxb:bindings>
+	</jaxb:bindings>
+	<jaxb:bindings schemaLocation="ows/1.0.0/owsOperationsMetadata.xsd" 
+		node="/xs:schema">
+		<jaxb:bindings node="xs:element[@name='ExtendedCapabilities']">
+			<xjc:dom/>
+		</jaxb:bindings>
+	</jaxb:bindings>
+
+
+	<jaxb:bindings schemaLocation="ows-extensions/1.0.0/extensions.xsd" 
+		node="/xs:schema">
+		<jaxb:schemaBindings>
+			<jaxb:package name="de.disy.ows.v_1_3_0"/>
+		</jaxb:schemaBindings>
+		<jaxb:bindings node="xs:element[@name='MetaData']">
+			<xjc:dom/>
+		</jaxb:bindings>
+	</jaxb:bindings-->
+
+</jaxb:bindings>
