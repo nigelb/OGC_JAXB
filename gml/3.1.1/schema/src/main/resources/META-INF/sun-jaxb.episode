@@ -9,6 +9,9 @@ Generated on: 2007.11.13 at 05:37:43 PM CET
 
   -->
   <bindings scd="x-schema::tns" xmlns:tns="http://www.w3.org/2001/SMIL20/Language">
+    <schemaBindings map="false">
+      <package name="org.w3.smil.v_2_0.language"/>
+    </schemaBindings>
     <bindings scd="~tns:setType">
       <class ref="org.w3.smil.v_2_0.language.SetType"/>
     </bindings>
@@ -1177,7 +1180,9 @@ Generated on: 2007.11.13 at 05:37:43 PM CET
     </bindings>
   </bindings>
   <bindings scd="x-schema::tns" xmlns:tns="http://www.w3.org/2001/SMIL20/">
-    <schemaBindings map="false"/>
+    <schemaBindings map="false">
+      <package name="org.w3.smil.v_2_0"/>
+    </schemaBindings>
     <bindings scd="~tns:animatePrototype">
       <class ref="org.w3.smil.v_2_0.AnimatePrototype"/>
     </bindings>
