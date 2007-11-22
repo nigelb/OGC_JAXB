@@ -25,6 +25,7 @@
 				<artifactId>maven-jaxb2-plugin</artifactId>
 				<configuration>
 					<schemaIncludes>
+						<value>filter/1.0.0/filter.xsd</value>
 						<value>filter/1.0.20/sort.xsd</value>
 					</schemaIncludes>
 				</configuration>
