@@ -1,0 +1,110 @@
+<!ELEMENT CT_MathTransform (
+CT_ConcatenatedTransform |
+CT_InverseTransform |
+CT_ParameterizedMathTransform |
+CT_PassThroughTransform) >
+<!ELEMENT CT_ParameterizedMathTransform (CT_Parameter*)>
+<!ATTLIST CT_ParameterizedMathTransform
+ClassName CDATA #REQUIRED
+>
+<!ELEMENT CT_PassThroughTransform (CT_MathTransform)>
+<!ATTLIST CT_PassThroughTransform
+FirstAffectedOrdinate CDATA #REQUIRED
+>
+<!ELEMENT CT_ConcatenatedTransform (CT_MathTransform*)>
+<!ELEMENT CT_InverseTransform (CT_MathTransform)>
+<!ELEMENT CT_Parameter EMPTY>
+<!ATTLIST CT_Parameter
+Name CDATA #REQUIRED
+Value CDATA #REQUIRED
+>
+<!ELEMENT CS_CoordinateSystem (
+CS_CompoundCoordinateSystem |
+CS_FittedCoordinateSystem |
+CS_GeocentricCoordinateSystem |
+CS_GeographicCoordinateSystem |
+CS_ProjectedCoordinateSystem |
+CS_LocalCoordinateSystem |
+CS_VerticalCoordinateSystem) >
+<!ATTLIST CS_CoordinateSystem
+Dimension CDATA #REQUIRED
+>
+<!ELEMENT CS_Info EMPTY>
+<!ATTLIST CS_Info
+AuthorityCode CDATA #IMPLIED
+Abbreviation CDATA #IMPLIED
+Alias CDATA #IMPLIED
+Authority CDATA #IMPLIED
+Name CDATA #IMPLIED
+>
+<!ELEMENT CS_AxisInfo EMPTY>
+<!ATTLIST CS_AxisInfo
+Name CDATA #REQUIRED
+Orientation CDATA #REQUIRED
+>
+<!ELEMENT CS_HorizontalDatum (CS_Info, CS_Ellipsoid, CS_WGS84ConversionInfo) >
+<!ATTLIST CS_HorizontalDatum
+DatumType CDATA #REQUIRED
+>
+<!ELEMENT CS_Ellipsoid (CS_Info, CS_LinearUnit) >
+<!ATTLIST CS_Ellipsoid
+SemiMajorAxis CDATA #REQUIRED
+SemiMinorAxis CDATA #REQUIRED
+InverseFlattening CDATA #REQUIRED
+IvfDefinitive CDATA #REQUIRED
+>
+<!ELEMENT CS_LinearUnit (CS_Info) >
+<!ATTLIST CS_LinearUnit
+MetersPerUnit CDATA #REQUIRED
+>
+<!ELEMENT CS_AngularUnit (CS_Info) >
+<!ATTLIST CS_AngularUnit
+RadiansPerUnit CDATA #REQUIRED
+>
+<!ELEMENT CS_WGS84ConversionInfo EMPTY>
+<!ATTLIST CS_WGS84ConversionInfo
+Dx CDATA #REQUIRED
+Dy CDATA #REQUIRED
+Dz CDATA #REQUIRED
+Ex CDATA #REQUIRED
+Ey CDATA #REQUIRED
+Ez CDATA #REQUIRED
+Ppm CDATA #REQUIRED
+>
+<!ELEMENT CS_PrimeMeridian (CS_Info, CS_AngularUnit) >
+<!ATTLIST CS_PrimeMeridian
+Longitude CDATA #REQUIRED
+>
+<!ELEMENT CS_ProjectionParameter EMPTY >
+<!ATTLIST CS_ProjectionParameter
+Name CDATA #REQUIRED
+Value CDATA #REQUIRED
+>
+<!ELEMENT CS_Projection (CS_Info, CS_ProjectionParameter*) >
+<!ATTLIST CS_Projection
+ClassName CDATA #REQUIRED
+>
+<!ELEMENT CS_VerticalDatum (CS_Info) >
+<!ATTLIST CS_VerticalDatum
+DatumType CDATA #REQUIRED
+>
+<!ELEMENT CS_LocalDatum (CS_Info) >
+<!ATTLIST CS_LocalDatum
+DatumType CDATA #REQUIRED
+>
+<!ELEMENT CS_FittedCoordinateSystem (CS_Info, CS_AxisInfo*, CS_CoordinateSystem)>
+<!ATTLIST CS_FittedCoordinateSystem
+ToBase CDATA #REQUIRED
+>
+<!ELEMENT CS_GeographicCoordinateSystem (CS_Info, CS_AxisInfo*, CS_HorizontalDatum,
+CS_AngularUnit, CS_PrimeMeridian)>
+<!ELEMENT CS_ProjectedCoordinateSystem (CS_Info, CS_AxisInfo*,
+CS_GeographicCoordinateSystem, CS_LinearUnit, CS_Projection)>
+<!ELEMENT CS_GeocentricCoordinateSystem (CS_Info, CS_AxisInfo*, CS_HorizontalDatum,
+CS_LinearUnit, CS_PrimeMeridian)>
+<!ELEMENT CS_VerticalCoordinateSystem (CS_Info, CS_AxisInfo*, CS_VerticalDatum,
+CS_LinearUnit)>
+<!ELEMENT CS_CompoundCoordinateSystem (CS_Info, CS_AxisInfo*, CS_CoordinateSystem,
+CS_CoordinateSystem)>
+<!ELEMENT CS_LocalCoordinateSystem (CS_Info, CS_AxisInfo*, CS_LocalDatum,
+(CS_AngularUnit | CS_LinearUnit))>
