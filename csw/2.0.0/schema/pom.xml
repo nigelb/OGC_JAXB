@@ -16,11 +16,11 @@
 			<groupId>com.sun.xml.bind</groupId>
 			<artifactId>jaxb-impl</artifactId>
 		</dependency>
-		<!--dependency>
+		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
-			<artifactId>gml-v_3_1_1-schema</artifactId>
+			<artifactId>gml-v_2_1_2-schema</artifactId>
 			<version>1.0-SNAPSHOT</version>
-		</dependency-->
+		</dependency>
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>ows-v_0_3_0-schema</artifactId>
@@ -47,11 +47,11 @@
 						<value>ows/*/*.xsd</value>
 					</schemaIncludes>
 					<episodes>
-						<!--episode>
+						<episode>
 							<groupId>org.jvnet.ogc</groupId>
-							<artifactId>gml-v_3_1_1-schema</artifactId>
+							<artifactId>gml-v_2_1_2-schema</artifactId>
 							<version>1.0-SNAPSHOT</version>
-						</episode-->
+						</episode>
 						<episode>
 							<groupId>org.jvnet.ogc</groupId>
 							<artifactId>filter-v_1_0_20-schema</artifactId>
@@ -72,7 +72,6 @@
 						<phase>process-sources</phase>
 						<configuration>
 							<tasks>
-								<delete dir="${basedir}/target/generated-sources/xjc/net/opengis/filter"/>
 								<delete dir="${basedir}/target/generated-sources/xjc/net/opengis/ows"/>
 								<delete dir="${basedir}/target/generated-sources/xjc/net/opengis/ogc"/>
 							</tasks>
