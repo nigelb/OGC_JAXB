@@ -17,7 +17,12 @@
 		<module>cts/1.0.0</module>
 
 		<!-- GML -->
+		<module>gml/1.0.0</module>
+		<module>gml/2.0.0</module>
+		<module>gml/2.1.1</module>
 		<module>gml/2.1.2</module>
+		<module>gml/2.1.2.0</module>
+		<module>gml/2.1.2.1</module>
 		<module>gml/3.1.1</module>
 		<module>gml/3.2.1</module>
 
@@ -54,6 +59,10 @@
 		<module>sld/0.7.3</module>
 		<module>sld/1.0.0</module>
 		<module>sld/1.0.20</module>
+
+		<!-- SLD (Complete) -->
+		<module>context/1.0.0</module>
+		<module>context/1.1.0</module>
 
 		<!-- SWE Common (Complete) -->
 		<module>sweCommon/1.0.0</module>

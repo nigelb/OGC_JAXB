@@ -1,11 +1,13 @@
 Ledend:
+
 [ ] - not implemented yet
+[.] - in progress
 [+] - already implemented
 [-] - does not have a standalone module, is only used in other schemas
 [!] - invalid schema, could not be implemented
 
-context/1.0.0	[ ]
-context/1.1.0	[ ]
+context/1.0.0	[.]
+context/1.1.0	[.]
 csw/2.0.0	[+]
 csw/2.0.1	[+]
 csw/2.0.2	[+]
@@ -13,12 +15,12 @@ cts/1.0.0	[+]
 filter/1.0.0 	[+]
 filter/1.0.20	[+]
 filter/1.1.0 	[+]
-gml/1.0.0    	[ ]
-gml/2.0.0    	[ ]
-gml/2.1.1    	[ ]
+gml/1.0.0    	[+]
+gml/2.0.0    	[+]
+gml/2.1.1    	[+]
 gml/2.1.2    	[+]
-gml/2.1.2.0  	[ ]
-gml/2.1.2.1  	[ ]
+gml/2.1.2.0  	[+]
+gml/2.1.2.1  	[+]
 gml/3.0.0    	[ ]
 gml/3.0.1    	[ ]
 gml/3.1.0    	[ ]
