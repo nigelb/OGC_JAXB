@@ -16,13 +16,16 @@
 		<!-- CTS (Complete) -->
 		<module>cts/1.0.0</module>
 
-		<!-- GML -->
+		<!-- GML (Complete) -->
 		<module>gml/1.0.0</module>
 		<module>gml/2.0.0</module>
 		<module>gml/2.1.1</module>
 		<module>gml/2.1.2</module>
 		<module>gml/2.1.2.0</module>
 		<module>gml/2.1.2.1</module>
+		<!--module>gml/3.0.0</module>
+		<module>gml/3.0.1</module>
+		<module>gml/3.1.0</module-->
 		<module>gml/3.1.1</module>
 		<module>gml/3.2.1</module>
 

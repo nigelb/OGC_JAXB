@@ -24,6 +24,8 @@
 				<groupId>org.jvnet.jaxb2.maven2</groupId>
 				<artifactId>maven-jaxb2-plugin</artifactId>
 				<configuration>
+					<strict>false</strict>
+					<extension>true</extension>
 					<schemaIncludes>
 						<value>gml/*/base/gml.xsd</value>
 					</schemaIncludes>
