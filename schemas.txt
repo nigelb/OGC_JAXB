@@ -6,8 +6,8 @@ Ledend:
 [-] - does not have a standalone module, is only used in other schemas
 [!] - invalid schema, could not be implemented
 
-context/1.0.0	[.]
-context/1.1.0	[.]
+context/1.0.0	[+]
+context/1.1.0	[+]
 csw/2.0.0	[+]
 csw/2.0.1	[+]
 csw/2.0.2	[+]

@@ -16,6 +16,21 @@
 			<groupId>com.sun.xml.bind</groupId>
 			<artifactId>jaxb-impl</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.jvnet.ogc</groupId>
+			<artifactId>gml-v_2_1_2-schema</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jvnet.ogc</groupId>
+			<artifactId>filter-v_1_0_0-schema</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jvnet.ogc</groupId>
+			<artifactId>sld-v_1_0_0-schema</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<defaultGoal>install</defaultGoal>
@@ -27,13 +42,43 @@
 					<schemaIncludes>
 						<value>context/*/*.xsd</value>
 						<value>sld/*/StyledLayerDescriptor.xsd</value>
+						<value>filter/*/filter.xsd</value>
+						<value>gml/*/*.xsd</value>
 					</schemaIncludes>
+					<episodes>
+						<episode>
+							<groupId>org.jvnet.ogc</groupId>
+							<artifactId>gml-v_2_1_2-schema</artifactId>
+							<version>1.0-SNAPSHOT</version>
+						</episode>
+						<episode>
+							<groupId>org.jvnet.ogc</groupId>
+							<artifactId>filter-v_1_0_0-schema</artifactId>
+							<version>1.0-SNAPSHOT</version>
+						</episode>
+						<episode>
+							<groupId>org.jvnet.ogc</groupId>
+							<artifactId>sld-v_1_0_0-schema</artifactId>
+							<version>1.0-SNAPSHOT</version>
+						</episode>
+					</episodes>
 				</configuration>
 			</plugin>
 			<plugin>
-				<inherited>true</inherited>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>process-sources</phase>
+						<configuration>
+							<tasks>
+								<delete dir="${basedir}/target/generated-sources/xjc/net/opengis/sld"/>
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
