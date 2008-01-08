@@ -528,9 +528,8 @@
       </xsd:annotation>
       <xsd:sequence>
         <xsd:choice>
-          <xsd:element ref="csw:AbstractRecord" minOccurs="0" />
-          <xsd:any processContents="strict" namespace="##other" 
-                   minOccurs="0" />
+          <xsd:element ref="csw:AbstractRecord" minOccurs="0" maxOccurs="unbounded"/>
+          <xsd:any processContents="strict" namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:choice>
       </xsd:sequence>
    </xsd:complexType>
