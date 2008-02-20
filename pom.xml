@@ -49,6 +49,9 @@
 		<module>filter/1.0.20</module>
 		<module>filter/1.1.0</module>
 
+ 		<!-- SE (Complete) -->
+		<module>se/1.1.0</module>
+
 		<!-- WFS (Complete) -->
 		<module>wfs/1.0.0</module>
 		<module>wfs/1.1.0</module>
