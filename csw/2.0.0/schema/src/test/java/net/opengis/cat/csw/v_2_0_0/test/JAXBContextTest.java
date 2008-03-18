@@ -11,13 +11,12 @@ public class JAXBContextTest extends TestCase {
 
 	public void testContext() throws Exception {
 
-		final JAXBContext jaxbContext2 = JAXBContext
+		final JAXBContext context = JAXBContext
 				.newInstance("net.opengis.gml.v_2_1_2:org.purl.dc.elements.v_1_1:org.purl.dc.terms:net.opengis.filter.v_1_0_20:net.opengis.cat.csw.v_2_0_0:net.opengis.ows.v_0_3_0");
 
 		final URL resource = getClass().getResource("test0.xml");
 
-		final Object result = jaxbContext2.createUnmarshaller().unmarshal(
-				resource);
+		final Object result = context.createUnmarshaller().unmarshal(resource);
 
 		Assert.assertNotNull(result);
 
