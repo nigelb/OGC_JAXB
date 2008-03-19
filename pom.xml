@@ -80,7 +80,11 @@
 
 		<!-- SensorML (Complete) -->
 		<module>sensorML/1.0.0</module>
-
+		<module>sensorML/1.0.1</module>
+		
+		<!-- Observations and Measurements (Complete) -->
+		<module>om/1.0.0</module>
+		
 		<!-- CSW (Complete) -->
 		<module>csw/2.0.0</module>
 		<module>csw/2.0.1</module>
