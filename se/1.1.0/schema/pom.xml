@@ -38,7 +38,7 @@
 						<value>se/*/FeatureStyle.xsd</value>
 						<value>gml/*/base/gml.xsd</value>
 					</schemaIncludes>
-					<!--episode>false</episode-->
+					<episode>false</episode>
 					<episodes>
 						<episode>
 							<groupId>org.jvnet.ogc</groupId>
