@@ -69,6 +69,7 @@
 		<module>sld/0.7.3</module>
 		<module>sld/1.0.0</module>
 		<module>sld/1.0.20</module>
+		<module>sld/1.1.0</module>
 
 		<!-- Context (Complete) -->
 		<module>context/1.0.0</module>
