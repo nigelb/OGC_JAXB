@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="schema/target/classes" path="schema/src/main/resources"/>
+	<classpathentry kind="src" output="schema/target/classes" path="schema/target/generated-sources/xjc"/>
+	<classpathentry kind="src" output="schema/target/test-classes" path="schema/src/test/java"/>
+	<classpathentry kind="src" output="schema/target/test-classes" path="schema/src/test/resources"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.maven.ide.eclipse.MAVEN2_CLASSPATH_CONTAINER/modules"/>
+	<classpathentry kind="output" path="target"/>
+</classpath>
