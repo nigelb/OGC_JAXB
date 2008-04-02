@@ -60,9 +60,15 @@
 		<module>wcs/1.0.0</module>
 		<module>wcs/1.1.0</module>
 
+ 		<!-- WCS (Complete) -->
+		<module>wps/1.0.0</module>
+
 		<!-- OLS (Complete) -->
 		<module>ols/1.1.0</module>
 		
+		<!-- Sampling (Complete) -->
+		<module>sampling/1.0.0</module>
+
 		<!-- SLD (Complete) -->
 		<module>sld/0.7.1</module>
 		<module>sld/0.7.2</module>
@@ -70,6 +76,12 @@
 		<module>sld/1.0.0</module>
 		<module>sld/1.0.20</module>
 		<module>sld/1.1.0</module>
+
+		<!-- SOS (Complete) -->
+		<module>sos/1.0.0</module>
+
+		<!-- SPS (Complete) -->
+		<module>sps/1.0.0</module>
 
 		<!-- Context (Complete) -->
 		<module>context/1.0.0</module>
@@ -86,17 +98,11 @@
 		<!-- Observations and Measurements (Complete) -->
 		<module>om/1.0.0</module>
 		
-		<!-- CSW (Complete) -->
-		<module>csw/2.0.0</module>
-		<module>csw/2.0.1</module>
-		<module>csw/2.0.2</module>
+		<!-- CSW (complete) -->
+		<module>csw</module>
 
 		<!-- TML (Complete) -->
 		<module>tml/1.0.0</module>
-		<!--
-		<module>sld/1.0.0</module>
-		<module>context/1.1.0</module>
-		<module>iso/0.9.bkg</module-->
 	</modules>
 	<dependencies>
 		<dependency>
