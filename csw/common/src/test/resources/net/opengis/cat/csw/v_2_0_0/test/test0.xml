@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<csw:GetRecords service="CSW" version="2.0.0" requestId="testingCSW"
+	resultType="results" outputFormat="application/xml"
+	outputSchema="csw:profile" xmlns:csw="http://www.opengis.net/cat/csw"
+	xmlns:ogc="http://www.opengis.net/ogc"
+	xmlns:gml="http://www.opengis.net/gml">
+	<csw:Query typeNames="csw:Record">
+		<csw:ElementSetName typeNames="csw:Record">full</csw:ElementSetName>
+		<csw:Constraint version="1.1.0">
+			<ogc:Filter>
+				<ogc:Intersects>
+					<ogc:PropertyName>./BoundingBox</ogc:PropertyName>
+					<gml:Envelope>
+						<gml:lowerCorner>-120.0 37.0</gml:lowerCorner>
+						<gml:upperCorner>-110.0 43.0</gml:upperCorner>
+					</gml:Envelope>
+				</ogc:Intersects>
+			</ogc:Filter>
+		</csw:Constraint>
+	</csw:Query>
+</csw:GetRecords>
