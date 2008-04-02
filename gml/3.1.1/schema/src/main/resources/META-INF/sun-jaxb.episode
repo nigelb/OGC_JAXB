@@ -29,6 +29,21 @@ Generated on: 2007.11.13 at 05:37:43 PM CET
     <schemaBindings map="false">
 	<package name="net.opengis.gml.v_3_1_1"/>
     </schemaBindings>
+    <bindings scd="element::tns:_Solid">
+      <class ref="net.opengis.gml.v_3_1_1.ASolidElement"/>
+    </bindings>
+    <bindings scd="element::tns:_Surface">
+      <class ref="net.opengis.gml.v_3_1_1.ASurfaceElement"/>
+    </bindings>
+    <bindings scd="element::tns:_Curve">
+      <class ref="net.opengis.gml.v_3_1_1.ACurveElement"/>
+    </bindings>
+    <bindings scd="element::tns:_Ring">
+      <class ref="net.opengis.gml.v_3_1_1.ARingElement"/>
+    </bindings>
+    <bindings scd="~tns:DMSAngleType">
+      <class ref="net.opengis.gml.v_3_1_1.DMSAngleType"/>
+    </bindings>
     <bindings scd="~tns:DMSAngleType">
       <class ref="net.opengis.gml.v_3_1_1.DMSAngleType"/>
     </bindings>
