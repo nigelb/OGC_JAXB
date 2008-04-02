@@ -75,7 +75,8 @@
 		<xs:complexType>
 			<xs:choice minOccurs="0">
 				<xs:element ref="gml:Point"/>
-				<xs:element ref="gml:_Curve"/>
+				<!-- ** -->
+				<!--xs:element ref="gml:_Curve"/-->
 			</xs:choice>
 			<xs:attributeGroup ref="gml:AssociationAttributeGroup"/>
 		</xs:complexType>
