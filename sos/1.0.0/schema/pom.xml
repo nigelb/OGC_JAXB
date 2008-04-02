@@ -33,7 +33,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
-			<artifactId>sensorML-v_1_0_1-schema</artifactId>
+			<artifactId>sensorml-v_1_0_1-schema</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
@@ -101,7 +101,7 @@
 						</episode>
 						<episode>
 							<groupId>org.jvnet.ogc</groupId>
-							<artifactId>sensorML-v_1_0_1-schema</artifactId>
+							<artifactId>sensorml-v_1_0_1-schema</artifactId>
 						</episode>
 						<episode>
 							<groupId>org.jvnet.ogc</groupId>
