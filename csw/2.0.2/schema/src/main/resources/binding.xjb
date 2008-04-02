@@ -33,7 +33,7 @@
 		schemaLocation="csw/2.0.2/rec-dcmes.xsd"
 		node="/xs:schema">
 		<jaxb:schemaBindings>
-			<jaxb:package name="org.purl.dc.elements.v_1_1"/>
+			<jaxb:package name="net.opengis.cat.csw.v_2_0_2.dc.elements"/>
 		</jaxb:schemaBindings>
 	</jaxb:bindings>
 
@@ -41,7 +41,7 @@
 		schemaLocation="csw/2.0.2/rec-dcterms.xsd"
 		node="/xs:schema">
 		<jaxb:schemaBindings>
-			<jaxb:package name="org.purl.dc.terms"/>
+			<jaxb:package name="net.opengis.cat.csw.v_2_0_2.dc.terms"/>
 		</jaxb:schemaBindings>
 	</jaxb:bindings>
 
