@@ -25,7 +25,7 @@
 	<jaxb:bindings schemaLocation="gml/3.2.1/geometryPrimitives.xsd" node="/xs:schema">
 
 		<jaxb:bindings>
-			<jaxb:package name="net.opengis.gml.v_3_2_1"/>
+			<!--jaxb:package name="net.opengis.gml.v_3_2_1"/-->
 			<jaxb:nameXmlTransform>
 				<jaxb:elementName suffix="Element"/>
 			</jaxb:nameXmlTransform>
@@ -37,7 +37,6 @@
 	
 	<jaxb:bindings schemaLocation="gml/3.2.1/datums.xsd" node="/xs:schema">
 		<jaxb:bindings>
-			<jaxb:package name="net.opengis.gml.v_3_2_1"/>
 			<jaxb:bindings node="//xs:element[@name='SecondDefiningParameter']">
 				<jaxb:class name="SecondDefiningParameterUpperCase"/>
 			</jaxb:bindings>
@@ -67,7 +66,6 @@
 
 	<jaxb:bindings schemaLocation="gml/3.2.1/coordinateSystems.xsd" node="/xs:schema">
 		<jaxb:bindings>
-			<jaxb:package name="net.opengis.gml.v_3_2_1"/>
 			<jaxb:bindings node="//xs:element[@name='UserDefinedCS']">
 				<jaxb:class name="UserDefinedCSUpperCase"/>
 			</jaxb:bindings>
@@ -103,6 +101,12 @@
 	
 	<jaxb:bindings schemaLocation="gml/3.2.1/coordinateOperations.xsd" node="/xs:schema">
 		<jaxb:bindings>
+			<jaxb:bindings node="//xs:element[@name='coordinateOperationAccuracy']//xs:element[@ref='gmd:AbstractDQ_PositionalAccuracy']">
+				<xjc:dom/>
+			</jaxb:bindings>
+			<jaxb:bindings node="//xs:element[@name='formulaCitation']//xs:element[@ref='gmd:CI_Citation']">
+				<xjc:dom/>
+			</jaxb:bindings>
 			<jaxb:bindings node="//xs:element[@name='Conversion']">
 				<jaxb:class name="ConversionUpperCase"/>
 			</jaxb:bindings>
@@ -114,6 +118,13 @@
 			</jaxb:bindings>
 		</jaxb:bindings>
 	</jaxb:bindings>
-	
+
+	<jaxb:bindings schemaLocation="gml/3.2.1/referenceSystems.xsd" node="/xs:schema">
+		<jaxb:bindings>
+			<jaxb:bindings node="//xs:element[@name='domainOfValidity']//xs:element[@ref='gmd:EX_Extent']">
+				<xjc:dom/>
+			</jaxb:bindings>
+		</jaxb:bindings>
+	</jaxb:bindings>
 
 </jaxb:bindings>
