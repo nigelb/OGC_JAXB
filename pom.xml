@@ -27,6 +27,7 @@
 		<module>gml/3.0.1</module>
 		<module>gml/3.1.0</module-->
 		<module>gml/3.1.1</module>
+		<module>gml/3.2.0</module>
 		<module>gml/3.2.1</module>
 
 		<!-- WMS (Complete) -->
