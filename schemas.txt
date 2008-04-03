@@ -3,7 +3,7 @@ Ledend:
 [ ] - not implemented yet
 [.] - in progress
 [+] - already implemented
-[-] - does not have a standalone module, is only used in other schemas
+[-] - does not have a standalone module, is only used in other schemas (or won't be implemented for other reasons)
 [!] - invalid schema, could not be implemented
 
 context/1.0.0	[+]
