@@ -107,6 +107,7 @@
 
 		<!-- ISO 19139 (Complete) -->
 		<module>iso/19139/20060504</module>
+		<module>iso/19139/20070417</module>
 	</modules>
 	<dependencies>
 		<dependency>
