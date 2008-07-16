@@ -13,55 +13,31 @@
 	</scm-->
 	<modules>
 
-		<!-- CTS (Complete) -->
-		<module>cts/1.0.0</module>
+		<!-- CTS -->
+		<module>cts</module>
 
-		<!-- GML (Complete) -->
-		<module>gml/1.0.0</module>
-		<module>gml/2.0.0</module>
-		<module>gml/2.1.1</module>
-		<module>gml/2.1.2</module>
-		<module>gml/2.1.2.0</module>
-		<module>gml/2.1.2.1</module>
-		<!--module>gml/3.0.0</module>
-		<module>gml/3.0.1</module>
-		<module>gml/3.1.0</module-->
-		<module>gml/3.1.1</module>
-		<module>gml/3.2.0</module>
-		<module>gml/3.2.1</module>
+		<!-- GML -->
+		<module>gml</module>
 
-		<!-- WMS (Complete) -->
-		<module>wms/1.0.0</module>
-		<module>wms/1.0.7</module>
-		<module>wms/1.1.0</module>
-		<module>wms/1.1.1</module>
-		<module>wms/1.3.0</module>
+		<!-- WMS -->
+		<module>wms</module>
 
- 		<!-- OWS (Complete) -->
-		<module>ows/0.3.0</module>
-		<module>ows/0.3.1</module>
-		<module>ows/0.3.2</module>
-		<module>ows/0.4.0</module>
-		<module>ows/1.0.0</module>
-		<module>ows/1.1.0</module>
+ 		<!-- OWS -->
+		<module>ows</module>
 
-		<!-- Filter (Complete) -->
-		<module>filter/1.0.0</module>
-		<module>filter/1.0.20</module>
-		<module>filter/1.1.0</module>
+		<!-- Filter -->
+		<module>filter</module>
 
- 		<!-- SE (Complete) -->
-		<module>se/1.1.0</module>
+ 		<!-- SE -->
+		<module>se</module>
 
-		<!-- WFS (Complete) -->
-		<module>wfs/1.0.0</module>
-		<module>wfs/1.1.0</module>
+		<!-- WFS -->
+		<module>wfs</module>
 
- 		<!-- WCS (Complete) -->
-		<module>wcs/1.0.0</module>
-		<module>wcs/1.1.0</module>
+ 		<!-- WCS -->
+		<module>wcs</module>
 
- 		<!-- WCS (Complete) -->
+ 		<!-- WPS (Complete) -->
 		<module>wps/1.0.0</module>
 
 		<!-- OLS (Complete) -->
@@ -70,13 +46,8 @@
 		<!-- Sampling (Complete) -->
 		<module>sampling/1.0.0</module>
 
-		<!-- SLD (Complete) -->
-		<module>sld/0.7.1</module>
-		<module>sld/0.7.2</module>
-		<module>sld/0.7.3</module>
-		<module>sld/1.0.0</module>
-		<module>sld/1.0.20</module>
-		<module>sld/1.1.0</module>
+		<!-- SLD -->
+		<module>sld</module>
 
 		<!-- SOS (Complete) -->
 		<module>sos/1.0.0</module>
@@ -84,9 +55,8 @@
 		<!-- SPS (Complete) -->
 		<module>sps/1.0.0</module>
 
-		<!-- Context (Complete) -->
-		<module>context/1.0.0</module>
-		<module>context/1.1.0</module>
+		<!-- Context -->
+		<module>context</module>
 
 		<!-- SWE Common (Complete) -->
 		<module>sweCommon/1.0.0</module>
