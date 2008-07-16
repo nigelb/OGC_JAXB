@@ -2,16 +2,17 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jvnet.ogc</groupId>
-	<artifactId>cts-v_1_0_0</artifactId>
+	<artifactId>cts</artifactId>
 	<packaging>pom</packaging>
-	<name>OGC CTS 1.0.0</name>
+	<name>OGC CTS</name>
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
-		<artifactId>cts</artifactId>
+		<artifactId>project</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<modules>
-		<module>schema</module>
+		<module>1.0.0</module>
+		<module>common</module>
 	</modules>
 	<build>
 		<defaultGoal>install</defaultGoal>
