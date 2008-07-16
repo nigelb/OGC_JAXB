@@ -8,14 +8,10 @@
 	<name>OGC CSW Common</name>
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
-		<artifactId>project</artifactId>
+		<artifactId>csw</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<dependencies>
-		<dependency>
-			<groupId>com.sun.xml.bind</groupId>
-			<artifactId>jaxb-impl</artifactId>
-		</dependency>
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>csw-v_2_0_0-schema</artifactId>
