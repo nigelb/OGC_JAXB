@@ -3,16 +3,28 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jvnet.ogc</groupId>
-	<artifactId>gml-v_3_1_0</artifactId>
+	<artifactId>gml</artifactId>
 	<packaging>pom</packaging>
-	<name>OGC GML 3.1.0</name>
+	<name>OGC GML</name>
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
-		<artifactId>gml</artifactId>
+		<artifactId>project</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<modules>
-		<module>schema</module>
+		<module>1.0.0</module>
+		<module>2.0.0</module>
+		<module>2.1.1</module>
+		<module>2.1.2</module>
+		<module>2.1.2.0</module>
+		<module>2.1.2.1</module>
+		<!--module>3.0.0</module>
+		<module>3.0.1</module>
+		<module>3.1.0</module-->
+		<module>3.1.1</module>
+		<module>3.2.0</module>
+		<module>3.2.1</module>
+		<module>common</module>
 	</modules>
 	<build>
 		<defaultGoal>install</defaultGoal>
