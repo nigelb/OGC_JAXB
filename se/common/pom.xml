@@ -2,17 +2,26 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jvnet.ogc</groupId>
-	<artifactId>se-v_1_1_0</artifactId>
-	<packaging>pom</packaging>
-	<name>OGC SE 1.1.0</name>
+	<artifactId>se-common</artifactId>
+	<packaging>jar</packaging>
+	<name>OGC SE Common</name>
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
 		<artifactId>se</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
-	<modules>
-		<module>schema</module>
-	</modules>
+	<dependencies>
+		<dependency>
+			<groupId>org.jvnet.ogc</groupId>
+			<artifactId>filter-common</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jvnet.ogc</groupId>
+			<artifactId>se-v_1_1_0-schema</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
 	<build>
 		<defaultGoal>install</defaultGoal>
 	</build>
