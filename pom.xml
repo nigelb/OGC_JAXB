@@ -13,6 +13,9 @@
 	</scm-->
 	<modules>
 
+		<!-- Schemas -->
+		<module>schemas</module>
+
 		<!-- CTS -->
 		<module>cts</module>
 
@@ -92,23 +95,8 @@
 			<dependency>
 				<groupId>com.sun.xml.bind</groupId>
 				<artifactId>jaxb-impl</artifactId>
-				<version>2.1.5</version>
+				<version>2.1.9</version>
 			</dependency>
-			<!--dependency>
-				<groupId>com.sun.xml.bind</groupId>
-				<artifactId>jaxb-impl</artifactId>
-				<version>1.0.6</version>
-			</dependency>
-			<dependency>
-				<groupId>org.jvnet.jaxbcommons</groupId>
-				<artifactId>jaxbcommons-shared</artifactId>
-				<version>1.0.3</version>
-			</dependency>
-			<dependency>
-				<groupId>org.jvnet.jaxbcommons</groupId>
-				<artifactId>jaxbcommons-runtime</artifactId>
-				<version>1.0.6</version>
-			</dependency-->
 			<dependency>
 				<groupId>net.sf.saxon</groupId>
 				<artifactId>saxon</artifactId>
@@ -127,20 +115,19 @@
 		</dependencies>
 	</dependencyManagement>
 	<distributionManagement>
+		<!--site>
+			<id>maven-jaxb2-plugin-www</id>
+			<url>file:www-xxx</url>
+		</site-->
 		<repository>
 			<uniqueVersion>false</uniqueVersion>
 			<id>java.net-maven2-repository</id>
 			<url>${dev.java.net-releases.deploy.url}</url>
 		</repository>
 		<snapshotRepository>
-			<id>dev.java.net-snapshots</id>
+			<id>java.net-maven2-snapshotRepository</id>
 			<url>${dev.java.net-snapshots.deploy.url}</url>
 		</snapshotRepository>
-		<site>
-			<id>ejb-schemas-www</id>
-			<!--url>java-net:/hj3/trunk/www</url-->
-			<url>file:wwww</url>
-		</site>
 	</distributionManagement>
 	<build>
 		<defaultGoal>install</defaultGoal>
@@ -165,7 +152,7 @@
 				<plugin>
 					<groupId>org.jvnet.jaxb2.maven2</groupId>
 					<artifactId>maven-jaxb2-plugin</artifactId>
-					<version>0.4.M3</version>
+					<version>0.6.2</version>
 					<executions>
 						<execution>
 							<goals>
