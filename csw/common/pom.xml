@@ -9,23 +9,23 @@
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
 		<artifactId>csw</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 	<dependencies>
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>csw-v_2_0_0-schema</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<version>1.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>csw-v_2_0_1-schema</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<version>1.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>csw-v_2_0_2-schema</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<version>1.0.0</version>
 		</dependency>
 	</dependencies>
 	<build>

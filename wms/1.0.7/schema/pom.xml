@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
 		<artifactId>wms-v_1_0_7</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 	<dependencies>
 		<dependency>
