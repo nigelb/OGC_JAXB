@@ -1,0 +1,26 @@
+<jaxb:bindings version="1.0" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" 
+	jaxb:extensionBindingPrefixes="xjc">
+	<jaxb:bindings schemaLocation="kml/2.2.0/ogckml22.xsd" 
+		node="/xs:schema">
+		<jaxb:schemaBindings>
+			<jaxb:package name="net.opengis.kml.v_2_2_0"/>
+		</jaxb:schemaBindings>
+		<jaxb:bindings node="xs:element[@name='Scale']">
+			<jaxb:class name="AScale"/>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:element[@name='snippet']">
+			<jaxb:class name="ASnippet"/>
+		</jaxb:bindings>
+	</jaxb:bindings>
+	<jaxb:bindings schemaLocation="kml/2.2.0/atom-author-link.xsd" 
+		node="/xs:schema">
+		<jaxb:schemaBindings>
+			<jaxb:package name="net.opengis.kml.v_2_2_0"/>
+		</jaxb:schemaBindings>
+		<jaxb:bindings node="xs:element[@name='name']">
+			<jaxb:class name="AtomName"/>
+		</jaxb:bindings>
+	</jaxb:bindings>
+</jaxb:bindings>
