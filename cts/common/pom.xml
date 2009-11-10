@@ -11,9 +11,11 @@
 		<version>1.0.0</version>
 	</parent>
 	<dependencies>
-		<groupId>org.jvnet.ogc</groupId>
-		<artifactId>cts-v_1_0_0-schema</artifactId>
-		<version>1.0.0</version>
+		<dependency>
+			<groupId>org.jvnet.ogc</groupId>
+			<artifactId>cts-v_1_0_0-schema</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<defaultGoal>install</defaultGoal>
