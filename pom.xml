@@ -119,11 +119,12 @@
 		<!-- WMS -->
 		<module>wms</module>
 
- 		<!-- WPS (Complete) -->
-		<module>wps/1.0.0</module>
+ 		<!-- WPS -->
+		<module>wps</module>
 
+		<module>common</module>
+		<module>dist</module>
 		
-
 
 	</modules>
 	<dependencies>
