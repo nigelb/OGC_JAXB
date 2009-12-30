@@ -10,11 +10,13 @@
 		<groupId>org.jvnet.ogc</groupId>
 		<artifactId>wms-v_1_1_1</artifactId>
 		<version>1.0.0</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<dependencies>
 		<dependency>
 			<groupId>com.sun.xml.bind</groupId>
 			<artifactId>jaxb-impl</artifactId>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 	<build>

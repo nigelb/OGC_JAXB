@@ -10,6 +10,7 @@
 		<groupId>org.jvnet.ogc</groupId>
 		<artifactId>wms-v_1_1_0</artifactId>
 		<version>1.0.0</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<dependencies>
 		<dependency>
@@ -29,11 +30,6 @@
 						<value>wms/*/wms*.dtd</value>
 					</schemaIncludes>
 				</configuration>
-			</plugin>
-			<plugin>
-				<inherited>true</inherited>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>

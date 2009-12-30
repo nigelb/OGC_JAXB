@@ -7,83 +7,124 @@
 	<packaging>pom</packaging>
 	<version>1.0.0</version>
 	<name>OGC Project</name>
-	<!--scm>
-		<connection>${disy.scm.connection}/ogc.project/trunk</connection>
-		<developerConnection>${disy.scm.developerConnection}/ogc.project/trunk</developerConnection>
-	</scm-->
+	<url>http://static.highsource.org/ogc-schemas</url>
+	<description>OGC Schemas project provides JAXB 2.x bindings for XML Schemas defined by the Open Geospatial Consortium (OGC).</description>
+	<issueManagement>
+		<system>JIRA</system>
+		<url>http://jira.highsource.org/browse/OGCS</url>
+	</issueManagement>
+	<inceptionYear>2008</inceptionYear>
+	<mailingLists>
+		<mailingList>
+			<name>Users List</name>
+			<subscribe>users-subscribe@ogc.dev.java.net</subscribe>
+			<unsubscribe>users-unsubscribe@ogc.dev.java.net</unsubscribe>
+			<post>users@ogc.dev.java.net</post>
+			<archive>https://ogc.dev.java.net/servlets/SummarizeList?listName=users</archive>
+		</mailingList>
+	</mailingLists>
+	<developers>
+		<developer>
+			<id>lexi</id>
+			<name>Aleksei Valikov</name>
+			<email>valikov@gmx.net</email>
+		</developer>
+	</developers>
+	<contributors>
+		<!--contributor>
+			<name></name>
+			<email></email>
+			<organization></organization>
+			<organizationUrl></organizationUrl>
+			<timezone></timezone>
+		</contributor-->
+	</contributors>
+	<scm>
+		<connection>scm:svn:https://ogc.dev.java.net/svn/ogc/trunk/</connection>
+		<developerConnection>scm:svn:https://ogc.dev.java.net/svn/ogc/trunk/</developerConnection>
+		<url>https://ogc.dev.java.net/source/browse/ogc/trunk/</url>
+	</scm>
+	<organization>
+		<name>Highsource</name>
+		<url>http://www.highsource.org</url>
+	</organization>
 	<modules>
 
 		<!-- Schemas -->
 		<module>schemas</module>
 
-		<!-- CTS -->
-		<module>cts</module>
-
-		<!-- GML -->
-		<module>gml</module>
-
-		<!-- WMS -->
-		<module>wms</module>
-
- 		<!-- OWS -->
-		<module>ows</module>
-
-		<!-- Filter -->
-		<module>filter</module>
-
- 		<!-- SE -->
-		<module>se</module>
-
- 		<!-- KML -->
-		<module>kml</module>
-
-		<!-- WFS -->
-		<module>wfs</module>
-
- 		<!-- WCS -->
-		<module>wcs</module>
-
- 		<!-- WPS (Complete) -->
-		<module>wps/1.0.0</module>
-
-		<!-- OLS (Complete) -->
-		<module>ols/1.1.0</module>
-		
-		<!-- Sampling (Complete) -->
-		<module>sampling/1.0.0</module>
-
-		<!-- SLD -->
-		<module>sld</module>
-
-		<!-- SOS (Complete) -->
-		<module>sos/1.0.0</module>
-
-		<!-- SPS (Complete) -->
-		<module>sps/1.0.0</module>
+		<!-- CityGML -->
+		<!-- module>citygml</module-->
 
 		<!-- Context -->
 		<module>context</module>
 
-		<!-- SWE Common (Complete) -->
-		<module>sweCommon/1.0.0</module>
-		<module>sweCommon/1.0.1</module>
-
-		<!-- SensorML (Complete) -->
-		<module>sensorML/1.0.0</module>
-		<module>sensorML/1.0.1</module>
-		
-		<!-- Observations and Measurements (Complete) -->
-		<module>om/1.0.0</module>
-		
-		<!-- CSW (complete) -->
+		<!-- CSW -->
 		<module>csw</module>
 
-		<!-- TML (Complete) -->
-		<module>tml/1.0.0</module>
+		<!-- CTS -->
+		<module>cts</module>
 
-		<!-- ISO 19139 (Complete) -->
-		<module>iso/19139/20060504</module>
-		<module>iso/19139/20070417</module>
+		<!-- Filter -->
+		<module>filter</module>
+
+		<!-- GML -->
+		<module>gml</module>
+
+		<!-- ISO 19139 -->
+		<module>iso/19139</module>
+
+ 		<!-- KML -->
+		<module>kml</module>
+
+		<!-- OLS -->
+		<module>ols</module>
+
+		<!-- OM -->
+		<module>om</module>
+
+ 		<!-- OWS -->
+		<module>ows</module>
+
+		<!-- Sampling  -->
+		<module>sampling</module>
+
+ 		<!-- SE -->
+		<module>se</module>
+
+		<!-- SensorML  -->
+		<module>sensorML</module>
+
+		<!-- SLD -->
+		<module>sld</module>
+		
+		<!-- SOS -->
+		<module>sos</module>
+
+		<!-- SPS -->
+		<module>sps</module>
+		
+		<!-- SWECommon -->
+		<module>sweCommon</module>
+
+		<!-- TML -->
+		<module>tml</module>
+
+ 		<!-- WCS -->
+		<module>wcs</module>
+
+		<!-- WFS -->
+		<module>wfs</module>
+
+		<!-- WMS -->
+		<module>wms</module>
+
+ 		<!-- WPS (Complete) -->
+		<module>wps/1.0.0</module>
+
+		
+
+
 	</modules>
 	<dependencies>
 		<dependency>
@@ -99,6 +140,7 @@
 				<groupId>com.sun.xml.bind</groupId>
 				<artifactId>jaxb-impl</artifactId>
 				<version>2.1.12</version>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>net.sf.saxon</groupId>
@@ -144,7 +186,7 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
-				  <inherited>true</inherited>
+				 	<inherited>true</inherited>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<configuration>
@@ -170,12 +212,24 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
+		<plugins>
+			<plugin>
+				<inherited>true</inherited>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 	<repositories>
-		<repository>
-			<id>maven2-repository.jboss.com</id>
-			<url>http://repository.jboss.com/maven2</url>
-		</repository>
 		<repository>
 			<id>maven2-repository.dev.java.net</id>
 			<url>http://download.java.net/maven/2</url>
@@ -185,27 +239,11 @@
 			<url>http://download.java.net/maven/1</url>
 			<layout>legacy</layout>
 		</repository>
-		<repository>
-			<id>jfrog-plugins</id>
-			<name>jfrog-plugins-dist</name>
-			<url>http://www.jfrog.org/artifactory/plugins-releases@repo</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
 			<id>maven2-repository.dev.java.net</id>
 			<url>http://download.java.net/maven/2</url>
-		</pluginRepository>
-		<pluginRepository>
-			<id>jfrog-plugins</id>
-			<name>jfrog-plugins-dist</name>
-			<url>http://www.jfrog.org/artifactory/plugins-releases@repo</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
 </project>

@@ -5,11 +5,12 @@
 	<groupId>org.jvnet.ogc</groupId>
 	<artifactId>swecommon-v_1_0_1</artifactId>
 	<packaging>pom</packaging>
-	<name>OGC SWE Common 1.0.1</name>
+	<name>OGC SWECommon 1.0.1</name>
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
-		<artifactId>project</artifactId>
+		<artifactId>swecommon</artifactId>
 		<version>1.0.0</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<modules>
 		<module>schema</module>

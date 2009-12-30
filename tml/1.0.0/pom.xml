@@ -7,8 +7,9 @@
 	<name>OGC TML 1.0.0</name>
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
-		<artifactId>project</artifactId>
+		<artifactId>tml</artifactId>
 		<version>1.0.0</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<modules>
 		<module>schema</module>
