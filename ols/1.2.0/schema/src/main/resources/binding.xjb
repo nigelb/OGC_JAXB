@@ -1,0 +1,55 @@
+<jaxb:bindings version="1.0" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" 
+	jaxb:extensionBindingPrefixes="xjc">
+	<jaxb:bindings schemaLocation="ols/1.2.0/XLS.xsd" 
+		node="/xs:schema">
+		<jaxb:schemaBindings>
+			<jaxb:package name="net.opengis.xls.v_1_2_0"/>
+		</jaxb:schemaBindings>
+	</jaxb:bindings>
+	<jaxb:bindings schemaLocation="ols/1.2.0/ADT.xsd" 
+		node="/xs:schema">
+		<jaxb:bindings node="xs:element[@name='_Position']">
+			<jaxb:class name="APosition"/>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:element[@name='_POI']">
+			<jaxb:class name="APOI"/>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:element[@name='_RouteSummary']">
+			<jaxb:class name="ARouteSummary"/>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:element[@name='_NextSegment']">
+			<jaxb:class name="ANextSegment"/>
+		</jaxb:bindings>
+	</jaxb:bindings>
+	<jaxb:bindings schemaLocation="ols/1.2.0/DirectoryService.xsd" 
+		node="/xs:schema">
+		<jaxb:bindings node="xs:element[@name='_POIProperty']">
+			<jaxb:class name="APOIProperty"/>
+		</jaxb:bindings>
+	</jaxb:bindings>
+
+	<jaxb:bindings 
+		schemaLocation="gml/3.1.1/base/direction.xsd" 
+		node="/xs:schema">
+		<jaxb:bindings node="xs:simpleType[@name='CompassPointEnumeration']">
+			<jaxb:class ref="net.opengis.gml.v_3_1_1.CompassPointEnumeration"/>
+		</jaxb:bindings>
+		<!--jaxb:bindings node="xs:element[@name='Surface']">
+			<jaxb:class name="ASurfaceElement"/>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:element[@name='Curve']">
+			<jaxb:class name="ACurveElement"/>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:element[@name='Ring']">
+			<jaxb:class name="ARingElement"/>
+		</jaxb:bindings-->
+	</jaxb:bindings>
+	<!--jaxb:bindings schemaLocation="gml/3.1.1/base/gml.xsd" 
+		node="/xs:schema">
+		<jaxb:schemaBindings>
+			<jaxb:package name="net.opengis.gml.v_3_1_1"/>
+		</jaxb:schemaBindings>
+	</jaxb:bindings-->
+</jaxb:bindings>
