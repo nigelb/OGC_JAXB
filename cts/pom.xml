@@ -9,6 +9,7 @@
 		<groupId>org.jvnet.ogc</groupId>
 		<artifactId>project</artifactId>
 		<version>1.0.0</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<modules>
 		<module>1.0.0</module>

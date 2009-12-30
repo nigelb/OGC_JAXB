@@ -10,6 +10,7 @@
 		<groupId>org.jvnet.ogc</groupId>
 		<artifactId>context-v_1_0_0</artifactId>
 		<version>1.0.0</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<dependencies>
 		<dependency>
@@ -63,11 +64,6 @@
 						</episode>
 					</episodes>
 				</configuration>
-			</plugin>
-			<plugin>
-				<inherited>true</inherited>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
