@@ -10,7 +10,9 @@
 		Copyright (c) 2007 Open Geospatial Consortium, Inc. All Rights Reserved.
 		To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 	-->
-	<import namespace="http://www.opengis.net/gml" schemaLocation="gml4xls.xsd"/> 
+	<!-- ** import namespace="http://www.opengis.net/gml" schemaLocation="gml4xls.xsd"/ ** -->
+	<!-- ** -->
+	<import namespace="http://www.opengis.net/gml" schemaLocation="../../gml/3.1.1/base/gml.xsd"/>
 	<import namespace="http://www.w3.org/1999/xlink" schemaLocation="../../xlink/1.0.0/xlinks.xsd"/> 
 	<include schemaLocation="UOM.xsd"/> 
 	<!-- =============================== type ===================================== --> 
