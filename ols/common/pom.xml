@@ -3,18 +3,27 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jvnet.ogc</groupId>
-	<artifactId>ows-v_1_0_0</artifactId>
-	<packaging>pom</packaging>
-	<name>OGC OWS 1.0.0</name>
+	<artifactId>ols-common</artifactId>
+	<packaging>jar</packaging>
+	<name>OGC OLS Common</name>
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
-		<artifactId>ows</artifactId>
+		<artifactId>ols</artifactId>
 		<version>1.0.0</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-	<modules>
-		<module>schema</module>
-	</modules>
+	<dependencies>
+		<dependency>
+			<groupId>org.jvnet.ogc</groupId>
+			<artifactId>ols-v_1_1_0-schema</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jvnet.ogc</groupId>
+			<artifactId>ols-v_1_2_0-schema</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+	</dependencies>
 	<build>
 		<defaultGoal>install</defaultGoal>
 	</build>

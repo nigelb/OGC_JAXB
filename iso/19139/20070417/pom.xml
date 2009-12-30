@@ -8,8 +8,9 @@
 	<name>OGC ISO 19139 (2007-04-17)</name>
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
-		<artifactId>project</artifactId>
+		<artifactId>iso-19139</artifactId>
 		<version>1.0.0</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<modules>
 		<module>schema</module>

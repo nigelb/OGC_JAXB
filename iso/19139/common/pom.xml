@@ -3,18 +3,27 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jvnet.ogc</groupId>
-	<artifactId>iso-19139-d_2006_05_04</artifactId>
-	<packaging>pom</packaging>
-	<name>OGC ISO 19139 (2006-05-04)</name>
+	<artifactId>iso-19139-common</artifactId>
+	<packaging>jar</packaging>
+	<name>OGC ISO 19139 Common</name>
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
 		<artifactId>iso-19139</artifactId>
 		<version>1.0.0</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-	<modules>
-		<module>schema</module>
-	</modules>
+	<dependencies>
+		<dependency>
+			<groupId>org.jvnet.ogc</groupId>
+			<artifactId>iso-19139-d_2006_05_04-schema</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jvnet.ogc</groupId>
+			<artifactId>iso-19139-d_2007_04_17-schema</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+	</dependencies>
 	<build>
 		<defaultGoal>install</defaultGoal>
 	</build>
