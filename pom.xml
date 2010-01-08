@@ -122,6 +122,7 @@
  		<!-- WPS -->
 		<module>wps</module>
 
+		<module>examples</module>
 		<module>common</module>
 		<module>dist</module>
 		
@@ -161,10 +162,6 @@
 		</dependencies>
 	</dependencyManagement>
 	<distributionManagement>
-		<!--site>
-			<id>maven-jaxb2-plugin-www</id>
-			<url>file:www-xxx</url>
-		</site-->
 		<repository>
 			<uniqueVersion>false</uniqueVersion>
 			<id>java.net-maven2-repository</id>
@@ -174,6 +171,9 @@
 			<id>java.net-maven2-snapshotRepository</id>
 			<url>${dev.java.net-snapshots.deploy.url}</url>
 		</snapshotRepository>
+		<site>
+			<url>${sftp.static.highsource.org}/ogc-schemas</url>
+		</site>
 	</distributionManagement>
 	<build>
 		<defaultGoal>install</defaultGoal>
