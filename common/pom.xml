@@ -29,6 +29,11 @@
 		</dependency>
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
+			<artifactId>cv-common</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>filter-common</artifactId>
 			<version>1.0.0</version>
 		</dependency>
@@ -55,6 +60,11 @@
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>om-common</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jvnet.ogc</groupId>
+			<artifactId>omx-common</artifactId>
 			<version>1.0.0</version>
 		</dependency>
 		<dependency>

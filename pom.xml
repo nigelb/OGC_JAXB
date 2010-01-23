@@ -56,6 +56,9 @@
 		<!-- CityGML -->
 		<!-- module>citygml</module-->
 
+		<!-- GML Encoding of Discrete Coverages (interleaved pattern) -->
+		<module>cv</module>
+
 		<!-- Context -->
 		<module>context</module>
 
@@ -74,6 +77,9 @@
 		<!-- ISO 19139 -->
 		<module>iso/19139</module>
 
+		<!-- IC -->
+		<module>ic</module>
+
  		<!-- KML -->
 		<module>kml</module>
 
@@ -82,6 +88,9 @@
 
 		<!-- OM -->
 		<module>om</module>
+
+		<!-- OMX -->
+		<module>omx</module>
 
  		<!-- OWS -->
 		<module>ows</module>
