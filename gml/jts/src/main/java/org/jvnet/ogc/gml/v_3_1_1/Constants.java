@@ -1,6 +1,6 @@
 package org.jvnet.ogc.gml.v_3_1_1;
 
-import org.jvnet.ogcl.bind.marshaller.DefaultNamespacePrefixMapper;
+import org.jvnet.ogc.bind.marshaller.DefaultNamespacePrefixMapper;
 
 import com.sun.xml.bind.marshaller.NamespacePrefixMapper;
 
