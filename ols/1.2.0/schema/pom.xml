@@ -33,6 +33,9 @@
 					<schemaIncludes>
 						<value>ols/*/*.xsd</value>
 					</schemaIncludes>
+					<schemaExcludes>
+						<value>ols/*/SOAPENV.xsd</value>
+					</schemaExcludes>
 					<episodes>
 						<episode>
 							<groupId>org.jvnet.ogc</groupId>
