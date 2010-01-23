@@ -1,25 +1,38 @@
 package org.jvnet.ogc.gml.v_3_1_1.jts;
 
+import org.jvnet.jaxb2_commons.locator.ObjectLocator;
+
 public class ConversionFailedException extends Exception {
 
-	public ConversionFailedException() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	private static final long serialVersionUID = 1L;
+	private final ObjectLocator locator;
 
-	public ConversionFailedException(String message, Throwable cause) {
-		super(message, cause);
-		// TODO Auto-generated constructor stub
-	}
+	public ConversionFailedException(ObjectLocator locator, String message) {
 
-	public ConversionFailedException(String message) {
 		super(message);
-		// TODO Auto-generated constructor stub
+		this.locator = locator;
 	}
 
-	public ConversionFailedException(Throwable cause) {
-		super(cause);
-		// TODO Auto-generated constructor stub
+	public ConversionFailedException(ObjectLocator locator, Throwable throwable) {
+
+		super(throwable);
+		this.locator = locator;
+	}
+
+	public ConversionFailedException(ObjectLocator locator, String message,
+			Throwable throwable) {
+
+		super(message, throwable);
+		this.locator = locator;
+	}
+
+	public ConversionFailedException(ObjectLocator locator) {
+		super();
+		this.locator = locator;
+	}
+
+	public ObjectLocator getLocator() {
+		return locator;
 	}
 
 }
