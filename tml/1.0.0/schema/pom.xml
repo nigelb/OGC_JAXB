@@ -17,6 +17,11 @@
 			<groupId>com.sun.xml.bind</groupId>
 			<artifactId>jaxb-impl</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.jvnet.ogc</groupId>
+			<artifactId>ic-v_2_0-schema</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<defaultGoal>install</defaultGoal>
@@ -28,6 +33,12 @@
 					<schemaIncludes>
 						<value>tml/*/tml.xsd</value>
 					</schemaIncludes>
+					<episodes>
+						<episode>
+							<groupId>org.jvnet.ogc</groupId>
+							<artifactId>ic-v_2_0-schema</artifactId>
+						</episode>
+					</episodes>
 				</configuration>
 			</plugin>
 			<plugin>
