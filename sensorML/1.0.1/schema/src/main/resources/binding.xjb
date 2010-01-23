@@ -31,4 +31,11 @@
 		</jaxb:bindings>
 	</jaxb:bindings>
 
+	<jaxb:bindings schemaLocation="ic/2.0/IC-ISM-v2.xsd" 
+		node="/xs:schema">
+		<jaxb:schemaBindings>
+			<jaxb:package name="us.gov.ic.ism.v_2_0"/>
+		</jaxb:schemaBindings>
+	</jaxb:bindings>
+
 </jaxb:bindings>

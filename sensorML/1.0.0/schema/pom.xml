@@ -27,6 +27,11 @@
 			<artifactId>gml-v_3_1_1-schema</artifactId>
 			<version>1.0.0</version>
 		</dependency>
+		<dependency>
+			<groupId>org.jvnet.ogc</groupId>
+			<artifactId>ic-v_2_0-schema</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<defaultGoal>install</defaultGoal>
@@ -49,8 +54,30 @@
 							<groupId>org.jvnet.ogc</groupId>
 							<artifactId>gml-v_3_1_1-schema</artifactId>
 						</episode>
+						<episode>
+							<groupId>org.jvnet.ogc</groupId>
+							<artifactId>ic-v_2_0-schema</artifactId>
+						</episode>
 					</episodes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>process-sources</phase>
+						<configuration>
+							<tasks>
+								<delete dir="${basedir}/target/generated-sources/xjc/us"/>
+								<delete dir="${basedir}/target/generated-sources/xjc/net/opengis/gml"/>
+								<delete dir="${basedir}/target/generated-sources/xjc/net/opengis/swe"/>
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
