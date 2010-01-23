@@ -2,21 +2,17 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jvnet.ogc</groupId>
-	<artifactId>wcs</artifactId>
+	<artifactId>wcs-v_1_1_2</artifactId>
 	<packaging>pom</packaging>
-	<name>OGC WCS</name>
+	<name>OGC WCS 1.1.2</name>
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
-		<artifactId>project</artifactId>
+		<artifactId>wcs</artifactId>
 		<version>1.0.0</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<modules>
-		<module>1.0.0</module>
-		<module>1.1.0</module>
-		<module>1.1.1</module>
-		<module>1.1.2</module>
-		<module>common</module>
+		<module>schema</module>
 	</modules>
 	<build>
 		<defaultGoal>install</defaultGoal>
