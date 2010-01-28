@@ -5,12 +5,10 @@
 	<jaxb:bindings schemaLocation="wps/1.0.0/wpsAll.xsd" 
 		node="/xs:schema">
 		<jaxb:globalBindings
-			fixedAttributeAsConstantProperty="true"
+			fixedAttributeAsConstantProperty="false"
 			typesafeEnumBase="xs:string"
 			typesafeEnumMemberName="generateName" 
 			generateIsSetMethod="true">
-			<xjc:noValidator />
-			<xjc:noValidatingUnmarshaller />
 		</jaxb:globalBindings>
 		<jaxb:schemaBindings>
 			<jaxb:package name="net.opengis.wps.v_1_0_0"/>

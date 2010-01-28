@@ -4,6 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jvnet.ogc</groupId>
 	<artifactId>wps-v_1_0_0-schema</artifactId>
+	<version>1.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>OGC WPS Schema 1.0.0</name>
 	<parent>
@@ -16,11 +17,17 @@
 		<dependency>
 			<groupId>com.sun.xml.bind</groupId>
 			<artifactId>jaxb-impl</artifactId>
+			<version>2.1.12</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>ows-v_1_1_0-schema</artifactId>
-			<version>1.0.0</version>
+			<version>1.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jvnet.jaxb2_commons</groupId>
+			<artifactId>jaxb2-basics-runtime</artifactId>
+			<version>0.5.2</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -29,6 +36,7 @@
 			<plugin>
 				<groupId>org.jvnet.jaxb2.maven2</groupId>
 				<artifactId>maven-jaxb2-plugin</artifactId>
+				<version>0.7.2</version>
 				<configuration>
 					<schemaIncludes>
 						<value>wps/*/wpsAll.xsd</value>
@@ -39,6 +47,20 @@
 							<artifactId>ows-v_1_1_0-schema</artifactId>
 						</episode>
 					</episodes>
+					<args>
+						<arg>-XtoString</arg>
+						<arg>-Xequals</arg>
+						<arg>-XhashCode</arg>
+						<arg>-Xinheritance</arg>
+						<arg>-Xcopyable</arg>
+					</args>
+					<plugins>
+						<plugin>
+							<groupId>org.jvnet.jaxb2_commons</groupId>
+							<artifactId>jaxb2-basics</artifactId>
+							<version>0.5.2</version>
+						</plugin>
+					</plugins>
 				</configuration>
 			</plugin>
 			<plugin>
