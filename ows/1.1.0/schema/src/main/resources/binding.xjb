@@ -4,6 +4,12 @@
 	jaxb:extensionBindingPrefixes="xjc">
 	<jaxb:bindings schemaLocation="ows/1.1.0/owsAll.xsd" 
 		node="/xs:schema">
+		<jaxb:globalBindings
+			fixedAttributeAsConstantProperty="false"
+			typesafeEnumBase="xs:string"
+			typesafeEnumMemberName="generateName" 
+			generateIsSetMethod="true">
+		</jaxb:globalBindings>
 		<jaxb:schemaBindings>
 			<jaxb:package name="net.opengis.ows.v_1_1_0"/>
 		</jaxb:schemaBindings>
