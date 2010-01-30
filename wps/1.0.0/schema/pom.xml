@@ -53,12 +53,13 @@
 						<arg>-XhashCode</arg>
 						<arg>-Xinheritance</arg>
 						<arg>-Xcopyable</arg>
+						<arg>-Xsetters</arg>
 					</args>
 					<plugins>
 						<plugin>
 							<groupId>org.jvnet.jaxb2_commons</groupId>
 							<artifactId>jaxb2-basics</artifactId>
-							<version>0.5.2</version>
+							<version>0.5.3-SNAPSHOT</version>
 						</plugin>
 					</plugins>
 				</configuration>
