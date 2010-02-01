@@ -6,7 +6,7 @@
 	<jaxb:bindings schemaLocation="gml/3.1.1/base/gml.xsd" 
 		node="/xs:schema">
 		<jaxb:globalBindings
-			fixedAttributeAsConstantProperty="true"
+			fixedAttributeAsConstantProperty="false"
 			typesafeEnumBase="xs:string"
 			typesafeEnumMemberName="generateName" 
 			generateIsSetMethod="true">
