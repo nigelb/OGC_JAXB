@@ -601,6 +601,9 @@ public class GML311ToJTSConverter {
     else if (abstractGeometryType instanceof MultiPolygonPropertyType) {
       return createMultiPolygon(locator, (MultiPolygonPropertyType) abstractGeometryType);
     }
+    else if (abstractGeometryType instanceof AbstractGeometricAggregateType) {
+      return createGeometryCollection(locator, (AbstractGeometricAggregateType) abstractGeometryType);
+    }
     else if (abstractGeometryType instanceof MultiGeometryPropertyType) {
       return createGeometryCollection(locator, (MultiGeometryPropertyType) abstractGeometryType);
     }
