@@ -54,6 +54,7 @@
 						<arg>-Xinheritance</arg>
 						<arg>-Xcopyable</arg>
 						<arg>-Xsetters</arg>
+						<arg>-Xwildcard</arg>
 					</args>
 					<plugins>
 						<plugin>
