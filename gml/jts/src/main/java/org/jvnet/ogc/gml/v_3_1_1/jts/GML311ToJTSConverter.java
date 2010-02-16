@@ -322,7 +322,10 @@ public class GML311ToJTSConverter {
         final Object value = item.getValue();
         final ObjectLocator itemValueLocator = itemLocator.field("Value"); //$NON-NLS-1$
 
-        if (value instanceof PointType) {
+        if (value instanceof DirectPositionType) {
+          coordinates.add(createCoordinate(itemValueLocator, (DirectPositionType) value));
+        }
+        else if (value instanceof PointType) {
           coordinates.add(createPoint(itemValueLocator, (PointType) value).getCoordinate());
         }
         else if (value instanceof PointPropertyType) {
@@ -502,8 +505,7 @@ public class GML311ToJTSConverter {
     for (int index = 0; index < polygonMembers.size(); index++) {
       final PolygonPropertyType polygonPropertyType = polygonMembers.get(index);
       final PolygonType polygonType = polygonPropertyType.getPolygon();
-      polygons.add(createPolygon(
-          locator.field("PolygonMember").entry(index).field("Polygon"), //$NON-NLS-1$ //$NON-NLS-2$
+      polygons.add(createPolygon(locator.field("PolygonMember").entry(index).field("Polygon"), //$NON-NLS-1$ //$NON-NLS-2$
           polygonType));
 
     }
@@ -544,8 +546,7 @@ public class GML311ToJTSConverter {
       ObjectLocator locator,
       MultiGeometryPropertyType multiGeometryPropertyType) throws ConversionFailedException {
     if (multiGeometryPropertyType.isSetGeometricAggregate()) {
-      return createGeometryCollection(
-          locator.field("GeometricAggregate").field("Value"), //$NON-NLS-1$ //$NON-NLS-2$
+      return createGeometryCollection(locator.field("GeometricAggregate").field("Value"), //$NON-NLS-1$ //$NON-NLS-2$
           multiGeometryPropertyType.getGeometricAggregate().getValue());
     }
     else {
@@ -602,7 +603,9 @@ public class GML311ToJTSConverter {
       return createMultiPolygon(locator, (MultiPolygonPropertyType) abstractGeometryType);
     }
     else if (abstractGeometryType instanceof AbstractGeometricAggregateType) {
-      return createGeometryCollection(locator, (AbstractGeometricAggregateType) abstractGeometryType);
+      return createGeometryCollection(
+          locator,
+          (AbstractGeometricAggregateType) abstractGeometryType);
     }
     else if (abstractGeometryType instanceof MultiGeometryPropertyType) {
       return createGeometryCollection(locator, (MultiGeometryPropertyType) abstractGeometryType);
