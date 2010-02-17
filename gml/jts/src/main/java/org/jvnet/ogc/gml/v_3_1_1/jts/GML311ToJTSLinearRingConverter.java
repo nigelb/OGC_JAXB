@@ -18,7 +18,9 @@ import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.LinearRing;
 
-public class GML311ToJTSLinearRingConverter extends AbstractGML311ToJTSConverter {
+public class GML311ToJTSLinearRingConverter
+    extends
+    AbstractGML311ToJTSConverter<LinearRingType, LinearRingPropertyType, LinearRing> {
 
   // + LinearRing
 
@@ -35,7 +37,7 @@ public class GML311ToJTSLinearRingConverter extends AbstractGML311ToJTSConverter
     this(new GeometryFactory());
   }
 
-  public LinearRing createLinearRing(ObjectLocator locator, LinearRingType linearRingType)
+  public LinearRing createGeometry(ObjectLocator locator, LinearRingType linearRingType)
       throws ConversionFailedException {
     if (linearRingType.isSetPosOrPointPropertyOrPointRep()) {
       final ObjectLocator fieldLocator = locator.field("PosOrPointPropertyOrPointRep"); //$NON-NLS-1$
@@ -54,12 +56,12 @@ public class GML311ToJTSLinearRingConverter extends AbstractGML311ToJTSConverter
         }
         else if (value instanceof PointType) {
           coordinates.add(pointConverter
-              .createPoint(itemValueLocator, (PointType) value)
+              .createGeometry(itemValueLocator, (PointType) value)
               .getCoordinate());
         }
         else if (value instanceof PointPropertyType) {
           coordinates.add(pointConverter
-              .createPoint(itemValueLocator, (PointPropertyType) value)
+              .createGeometry(itemValueLocator, (PointPropertyType) value)
               .getCoordinate());
         }
         else if (value instanceof CoordType) {
@@ -94,11 +96,11 @@ public class GML311ToJTSLinearRingConverter extends AbstractGML311ToJTSConverter
     }
   }
 
-  public LinearRing createLinearRing(
+  public LinearRing createGeometry(
       ObjectLocator locator,
       LinearRingPropertyType linearRingPropertyType) throws ConversionFailedException {
     if (linearRingPropertyType.isSetLinearRing()) {
-      return createLinearRing(locator.field("LinearRing"), linearRingPropertyType.getLinearRing()); //$NON-NLS-1$
+      return createGeometry(locator.field("LinearRing"), linearRingPropertyType.getLinearRing()); //$NON-NLS-1$
     }
     else {
       throw new ConversionFailedException(locator, "Expected [LinearRing] element."); //$NON-NLS-1$

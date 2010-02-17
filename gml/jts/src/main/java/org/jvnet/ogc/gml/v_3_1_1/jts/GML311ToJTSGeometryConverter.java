@@ -57,58 +57,58 @@ public class GML311ToJTSGeometryConverter {
   public Geometry createGeometry(ObjectLocator locator, Object abstractGeometryType)
       throws ConversionFailedException {
     if (abstractGeometryType instanceof PointType) {
-      return pointConverter.createPoint(locator, (PointType) abstractGeometryType);
+      return pointConverter.createGeometry(locator, (PointType) abstractGeometryType);
     }
     else if (abstractGeometryType instanceof PointPropertyType) {
-      return pointConverter.createPoint(locator, (PointPropertyType) abstractGeometryType);
+      return pointConverter.createGeometry(locator, (PointPropertyType) abstractGeometryType);
     }
     else if (abstractGeometryType instanceof PolygonType) {
-      return polygonConverter.createPolygon(locator, (PolygonType) abstractGeometryType);
+      return polygonConverter.createGeometry(locator, (PolygonType) abstractGeometryType);
     }
     else if (abstractGeometryType instanceof PolygonPropertyType) {
-      return polygonConverter.createPolygon(locator, (PolygonPropertyType) abstractGeometryType);
+      return polygonConverter.createGeometry(locator, (PolygonPropertyType) abstractGeometryType);
     }
     else if (abstractGeometryType instanceof LineStringType) {
-      return lineStringConverter.createLineString(locator, (LineStringType) abstractGeometryType);
+      return lineStringConverter.createGeometry(locator, (LineStringType) abstractGeometryType);
     }
     else if (abstractGeometryType instanceof LineStringPropertyType) {
-      return lineStringConverter.createLineString(
+      return lineStringConverter.createGeometry(
           locator,
           (LineStringPropertyType) abstractGeometryType);
     }
     else if (abstractGeometryType instanceof LinearRingType) {
-      return linearRingConverter.createLinearRing(locator, (LinearRingType) abstractGeometryType);
+      return linearRingConverter.createGeometry(locator, (LinearRingType) abstractGeometryType);
     }
     else if (abstractGeometryType instanceof LinearRingPropertyType) {
-      return linearRingConverter.createLinearRing(
+      return linearRingConverter.createGeometry(
           locator,
           (LinearRingPropertyType) abstractGeometryType);
     }
     else if (abstractGeometryType instanceof MultiPointType) {
-      return multiPointConverter.createMultiPoint(locator, (MultiPointType) abstractGeometryType);
+      return multiPointConverter.createGeometry(locator, (MultiPointType) abstractGeometryType);
     }
     else if (abstractGeometryType instanceof MultiPointPropertyType) {
-      return multiPointConverter.createMultiPoint(
+      return multiPointConverter.createGeometry(
           locator,
           (MultiPointPropertyType) abstractGeometryType);
     }
     else if (abstractGeometryType instanceof MultiLineStringType) {
-      return multiLineStringConverter.createMultiLineString(
+      return multiLineStringConverter.createGeometry(
           locator,
           (MultiLineStringType) abstractGeometryType);
     }
     else if (abstractGeometryType instanceof MultiLineStringPropertyType) {
-      return multiLineStringConverter.createMultiLineString(
+      return multiLineStringConverter.createGeometry(
           locator,
           (MultiLineStringPropertyType) abstractGeometryType);
     }
     else if (abstractGeometryType instanceof MultiPolygonType) {
-      return multiPolygonConverter.createMultiPolygon(
+      return multiPolygonConverter.createGeometry(
           locator,
           (MultiPolygonType) abstractGeometryType);
     }
     else if (abstractGeometryType instanceof MultiPolygonPropertyType) {
-      return multiPolygonConverter.createMultiPolygon(
+      return multiPolygonConverter.createGeometry(
           locator,
           (MultiPolygonPropertyType) abstractGeometryType);
     }

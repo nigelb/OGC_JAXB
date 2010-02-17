@@ -14,7 +14,9 @@ import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.LineString;
 import com.vividsolutions.jts.geom.MultiLineString;
 
-public class GML311ToJTSMultiLineStringConverter extends AbstractGML311ToJTSConverter {
+public class GML311ToJTSMultiLineStringConverter
+    extends
+    AbstractGML311ToJTSConverter<MultiLineStringType, MultiLineStringPropertyType, MultiLineString> {
 
   // + MultiLineString
 
@@ -29,7 +31,7 @@ public class GML311ToJTSMultiLineStringConverter extends AbstractGML311ToJTSConv
     this(new GeometryFactory());
   }
 
-  public MultiLineString createMultiLineString(
+  public MultiLineString createGeometry(
       ObjectLocator locator,
       MultiLineStringType multiLineStringType) throws ConversionFailedException {
     final List<LineStringPropertyType> lineStringMembers = multiLineStringType
@@ -39,7 +41,7 @@ public class GML311ToJTSMultiLineStringConverter extends AbstractGML311ToJTSConv
       final LineStringPropertyType lineStringPropertyType = lineStringMembers.get(index);
 
       final LineStringType lineStringType = lineStringPropertyType.getLineString();
-      lineStrings.add(lineStringConverter.createLineString(locator
+      lineStrings.add(lineStringConverter.createGeometry(locator
           .field("LineStringMember").entry(index).field( //$NON-NLS-1$
               "LineString"), lineStringType)); //$NON-NLS-1$
     }
@@ -47,11 +49,11 @@ public class GML311ToJTSMultiLineStringConverter extends AbstractGML311ToJTSConv
         lineStrings.toArray(new LineString[lineStrings.size()]));
   }
 
-  public MultiLineString createMultiLineString(
+  public MultiLineString createGeometry(
       ObjectLocator locator,
       MultiLineStringPropertyType multiLineStringPropertyType) throws ConversionFailedException {
     if (multiLineStringPropertyType.isSetMultiLineString()) {
-      return createMultiLineString(locator.field("MultiLineString"), multiLineStringPropertyType //$NON-NLS-1$
+      return createGeometry(locator.field("MultiLineString"), multiLineStringPropertyType //$NON-NLS-1$
           .getMultiLineString());
     }
     else {

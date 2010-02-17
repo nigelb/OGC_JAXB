@@ -17,7 +17,9 @@ import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.LinearRing;
 import com.vividsolutions.jts.geom.Polygon;
 
-public class GML311ToJTSPolygonConverter extends AbstractGML311ToJTSConverter {
+public class GML311ToJTSPolygonConverter
+    extends
+    AbstractGML311ToJTSConverter<PolygonType, PolygonPropertyType, Polygon> {
 
   // + Polygon
 
@@ -32,7 +34,7 @@ public class GML311ToJTSPolygonConverter extends AbstractGML311ToJTSConverter {
     this(new GeometryFactory());
   }
 
-  public Polygon createPolygon(ObjectLocator locator, PolygonType polygonType)
+  public Polygon createGeometry(ObjectLocator locator, PolygonType polygonType)
       throws ConversionFailedException {
     final LinearRing shell;
     if (polygonType.isSetExterior()) {
@@ -41,7 +43,7 @@ public class GML311ToJTSPolygonConverter extends AbstractGML311ToJTSConverter {
           .getValue()
           .getRing()).getValue();
       if (abstractRingType instanceof LinearRingType) {
-        shell = linearRingConverter.createLinearRing(locator
+        shell = linearRingConverter.createGeometry(locator
             .field("Exterior").field("Value").field("Ring").field( //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 "Value"), (LinearRingType) abstractRingType); //$NON-NLS-1$
       }
@@ -65,7 +67,7 @@ public class GML311ToJTSPolygonConverter extends AbstractGML311ToJTSConverter {
 
         final AbstractRingType abstractRingType = ringElement.getValue().getRing().getValue();
         if (abstractRingType instanceof LinearRingType) {
-          holesList.add(linearRingConverter.createLinearRing(entryLocator
+          holesList.add(linearRingConverter.createGeometry(entryLocator
               .field("Value").field("Ring").field("Value"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
               (LinearRingType) abstractRingType));
@@ -83,10 +85,10 @@ public class GML311ToJTSPolygonConverter extends AbstractGML311ToJTSConverter {
     return getGeometryFactory().createPolygon(shell, holes);
   }
 
-  public Polygon createPolygon(ObjectLocator locator, PolygonPropertyType polygonPropertyType)
+  public Polygon createGeometry(ObjectLocator locator, PolygonPropertyType polygonPropertyType)
       throws ConversionFailedException {
     if (polygonPropertyType.isSetPolygon()) {
-      return createPolygon(locator.field("Polygon"), polygonPropertyType.getPolygon()); //$NON-NLS-1$
+      return createGeometry(locator.field("Polygon"), polygonPropertyType.getPolygon()); //$NON-NLS-1$
     }
     else {
       throw new ConversionFailedException(locator, "Expected [Polygon] element."); //$NON-NLS-1$

@@ -9,7 +9,9 @@ import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.Point;
 
-public class GML311ToJTSPointConverter extends AbstractGML311ToJTSConverter {
+public class GML311ToJTSPointConverter
+    extends
+    AbstractGML311ToJTSConverter<PointType, PointPropertyType, Point> {
 
   // + Point
 
@@ -24,7 +26,7 @@ public class GML311ToJTSPointConverter extends AbstractGML311ToJTSConverter {
     this(new GeometryFactory());
   }
 
-  public Point createPoint(ObjectLocator locator, PointType pointType)
+  public Point createGeometry(ObjectLocator locator, PointType pointType)
       throws ConversionFailedException {
 
     if (pointType.isSetPos()) {
@@ -57,10 +59,10 @@ public class GML311ToJTSPointConverter extends AbstractGML311ToJTSConverter {
 
   }
 
-  public Point createPoint(ObjectLocator locator, PointPropertyType pointPropertyType)
+  public Point createGeometry(ObjectLocator locator, PointPropertyType pointPropertyType)
       throws ConversionFailedException {
     if (pointPropertyType.isSetPoint()) {
-      return createPoint(locator.field("Point"), pointPropertyType.getPoint()); //$NON-NLS-1$
+      return createGeometry(locator.field("Point"), pointPropertyType.getPoint()); //$NON-NLS-1$
     }
     else {
       throw new ConversionFailedException(locator, "Expected [Point] element."); //$NON-NLS-1$

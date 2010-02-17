@@ -118,90 +118,90 @@ public class GML311ToJTSConverter {
 
   public Point createPoint(ObjectLocator locator, PointType pointType)
       throws ConversionFailedException {
-    return pointConverter.createPoint(locator, pointType);
+    return pointConverter.createGeometry(locator, pointType);
   }
 
   public Point createPoint(ObjectLocator locator, PointPropertyType pointPropertyType)
       throws ConversionFailedException {
-    return pointConverter.createPoint(locator, pointPropertyType);
+    return pointConverter.createGeometry(locator, pointPropertyType);
   }
 
   public LinearRing createLinearRing(ObjectLocator locator, LinearRingType linearRingType)
       throws ConversionFailedException {
-    return linearRingConverter.createLinearRing(locator, linearRingType);
+    return linearRingConverter.createGeometry(locator, linearRingType);
   }
 
   public LinearRing createLinearRing(
       ObjectLocator locator,
       LinearRingPropertyType linearRingPropertyType) throws ConversionFailedException {
-    return linearRingConverter.createLinearRing(locator, linearRingPropertyType);
+    return linearRingConverter.createGeometry(locator, linearRingPropertyType);
   }
 
   public LineString createLineString(ObjectLocator locator, LineStringType lineStringType)
       throws ConversionFailedException {
-    return lineStringConverter.createLineString(locator, lineStringType);
+    return lineStringConverter.createGeometry(locator, lineStringType);
   }
 
   public LineString createLineString(
       ObjectLocator locator,
       LineStringPropertyType lineStringPropertyType) throws ConversionFailedException {
-    return lineStringConverter.createLineString(locator, lineStringPropertyType);
+    return lineStringConverter.createGeometry(locator, lineStringPropertyType);
   }
 
   public Polygon createPolygon(ObjectLocator locator, PolygonType polygonType)
       throws ConversionFailedException {
-    return polygonConverter.createPolygon(locator, polygonType);
+    return polygonConverter.createGeometry(locator, polygonType);
   }
 
   public Polygon createPolygon(ObjectLocator locator, PolygonPropertyType polygonPropertyType)
       throws ConversionFailedException {
-    return polygonConverter.createPolygon(locator, polygonPropertyType);
+    return polygonConverter.createGeometry(locator, polygonPropertyType);
   }
 
   public MultiPoint createMultiPoint(ObjectLocator locator, MultiPointType multiPointType)
       throws ConversionFailedException {
-    return multiPointConverter.createMultiPoint(locator, multiPointType);
+    return multiPointConverter.createGeometry(locator, multiPointType);
   }
 
   public MultiPoint createMultiPoint(
       ObjectLocator locator,
       MultiPointPropertyType multiPointPropertyType) throws ConversionFailedException {
-    return multiPointConverter.createMultiPoint(locator, multiPointPropertyType);
+    return multiPointConverter.createGeometry(locator, multiPointPropertyType);
   }
 
   public MultiLineString createMultiLineString(
       ObjectLocator locator,
       MultiLineStringType multiLineStringType) throws ConversionFailedException {
-    return multiLineStringConverter.createMultiLineString(locator, multiLineStringType);
+    return multiLineStringConverter.createGeometry(locator, multiLineStringType);
   }
 
   public MultiLineString createMultiLineString(
       ObjectLocator locator,
       MultiLineStringPropertyType multiLineStringPropertyType) throws ConversionFailedException {
-    return multiLineStringConverter.createMultiLineString(locator, multiLineStringPropertyType);
+    return multiLineStringConverter.createGeometry(locator, multiLineStringPropertyType);
   }
 
   public MultiPolygon createMultiPolygon(ObjectLocator locator, MultiPolygonType multiPolygonType)
       throws ConversionFailedException {
-    return multiPolygonConverter.createMultiPolygon(locator, multiPolygonType);
+    return multiPolygonConverter.createGeometry(locator, multiPolygonType);
   }
 
   public MultiPolygon createMultiPolygon(
       ObjectLocator locator,
       MultiPolygonPropertyType multiPolygonPropertyType) throws ConversionFailedException {
-    return multiPolygonConverter.createMultiPolygon(locator, multiPolygonPropertyType);
+    return multiPolygonConverter.createGeometry(locator, multiPolygonPropertyType);
   }
 
   public GeometryCollection createGeometryCollection(
       ObjectLocator locator,
       AbstractGeometricAggregateType abstractGeometryType) throws ConversionFailedException {
-    return geometryCollectionConverter.createGeometryCollection(locator, abstractGeometryType);
+    return geometryCollectionConverter.createGeometry(locator, abstractGeometryType);
   }
 
   public GeometryCollection createGeometryCollection(
       ObjectLocator locator,
       MultiGeometryPropertyType multiGeometryPropertyType) throws ConversionFailedException {
-    return geometryCollectionConverter.createGeometryCollection(locator, multiGeometryPropertyType);
+    return geometryCollectionConverter.createGeometry(locator, multiGeometryPropertyType);
   }
 
   public Geometry createGeometry(Object abstractGeometryType) throws ConversionFailedException {

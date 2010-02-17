@@ -11,7 +11,9 @@ import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import com.vividsolutions.jts.geom.GeometryCollection;
 import com.vividsolutions.jts.geom.GeometryFactory;
 
-public class GML311ToJTSGeometryCollectionConverter extends AbstractGML311ToJTSConverter {
+public class GML311ToJTSGeometryCollectionConverter
+    extends
+    AbstractGML311ToJTSConverter<AbstractGeometricAggregateType, MultiGeometryPropertyType, GeometryCollection> {
 
   // + GeometryCollection
   // + MultiPoint
@@ -33,19 +35,19 @@ public class GML311ToJTSGeometryCollectionConverter extends AbstractGML311ToJTSC
     this(new GeometryFactory());
   }
 
-  public GeometryCollection createGeometryCollection(
+  public GeometryCollection createGeometry(
       ObjectLocator locator,
       AbstractGeometricAggregateType abstractGeometryType) throws ConversionFailedException {
     if (abstractGeometryType instanceof MultiPointType) {
-      return multiPointConverter.createMultiPoint(locator, (MultiPointType) abstractGeometryType);
+      return multiPointConverter.createGeometry(locator, (MultiPointType) abstractGeometryType);
     }
     else if (abstractGeometryType instanceof MultiLineStringType) {
-      return multiLineStringConverter.createMultiLineString(
+      return multiLineStringConverter.createGeometry(
           locator,
           (MultiLineStringType) abstractGeometryType);
     }
     else if (abstractGeometryType instanceof MultiPolygonType) {
-      return multiPolygonConverter.createMultiPolygon(
+      return multiPolygonConverter.createGeometry(
           locator,
           (MultiPolygonType) abstractGeometryType);
     }
@@ -55,11 +57,11 @@ public class GML311ToJTSGeometryCollectionConverter extends AbstractGML311ToJTSC
 
   }
 
-  public GeometryCollection createGeometryCollection(
+  public GeometryCollection createGeometry(
       ObjectLocator locator,
       MultiGeometryPropertyType multiGeometryPropertyType) throws ConversionFailedException {
     if (multiGeometryPropertyType.isSetGeometricAggregate()) {
-      return createGeometryCollection(locator.field("GeometricAggregate").field("Value"), //$NON-NLS-1$ //$NON-NLS-2$
+      return createGeometry(locator.field("GeometricAggregate").field("Value"), //$NON-NLS-1$ //$NON-NLS-2$
           multiGeometryPropertyType.getGeometricAggregate().getValue());
     }
     else {

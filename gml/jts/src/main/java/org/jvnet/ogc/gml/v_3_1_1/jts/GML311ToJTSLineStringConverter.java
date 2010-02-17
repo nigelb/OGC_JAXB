@@ -19,7 +19,9 @@ import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.LineString;
 
-public class GML311ToJTSLineStringConverter extends AbstractGML311ToJTSConverter {
+public class GML311ToJTSLineStringConverter
+    extends
+    AbstractGML311ToJTSConverter<LineStringType, LineStringPropertyType, LineString> {
 
   // + LineString
 
@@ -36,7 +38,7 @@ public class GML311ToJTSLineStringConverter extends AbstractGML311ToJTSConverter
     this(new GeometryFactory());
   }
 
-  public LineString createLineString(ObjectLocator locator, LineStringType lineStringType)
+  public LineString createGeometry(ObjectLocator locator, LineStringType lineStringType)
       throws ConversionFailedException {
     if (lineStringType.isSetPosOrPointPropertyOrPointRep()) {
 
@@ -49,13 +51,13 @@ public class GML311ToJTSLineStringConverter extends AbstractGML311ToJTSConverter
         final ObjectLocator itemValueLocator = itemLocator.field("Value"); //$NON-NLS-1$
 
         if (value instanceof PointType) {
-          coordinates.add(pointConverter.createPoint(
+          coordinates.add(pointConverter.createGeometry(
 
           itemValueLocator, (PointType) value).getCoordinate());
         }
         else if (value instanceof PointPropertyType) {
           coordinates.add(pointConverter
-              .createPoint(itemValueLocator, (PointPropertyType) value)
+              .createGeometry(itemValueLocator, (PointPropertyType) value)
               .getCoordinate());
         }
         else if (value instanceof CoordType) {
@@ -90,11 +92,11 @@ public class GML311ToJTSLineStringConverter extends AbstractGML311ToJTSConverter
     }
   }
 
-  public LineString createLineString(
+  public LineString createGeometry(
       ObjectLocator locator,
       LineStringPropertyType lineStringPropertyType) throws ConversionFailedException {
     if (lineStringPropertyType.isSetLineString()) {
-      return createLineString(locator.field("LineString"), lineStringPropertyType.getLineString()); //$NON-NLS-1$
+      return createGeometry(locator.field("LineString"), lineStringPropertyType.getLineString()); //$NON-NLS-1$
     }
     else {
       throw new ConversionFailedException(locator, "Expected [LineString] element."); //$NON-NLS-1$

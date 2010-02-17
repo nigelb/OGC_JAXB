@@ -14,7 +14,9 @@ import com.vividsolutions.jts.geom.GeometryFactory;
 import com.vividsolutions.jts.geom.MultiPoint;
 import com.vividsolutions.jts.geom.Point;
 
-public class GML311ToJTSMultiPointConverter extends AbstractGML311ToJTSConverter {
+public class GML311ToJTSMultiPointConverter
+    extends
+    AbstractGML311ToJTSConverter<MultiPointType, MultiPointPropertyType, MultiPoint> {
 
   // + MultiPoint
 
@@ -29,14 +31,14 @@ public class GML311ToJTSMultiPointConverter extends AbstractGML311ToJTSConverter
     this(new GeometryFactory());
   }
 
-  public MultiPoint createMultiPoint(ObjectLocator locator, MultiPointType multiPointType)
+  public MultiPoint createGeometry(ObjectLocator locator, MultiPointType multiPointType)
       throws ConversionFailedException {
     if (multiPointType.isSetPointMember()) {
       final List<PointPropertyType> pointMembers = multiPointType.getPointMember();
       final List<Point> points = new ArrayList<Point>(pointMembers.size());
       for (int index = 0; index < pointMembers.size(); index++) {
         final PointPropertyType pointPropertyType = pointMembers.get(index);
-        points.add(pointConverter.createPoint(
+        points.add(pointConverter.createGeometry(
             locator.field("PointMember").entry(index), pointPropertyType)); //$NON-NLS-1$
       }
       return getGeometryFactory().createMultiPoint(points.toArray(new Point[points.size()]));
@@ -46,7 +48,7 @@ public class GML311ToJTSMultiPointConverter extends AbstractGML311ToJTSConverter
       final List<Point> points = new ArrayList<Point>(pointMembers.size());
       for (int index = 0; index < pointMembers.size(); index++) {
 
-        points.add(pointConverter.createPoint(
+        points.add(pointConverter.createGeometry(
             locator.field("PointMembers").entry(index), pointMembers.get(index))); //$NON-NLS-1$
       }
       return getGeometryFactory().createMultiPoint(points.toArray(new Point[points.size()]));
@@ -58,11 +60,11 @@ public class GML311ToJTSMultiPointConverter extends AbstractGML311ToJTSConverter
     }
   }
 
-  public MultiPoint createMultiPoint(
+  public MultiPoint createGeometry(
       ObjectLocator locator,
       MultiPointPropertyType multiPointPropertyType) throws ConversionFailedException {
     if (multiPointPropertyType.isSetMultiPoint()) {
-      return createMultiPoint(locator.field("MultiPoint"), multiPointPropertyType.getMultiPoint()); //$NON-NLS-1$
+      return createGeometry(locator.field("MultiPoint"), multiPointPropertyType.getMultiPoint()); //$NON-NLS-1$
     }
     else {
       throw new ConversionFailedException(locator, "Expected [MultiPoint] element."); //$NON-NLS-1$
