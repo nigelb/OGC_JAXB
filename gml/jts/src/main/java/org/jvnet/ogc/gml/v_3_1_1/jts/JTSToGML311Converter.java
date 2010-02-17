@@ -51,6 +51,8 @@ public class JTSToGML311Converter {
   private final JTSToGML311MultiPointConverter multiPointConverter;
   private final JTSToGML311MultiLineStringConverter multiLineStringConverter;
   private final JTSToGML311MultiPolygonConverter multiPolygonConverter;
+  private final JTSToGML311MultiGeometryConverter multiGeometryConverter;
+  private final JTSToGML311GeometryConverter geometryConverter;
 
   public JTSToGML311Converter(ObjectFactory objectFactory) {
     super();
@@ -63,6 +65,8 @@ public class JTSToGML311Converter {
     multiPointConverter = new JTSToGML311MultiPointConverter(objectFactory);
     multiLineStringConverter = new JTSToGML311MultiLineStringConverter(objectFactory);
     multiPolygonConverter = new JTSToGML311MultiPolygonConverter(objectFactory);
+    multiGeometryConverter = new JTSToGML311MultiGeometryConverter(objectFactory);
+    geometryConverter = new JTSToGML311GeometryConverter(objectFactory);
   }
 
   public JTSToGML311Converter() {
@@ -150,88 +154,22 @@ public class JTSToGML311Converter {
   }
 
   public MultiGeometryType createMultiGeometryType(GeometryCollection multiGeometry) {
-    final MultiGeometryType multiGeometryType = objectFactory.createMultiGeometryType();
-
-    for (int index = 0; index < multiGeometry.getNumGeometries(); index++) {
-      final Geometry geometry = multiGeometry.getGeometryN(index);
-
-      multiGeometryType.getGeometryMember().add(createGeometryPropertyType(geometry));
-
-    }
-    return multiGeometryType;
+    return multiGeometryConverter.createMultiGeometryType(multiGeometry);
   }
 
   public JAXBElement<MultiGeometryType> createMultiGeometry(GeometryCollection geometryCollection) {
-    return objectFactory.createMultiGeometry(createMultiGeometryType(geometryCollection));
+    return multiGeometryConverter.createMultiGeometry(geometryCollection);
   }
 
   public GeometryPropertyType createGeometryPropertyType(Geometry geometry) {
-    final GeometryPropertyType geometryPropertyType = objectFactory.createGeometryPropertyType();
-    geometryPropertyType.setGeometry(createGeometry(geometry));
-    return geometryPropertyType;
+    return geometryConverter.createGeometryPropertyType(geometry);
   }
 
   public JAXBElement<? extends AbstractGeometryType> createGeometry(Geometry geometry) {
-    if (geometry instanceof Point) {
-      return createPoint((Point) geometry);
-    }
-    else if (geometry instanceof LineString) {
-      return createLineString((LineString) geometry);
-    }
-    else if (geometry instanceof LinearRing) {
-      return createLinearRing((LinearRing) geometry);
-    }
-    else if (geometry instanceof Polygon) {
-      return createPolygon((Polygon) geometry);
-    }
-    else if (geometry instanceof MultiPoint) {
-      return createMultiPoint((MultiPoint) geometry);
-    }
-    else if (geometry instanceof MultiLineString) {
-      return createMultiLineString((MultiLineString) geometry);
-    }
-    else if (geometry instanceof MultiPolygon) {
-      return createMultiPolygon((MultiPolygon) geometry);
-    }
-    else if (geometry instanceof GeometryCollection) {
-      return createMultiGeometry((GeometryCollection) geometry);
-    }
-    else {
-      // TODo
-      throw new IllegalArgumentException();
-    }
-
+    return geometryConverter.createGeometry(geometry);
   }
 
   public AbstractGeometryType createAbstractGeometryType(Geometry geometry) {
-    if (geometry instanceof Point) {
-      return createPointType((Point) geometry);
-    }
-    else if (geometry instanceof LineString) {
-      return createLineStringType((LineString) geometry);
-    }
-    else if (geometry instanceof LinearRing) {
-      return createLinearRingType((LinearRing) geometry);
-    }
-    else if (geometry instanceof Polygon) {
-      return createPolygonType((Polygon) geometry);
-    }
-    else if (geometry instanceof MultiPoint) {
-      return createMultiPointType((MultiPoint) geometry);
-    }
-    else if (geometry instanceof MultiLineString) {
-      return createMultiLineStringType((MultiLineString) geometry);
-    }
-    else if (geometry instanceof MultiPolygon) {
-      return createMultiPolygonType((MultiPolygon) geometry);
-    }
-    else if (geometry instanceof GeometryCollection) {
-      return createMultiGeometryType((GeometryCollection) geometry);
-    }
-    else {
-      // TODO
-      throw new IllegalArgumentException();
-    }
-
+    return geometryConverter.createAbstractGeometryType(geometry);
   }
 }
