@@ -26,6 +26,7 @@ public class GML311ToJTSPointConverter
     this(new GeometryFactory());
   }
 
+  @Override
   public Point createGeometry(ObjectLocator locator, PointType pointType)
       throws ConversionFailedException {
 
@@ -59,6 +60,7 @@ public class GML311ToJTSPointConverter
 
   }
 
+  @Override
   public Point createGeometry(ObjectLocator locator, PointPropertyType pointPropertyType)
       throws ConversionFailedException {
     if (pointPropertyType.isSetPoint()) {

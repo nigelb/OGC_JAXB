@@ -35,6 +35,7 @@ public class GML311ToJTSGeometryCollectionConverter
     this(new GeometryFactory());
   }
 
+  @Override
   public GeometryCollection createGeometry(
       ObjectLocator locator,
       AbstractGeometricAggregateType abstractGeometryType) throws ConversionFailedException {
@@ -47,9 +48,7 @@ public class GML311ToJTSGeometryCollectionConverter
           (MultiLineStringType) abstractGeometryType);
     }
     else if (abstractGeometryType instanceof MultiPolygonType) {
-      return multiPolygonConverter.createGeometry(
-          locator,
-          (MultiPolygonType) abstractGeometryType);
+      return multiPolygonConverter.createGeometry(locator, (MultiPolygonType) abstractGeometryType);
     }
     else {
       throw new ConversionFailedException(locator, "Unexpected type."); //$NON-NLS-1$
@@ -57,6 +56,7 @@ public class GML311ToJTSGeometryCollectionConverter
 
   }
 
+  @Override
   public GeometryCollection createGeometry(
       ObjectLocator locator,
       MultiGeometryPropertyType multiGeometryPropertyType) throws ConversionFailedException {

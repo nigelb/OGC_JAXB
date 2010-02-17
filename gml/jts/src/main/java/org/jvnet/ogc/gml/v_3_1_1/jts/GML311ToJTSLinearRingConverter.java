@@ -37,6 +37,7 @@ public class GML311ToJTSLinearRingConverter
     this(new GeometryFactory());
   }
 
+  @Override
   public LinearRing createGeometry(ObjectLocator locator, LinearRingType linearRingType)
       throws ConversionFailedException {
     if (linearRingType.isSetPosOrPointPropertyOrPointRep()) {
@@ -96,6 +97,7 @@ public class GML311ToJTSLinearRingConverter
     }
   }
 
+  @Override
   public LinearRing createGeometry(
       ObjectLocator locator,
       LinearRingPropertyType linearRingPropertyType) throws ConversionFailedException {

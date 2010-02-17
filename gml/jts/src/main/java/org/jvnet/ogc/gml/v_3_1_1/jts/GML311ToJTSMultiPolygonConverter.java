@@ -31,6 +31,7 @@ public class GML311ToJTSMultiPolygonConverter
     this(new GeometryFactory());
   }
 
+  @Override
   public MultiPolygon createGeometry(ObjectLocator locator, MultiPolygonType multiPolygonType)
       throws ConversionFailedException {
     final List<PolygonPropertyType> polygonMembers = multiPolygonType.getPolygonMember();
@@ -46,6 +47,7 @@ public class GML311ToJTSMultiPolygonConverter
     return getGeometryFactory().createMultiPolygon(polygons.toArray(new Polygon[polygons.size()]));
   }
 
+  @Override
   public MultiPolygon createGeometry(
       ObjectLocator locator,
       MultiPolygonPropertyType multiPolygonPropertyType) throws ConversionFailedException {

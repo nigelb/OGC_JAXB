@@ -31,6 +31,7 @@ public class GML311ToJTSMultiPointConverter
     this(new GeometryFactory());
   }
 
+  @Override
   public MultiPoint createGeometry(ObjectLocator locator, MultiPointType multiPointType)
       throws ConversionFailedException {
     if (multiPointType.isSetPointMember()) {
@@ -60,6 +61,7 @@ public class GML311ToJTSMultiPointConverter
     }
   }
 
+  @Override
   public MultiPoint createGeometry(
       ObjectLocator locator,
       MultiPointPropertyType multiPointPropertyType) throws ConversionFailedException {

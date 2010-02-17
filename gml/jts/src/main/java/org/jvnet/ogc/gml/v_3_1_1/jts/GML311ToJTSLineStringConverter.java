@@ -38,6 +38,7 @@ public class GML311ToJTSLineStringConverter
     this(new GeometryFactory());
   }
 
+  @Override
   public LineString createGeometry(ObjectLocator locator, LineStringType lineStringType)
       throws ConversionFailedException {
     if (lineStringType.isSetPosOrPointPropertyOrPointRep()) {
@@ -92,6 +93,7 @@ public class GML311ToJTSLineStringConverter
     }
   }
 
+  @Override
   public LineString createGeometry(
       ObjectLocator locator,
       LineStringPropertyType lineStringPropertyType) throws ConversionFailedException {

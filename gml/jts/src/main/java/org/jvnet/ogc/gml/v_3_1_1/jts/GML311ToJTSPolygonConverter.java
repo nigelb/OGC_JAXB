@@ -34,6 +34,7 @@ public class GML311ToJTSPolygonConverter
     this(new GeometryFactory());
   }
 
+  @Override
   public Polygon createGeometry(ObjectLocator locator, PolygonType polygonType)
       throws ConversionFailedException {
     final LinearRing shell;
@@ -85,6 +86,7 @@ public class GML311ToJTSPolygonConverter
     return getGeometryFactory().createPolygon(shell, holes);
   }
 
+  @Override
   public Polygon createGeometry(ObjectLocator locator, PolygonPropertyType polygonPropertyType)
       throws ConversionFailedException {
     if (polygonPropertyType.isSetPolygon()) {

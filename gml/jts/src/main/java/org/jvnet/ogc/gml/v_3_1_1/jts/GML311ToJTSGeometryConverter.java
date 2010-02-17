@@ -1,9 +1,11 @@
 package org.jvnet.ogc.gml.v_3_1_1.jts;
 
+import net.opengis.gml.v_3_1_1.AbstractGeometricAggregateType;
 import net.opengis.gml.v_3_1_1.LineStringPropertyType;
 import net.opengis.gml.v_3_1_1.LineStringType;
 import net.opengis.gml.v_3_1_1.LinearRingPropertyType;
 import net.opengis.gml.v_3_1_1.LinearRingType;
+import net.opengis.gml.v_3_1_1.MultiGeometryPropertyType;
 import net.opengis.gml.v_3_1_1.MultiLineStringPropertyType;
 import net.opengis.gml.v_3_1_1.MultiLineStringType;
 import net.opengis.gml.v_3_1_1.MultiPointPropertyType;
@@ -39,6 +41,7 @@ public class GML311ToJTSGeometryConverter {
   private final GML311ToJTSMultiPointConverter multiPointConverter;
   private final GML311ToJTSMultiLineStringConverter multiLineStringConverter;
   private final GML311ToJTSMultiPolygonConverter multiPolygonConverter;
+  private final GML311ToJTSGeometryCollectionConverter geometryCollectionConverter;
 
   public GML311ToJTSGeometryConverter(GeometryFactory geometryFactory) {
     pointConverter = new GML311ToJTSPointConverter(geometryFactory);
@@ -46,8 +49,9 @@ public class GML311ToJTSGeometryConverter {
     linearRingConverter = new GML311ToJTSLinearRingConverter(geometryFactory);
     polygonConverter = new GML311ToJTSPolygonConverter(geometryFactory);
     multiPointConverter = new GML311ToJTSMultiPointConverter(geometryFactory);
-    multiLineStringConverter = new GML311ToJTSMultiLineStringConverter();
-    multiPolygonConverter = new GML311ToJTSMultiPolygonConverter();
+    multiLineStringConverter = new GML311ToJTSMultiLineStringConverter(geometryFactory);
+    multiPolygonConverter = new GML311ToJTSMultiPolygonConverter(geometryFactory);
+    geometryCollectionConverter = new GML311ToJTSGeometryCollectionConverter(geometryFactory);
   }
 
   public GML311ToJTSGeometryConverter() {
@@ -103,14 +107,22 @@ public class GML311ToJTSGeometryConverter {
           (MultiLineStringPropertyType) abstractGeometryType);
     }
     else if (abstractGeometryType instanceof MultiPolygonType) {
-      return multiPolygonConverter.createGeometry(
-          locator,
-          (MultiPolygonType) abstractGeometryType);
+      return multiPolygonConverter.createGeometry(locator, (MultiPolygonType) abstractGeometryType);
     }
     else if (abstractGeometryType instanceof MultiPolygonPropertyType) {
       return multiPolygonConverter.createGeometry(
           locator,
           (MultiPolygonPropertyType) abstractGeometryType);
+    }
+    else if (abstractGeometryType instanceof AbstractGeometricAggregateType) {
+      return geometryCollectionConverter.createGeometry(
+          locator,
+          (AbstractGeometricAggregateType) abstractGeometryType);
+    }
+    else if (abstractGeometryType instanceof MultiGeometryPropertyType) {
+      return geometryCollectionConverter.createGeometry(
+          locator,
+          (MultiGeometryPropertyType) abstractGeometryType);
     }
     else {
       throw new ConversionFailedException(locator, "Unexpected type."); //$NON-NLS-1$

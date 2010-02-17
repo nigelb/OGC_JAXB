@@ -31,6 +31,7 @@ public class GML311ToJTSMultiLineStringConverter
     this(new GeometryFactory());
   }
 
+  @Override
   public MultiLineString createGeometry(
       ObjectLocator locator,
       MultiLineStringType multiLineStringType) throws ConversionFailedException {
@@ -49,6 +50,7 @@ public class GML311ToJTSMultiLineStringConverter
         lineStrings.toArray(new LineString[lineStrings.size()]));
   }
 
+  @Override
   public MultiLineString createGeometry(
       ObjectLocator locator,
       MultiLineStringPropertyType multiLineStringPropertyType) throws ConversionFailedException {

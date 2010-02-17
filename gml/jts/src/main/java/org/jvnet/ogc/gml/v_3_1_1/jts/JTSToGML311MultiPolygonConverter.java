@@ -1,0 +1,37 @@
+package org.jvnet.ogc.gml.v_3_1_1.jts;
+
+import javax.xml.bind.JAXBElement;
+
+import net.opengis.gml.v_3_1_1.MultiPolygonType;
+import net.opengis.gml.v_3_1_1.ObjectFactory;
+
+import com.vividsolutions.jts.geom.MultiPolygon;
+import com.vividsolutions.jts.geom.Polygon;
+
+public class JTSToGML311MultiPolygonConverter extends AbstractJTSToGML311Converter {
+  private final JTSToGML311PolygonConverter polygonConverter;
+
+  public JTSToGML311MultiPolygonConverter(ObjectFactory objectFactory) {
+    super(objectFactory);
+    polygonConverter = new JTSToGML311PolygonConverter(objectFactory);
+  }
+
+  public JTSToGML311MultiPolygonConverter() {
+    this(new ObjectFactory());
+  }
+
+  public MultiPolygonType createMultiPolygonType(MultiPolygon multiPolygon) {
+    final MultiPolygonType multiPolygonType = getObjectFactory().createMultiPolygonType();
+    for (int index = 0; index < multiPolygon.getNumGeometries(); index++) {
+      final Polygon polygon = (Polygon) multiPolygon.getGeometryN(index);
+      multiPolygonType.getPolygonMember().add(polygonConverter.createPolygonPropertyType(polygon));
+    }
+
+    return multiPolygonType;
+  }
+
+  public JAXBElement<MultiPolygonType> createMultiPolygon(MultiPolygon multiPolygon) {
+    return getObjectFactory().createMultiPolygon(createMultiPolygonType(multiPolygon));
+  }
+
+}
