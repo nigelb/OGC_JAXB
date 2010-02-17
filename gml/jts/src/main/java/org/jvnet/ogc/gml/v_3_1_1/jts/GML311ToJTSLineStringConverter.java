@@ -1,0 +1,104 @@
+package org.jvnet.ogc.gml.v_3_1_1.jts;
+
+import java.util.LinkedList;
+import java.util.List;
+
+import javax.xml.bind.JAXBElement;
+
+import net.opengis.gml.v_3_1_1.CoordType;
+import net.opengis.gml.v_3_1_1.LineStringPropertyType;
+import net.opengis.gml.v_3_1_1.LineStringType;
+import net.opengis.gml.v_3_1_1.PointPropertyType;
+import net.opengis.gml.v_3_1_1.PointType;
+
+import org.jvnet.jaxb2_commons.locator.FieldObjectLocator;
+import org.jvnet.jaxb2_commons.locator.ListEntryObjectLocator;
+import org.jvnet.jaxb2_commons.locator.ObjectLocator;
+
+import com.vividsolutions.jts.geom.Coordinate;
+import com.vividsolutions.jts.geom.GeometryFactory;
+import com.vividsolutions.jts.geom.LineString;
+
+public class GML311ToJTSLineStringConverter extends AbstractGML311ToJTSConverter {
+
+  // + LineString
+
+  private final GML311ToJTSCoordinateConverter coordinateConverter;
+  private final GML311ToJTSPointConverter pointConverter;
+
+  public GML311ToJTSLineStringConverter(GeometryFactory geometryFactory) {
+    super(geometryFactory);
+    coordinateConverter = new GML311ToJTSCoordinateConverter();
+    pointConverter = new GML311ToJTSPointConverter(geometryFactory);
+  }
+
+  public GML311ToJTSLineStringConverter() {
+    this(new GeometryFactory());
+  }
+
+  public LineString createLineString(ObjectLocator locator, LineStringType lineStringType)
+      throws ConversionFailedException {
+    if (lineStringType.isSetPosOrPointPropertyOrPointRep()) {
+
+      final List<Coordinate> coordinates = new LinkedList<Coordinate>();
+      final FieldObjectLocator fieldLocator = locator.field("PosOrPointPropertyOrPointRep"); //$NON-NLS-1$
+      for (int index = 0; index < lineStringType.getPosOrPointPropertyOrPointRep().size(); index++) {
+        final ListEntryObjectLocator itemLocator = fieldLocator.entry(index);
+        final JAXBElement<?> item = lineStringType.getPosOrPointPropertyOrPointRep().get(index);
+        final Object value = item.getValue();
+        final ObjectLocator itemValueLocator = itemLocator.field("Value"); //$NON-NLS-1$
+
+        if (value instanceof PointType) {
+          coordinates.add(pointConverter.createPoint(
+
+          itemValueLocator, (PointType) value).getCoordinate());
+        }
+        else if (value instanceof PointPropertyType) {
+          coordinates.add(pointConverter
+              .createPoint(itemValueLocator, (PointPropertyType) value)
+              .getCoordinate());
+        }
+        else if (value instanceof CoordType) {
+          coordinates
+              .add(coordinateConverter.createCoordinate(itemValueLocator, (CoordType) value));
+        }
+        else {
+          throw new ConversionFailedException(itemLocator, "Unexpected type."); //$NON-NLS-1$
+        }
+      }
+      final Coordinate[] coordinatesArray = coordinates.toArray(new Coordinate[coordinates.size()]);
+      return getGeometryFactory().createLineString(coordinatesArray);
+
+    }
+    else if (lineStringType.isSetPosList()) {
+
+      final Coordinate[] coordinates = coordinateConverter.createCoordinates(locator
+          .field("PosList"), lineStringType //$NON-NLS-1$
+          .getPosList());
+      return getGeometryFactory().createLineString(coordinates);
+
+    }
+    else if (lineStringType.isSetCoordinates()) {
+      final Coordinate[] coordinates = coordinateConverter.createCoordinates(locator
+          .field("Coordinates"), //$NON-NLS-1$
+          lineStringType.getCoordinates());
+      return getGeometryFactory().createLineString(coordinates);
+
+    }
+    else {
+      throw new ConversionFailedException(locator);
+    }
+  }
+
+  public LineString createLineString(
+      ObjectLocator locator,
+      LineStringPropertyType lineStringPropertyType) throws ConversionFailedException {
+    if (lineStringPropertyType.isSetLineString()) {
+      return createLineString(locator.field("LineString"), lineStringPropertyType.getLineString()); //$NON-NLS-1$
+    }
+    else {
+      throw new ConversionFailedException(locator, "Expected [LineString] element."); //$NON-NLS-1$
+    }
+  }
+
+}

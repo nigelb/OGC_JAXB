@@ -1,14 +1,6 @@
 package org.jvnet.ogc.gml.v_3_1_1.jts;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
-import javax.xml.bind.JAXBElement;
-
 import net.opengis.gml.v_3_1_1.AbstractGeometricAggregateType;
-import net.opengis.gml.v_3_1_1.AbstractRingPropertyType;
-import net.opengis.gml.v_3_1_1.AbstractRingType;
 import net.opengis.gml.v_3_1_1.CoordType;
 import net.opengis.gml.v_3_1_1.CoordinatesType;
 import net.opengis.gml.v_3_1_1.DirectPositionListType;
@@ -29,10 +21,7 @@ import net.opengis.gml.v_3_1_1.PointType;
 import net.opengis.gml.v_3_1_1.PolygonPropertyType;
 import net.opengis.gml.v_3_1_1.PolygonType;
 
-import org.apache.commons.lang.StringUtils;
 import org.jvnet.jaxb2_commons.locator.DefaultRootObjectLocator;
-import org.jvnet.jaxb2_commons.locator.FieldObjectLocator;
-import org.jvnet.jaxb2_commons.locator.ListEntryObjectLocator;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 
 import com.vividsolutions.jts.geom.Coordinate;
@@ -59,11 +48,28 @@ public class GML311ToJTSConverter {
   // + MultiLineString
   // + MultiPolygon
 
-  private GeometryFactory geometryFactory;
+  private final GML311ToJTSCoordinateConverter coordinateConverter;
+  private final GML311ToJTSPointConverter pointConverter;
+  private final GML311ToJTSLineStringConverter lineStringConverter;
+  private final GML311ToJTSLinearRingConverter linearRingConverter;
+  private final GML311ToJTSPolygonConverter polygonConverter;
+  private final GML311ToJTSMultiPointConverter multiPointConverter;
+  private final GML311ToJTSMultiLineStringConverter multiLineStringConverter;
+  private final GML311ToJTSMultiPolygonConverter multiPolygonConverter;
+  private final GML311ToJTSGeometryCollectionConverter geometryCollectionConverter;
+  private final GML311ToJTSGeometryConverter geometryConverter;
 
   public GML311ToJTSConverter(GeometryFactory geometryFactory) {
-    super();
-    this.geometryFactory = geometryFactory;
+    coordinateConverter = new GML311ToJTSCoordinateConverter();
+    pointConverter = new GML311ToJTSPointConverter(geometryFactory);
+    lineStringConverter = new GML311ToJTSLineStringConverter(geometryFactory);
+    linearRingConverter = new GML311ToJTSLinearRingConverter(geometryFactory);
+    polygonConverter = new GML311ToJTSPolygonConverter(geometryFactory);
+    multiPointConverter = new GML311ToJTSMultiPointConverter(geometryFactory);
+    multiLineStringConverter = new GML311ToJTSMultiLineStringConverter();
+    multiPolygonConverter = new GML311ToJTSMultiPolygonConverter();
+    geometryCollectionConverter = new GML311ToJTSGeometryCollectionConverter();
+    geometryConverter = new GML311ToJTSGeometryConverter();
   }
 
   public GML311ToJTSConverter() {
@@ -72,78 +78,23 @@ public class GML311ToJTSConverter {
 
   public Coordinate createCoordinate(ObjectLocator locator, DirectPositionType directPositionType)
       throws ConversionFailedException {
-    final List<Double> value = directPositionType.getValue();
-    final int count = value.size();
-    if (count == 2) {
-      double x = value.get(0).doubleValue();
-      double y = value.get(1).doubleValue();
-      return new Coordinate(x, y);
-    }
-    else if (count == 3) {
-      double x = value.get(0).doubleValue();
-      double y = value.get(1).doubleValue();
-      double z = value.get(2).doubleValue();
-      return new Coordinate(x, y, z);
-
-    }
-    else {
-      throw new ConversionFailedException(locator.field("Value"), //$NON-NLS-1$
-          "Direct position type is expected to have 2 or 3 items."); //$NON-NLS-1$
-    }
-
+    return coordinateConverter.createCoordinate(locator, directPositionType);
   }
 
   public Coordinate[] createCoordinates(
       ObjectLocator locator,
       DirectPositionListType directPositionListType) throws ConversionFailedException {
-    final int dimensions = directPositionListType.isSetSrsDimension() ? directPositionListType
-        .getSrsDimension()
-        .intValue() : 2;
-
-    if (dimensions < 2 || dimensions > 3) {
-      throw new ConversionFailedException(locator.field("SrsDimension"), //$NON-NLS-1$
-          "Only two- or three-dimensional coordinates are supported."); //$NON-NLS-1$
-    }
-
-    final List<Double> values = directPositionListType.getValue();
-    if (values.size() % dimensions != 0) {
-      throw new ConversionFailedException(locator.field("Value"), //$NON-NLS-1$
-          "Wrong number of entries in the list."); //$NON-NLS-1$
-    }
-
-    final Coordinate[] coordinates = new Coordinate[values.size() / dimensions];
-    for (int index = 0; index < values.size() / dimensions; index++) {
-      if (dimensions == 2) {
-        coordinates[index] = new Coordinate(values.get(index * dimensions), values.get(index
-            * dimensions
-            + 1));
-      }
-      else if (dimensions == 3) {
-        coordinates[index] = new Coordinate(values.get(index * dimensions), values.get(index
-            * dimensions
-            + 1), values.get(index * dimensions + 2));
-      }
-    }
-    return coordinates;
-
+    return coordinateConverter.createCoordinates(locator, directPositionListType);
   }
 
   public Coordinate createCoordinate(ObjectLocator locator, CoordType coordType)
       throws ConversionFailedException {
-    if (coordType.isSetX() && coordType.isSetY() && !coordType.isSetZ()) {
-      return new Coordinate(coordType.getX().doubleValue(), coordType.getY().doubleValue());
-    }
-    else if (coordType.isSetX() && coordType.isSetY() && !coordType.isSetZ()) {
-      return new Coordinate(
-          coordType.getX().doubleValue(),
-          coordType.getY().doubleValue(),
-          coordType.getZ().doubleValue());
+    return coordinateConverter.createCoordinate(locator, coordType);
+  }
 
-    }
-    else {
-      throw new ConversionFailedException(locator, "Either X, Y or X, Y, Z values are required."); //$NON-NLS-1$
-    }
-
+  public Coordinate[] createCoordinates(ObjectLocator locator, final CoordinatesType coordinates)
+      throws ConversionFailedException {
+    return coordinateConverter.createCoordinates(locator, coordinates);
   }
 
   public Coordinate[] createCoordinates(
@@ -152,406 +103,105 @@ public class GML311ToJTSConverter {
       String ds,
       String cs,
       String ts) throws ConversionFailedException {
-    final String coordinateSeparator = cs == null ? " " : cs; //$NON-NLS-1$
-
-    final String[] coordinates = StringUtils.split(value, coordinateSeparator);
-    final Coordinate[] coordinatesArray = new Coordinate[coordinates.length];
-    for (int index = 0; index < coordinates.length; index++) {
-      coordinatesArray[index] = createCoordinate(locator.entry(index), coordinates[index], ds, ts);
-    }
-    return coordinatesArray;
+    return coordinateConverter.createCoordinates(locator, value, ds, cs, ts);
   }
 
   public Coordinate createCoordinate(ObjectLocator locator, String value, String ds, String ts)
       throws ConversionFailedException {
-    final String tupleSeparator = ts == null ? "," : ts; //$NON-NLS-1$
-
-    final String[] tuples = StringUtils.split(value, tupleSeparator);
-
-    final double[] coordinateComponents = new double[tuples.length];
-    for (int index = 0; index < tuples.length; index++) {
-      coordinateComponents[index] = createCoordinateComponent(
-          locator.entry(index),
-          tuples[index],
-          ds);
-    }
-    if (coordinateComponents.length == 2) {
-      return new Coordinate(coordinateComponents[0], coordinateComponents[1]);
-    }
-    else if (coordinateComponents.length == 3) {
-      return new Coordinate(
-          coordinateComponents[0],
-          coordinateComponents[1],
-          coordinateComponents[2]);
-
-    }
-    else {
-      throw new ConversionFailedException(locator, "Expected two or three coordinates."); //$NON-NLS-1$
-    }
+    return coordinateConverter.createCoordinate(locator, value, ds, ts);
   }
 
   public double createCoordinateComponent(ObjectLocator locator, String value, String ds)
       throws ConversionFailedException {
-    final String decimalSeparator = ds == null ? "." : ds; //$NON-NLS-1$
-    try {
-      return Double.parseDouble(value.replace(decimalSeparator, ".")); //$NON-NLS-1$
-    }
-    catch (NumberFormatException nfex) {
-      throw new ConversionFailedException(locator, nfex);
-    }
+    return coordinateConverter.createCoordinateComponent(locator, value, ds);
   }
 
   public Point createPoint(ObjectLocator locator, PointType pointType)
       throws ConversionFailedException {
-
-    if (pointType.isSetPos()) {
-      return geometryFactory
-          .createPoint(createCoordinate(locator.field("Pos"), pointType.getPos())); //$NON-NLS-1$
-    }
-    else if (pointType.isSetCoordinates()) {
-      final Coordinate[] coords = createCoordinates(
-          locator.field("Coordinates"), pointType.getCoordinates()); //$NON-NLS-1$
-      if (coords.length == 1) {
-        throw new ConversionFailedException(locator.field("Coordinates"), //$NON-NLS-1$
-            "Expected exactly one coordinate."); //$NON-NLS-1$
-      }
-      else {
-        return geometryFactory.createPoint(coords[0]);
-
-      }
-
-    }
-    else if (pointType.isSetCoord()) {
-      return geometryFactory.createPoint(createCoordinate(locator.field("Coord"), pointType //$NON-NLS-1$
-          .getCoord()));
-    }
-    else {
-      throw new ConversionFailedException(
-          locator,
-          "Either [pos], [coordinates] or [coord] elements are expected."); //$NON-NLS-1$
-    }
-
-  }
-
-  public Coordinate[] createCoordinates(ObjectLocator locator, final CoordinatesType coordinates)
-      throws ConversionFailedException {
-    final Coordinate[] coords = createCoordinates(locator, coordinates.getValue(), coordinates
-        .getDecimal(), coordinates.getCs(), coordinates.getTs());
-    return coords;
+    return pointConverter.createPoint(locator, pointType);
   }
 
   public Point createPoint(ObjectLocator locator, PointPropertyType pointPropertyType)
       throws ConversionFailedException {
-    if (pointPropertyType.isSetPoint()) {
-      return createPoint(locator.field("Point"), pointPropertyType.getPoint()); //$NON-NLS-1$
-    }
-    else {
-      throw new ConversionFailedException(locator, "Expected [Point] element."); //$NON-NLS-1$
-    }
-  }
-
-  public LineString createLineString(ObjectLocator locator, LineStringType lineStringType)
-      throws ConversionFailedException {
-    if (lineStringType.isSetPosOrPointPropertyOrPointRep()) {
-
-      final List<Coordinate> coordinates = new LinkedList<Coordinate>();
-      final FieldObjectLocator fieldLocator = locator.field("PosOrPointPropertyOrPointRep"); //$NON-NLS-1$
-      for (int index = 0; index < lineStringType.getPosOrPointPropertyOrPointRep().size(); index++) {
-        final ListEntryObjectLocator itemLocator = fieldLocator.entry(index);
-        final JAXBElement<?> item = lineStringType.getPosOrPointPropertyOrPointRep().get(index);
-        final Object value = item.getValue();
-        final ObjectLocator itemValueLocator = itemLocator.field("Value"); //$NON-NLS-1$
-
-        if (value instanceof PointType) {
-          coordinates.add(createPoint(
-
-          itemValueLocator, (PointType) value).getCoordinate());
-        }
-        else if (value instanceof PointPropertyType) {
-          coordinates.add(createPoint(itemValueLocator, (PointPropertyType) value).getCoordinate());
-        }
-        else if (value instanceof CoordType) {
-          coordinates.add(createCoordinate(itemValueLocator, (CoordType) value));
-        }
-        else {
-          throw new ConversionFailedException(itemLocator, "Unexpected type."); //$NON-NLS-1$
-        }
-      }
-      final Coordinate[] coordinatesArray = coordinates.toArray(new Coordinate[coordinates.size()]);
-      return geometryFactory.createLineString(coordinatesArray);
-
-    }
-    else if (lineStringType.isSetPosList()) {
-
-      final Coordinate[] coordinates = createCoordinates(locator.field("PosList"), lineStringType //$NON-NLS-1$
-          .getPosList());
-      return geometryFactory.createLineString(coordinates);
-
-    }
-    else if (lineStringType.isSetCoordinates()) {
-      final Coordinate[] coordinates = createCoordinates(locator.field("Coordinates"), //$NON-NLS-1$
-          lineStringType.getCoordinates());
-      return geometryFactory.createLineString(coordinates);
-
-    }
-    else {
-      throw new ConversionFailedException(locator);
-    }
-  }
-
-  public LineString createLineString(
-      ObjectLocator locator,
-      LineStringPropertyType lineStringPropertyType) throws ConversionFailedException {
-    if (lineStringPropertyType.isSetLineString()) {
-      return createLineString(locator.field("LineString"), lineStringPropertyType.getLineString()); //$NON-NLS-1$
-    }
-    else {
-      throw new ConversionFailedException(locator, "Expected [LineString] element."); //$NON-NLS-1$
-    }
+    return pointConverter.createPoint(locator, pointPropertyType);
   }
 
   public LinearRing createLinearRing(ObjectLocator locator, LinearRingType linearRingType)
       throws ConversionFailedException {
-    if (linearRingType.isSetPosOrPointPropertyOrPointRep()) {
-      final ObjectLocator fieldLocator = locator.field("PosOrPointPropertyOrPointRep"); //$NON-NLS-1$
-
-      final List<Coordinate> coordinates = new LinkedList<Coordinate>();
-      for (int index = 0; index < linearRingType.getPosOrPointPropertyOrPointRep().size(); index++) {
-        final JAXBElement<?> item = linearRingType.getPosOrPointPropertyOrPointRep().get(index);
-        final ObjectLocator itemLocator = fieldLocator.entry(index);
-        final Object value = item.getValue();
-        final ObjectLocator itemValueLocator = itemLocator.field("Value"); //$NON-NLS-1$
-
-        if (value instanceof DirectPositionType) {
-          coordinates.add(createCoordinate(itemValueLocator, (DirectPositionType) value));
-        }
-        else if (value instanceof PointType) {
-          coordinates.add(createPoint(itemValueLocator, (PointType) value).getCoordinate());
-        }
-        else if (value instanceof PointPropertyType) {
-          coordinates.add(createPoint(itemValueLocator, (PointPropertyType) value).getCoordinate());
-        }
-        else if (value instanceof CoordType) {
-          coordinates.add(createCoordinate(itemValueLocator, (CoordType) value));
-        }
-        else {
-          throw new ConversionFailedException(itemValueLocator, "Unexpected type."); //$NON-NLS-1$
-        }
-      }
-      final Coordinate[] coordinatesArray = coordinates.toArray(new Coordinate[coordinates.size()]);
-      return geometryFactory.createLinearRing(coordinatesArray);
-
-    }
-    else if (linearRingType.isSetPosList()) {
-
-      final Coordinate[] coordinates = createCoordinates(locator.field("PosList"), linearRingType //$NON-NLS-1$
-          .getPosList());
-      return geometryFactory.createLinearRing(coordinates);
-
-    }
-    else if (linearRingType.isSetCoordinates()) {
-      final Coordinate[] coordinates = createCoordinates(locator.field("Coordinates"), //$NON-NLS-1$
-          linearRingType.getCoordinates());
-      return geometryFactory.createLinearRing(coordinates);
-
-    }
-    else {
-      throw new ConversionFailedException(locator);
-    }
+    return linearRingConverter.createLinearRing(locator, linearRingType);
   }
 
   public LinearRing createLinearRing(
       ObjectLocator locator,
       LinearRingPropertyType linearRingPropertyType) throws ConversionFailedException {
-    if (linearRingPropertyType.isSetLinearRing()) {
-      return createLinearRing(locator.field("LinearRing"), linearRingPropertyType.getLinearRing()); //$NON-NLS-1$
-    }
-    else {
-      throw new ConversionFailedException(locator, "Expected [LinearRing] element."); //$NON-NLS-1$
-    }
+    return linearRingConverter.createLinearRing(locator, linearRingPropertyType);
+  }
+
+  public LineString createLineString(ObjectLocator locator, LineStringType lineStringType)
+      throws ConversionFailedException {
+    return lineStringConverter.createLineString(locator, lineStringType);
+  }
+
+  public LineString createLineString(
+      ObjectLocator locator,
+      LineStringPropertyType lineStringPropertyType) throws ConversionFailedException {
+    return lineStringConverter.createLineString(locator, lineStringPropertyType);
   }
 
   public Polygon createPolygon(ObjectLocator locator, PolygonType polygonType)
       throws ConversionFailedException {
-    final LinearRing shell;
-    if (polygonType.isSetExterior()) {
-      final AbstractRingType abstractRingType = ((JAXBElement<? extends AbstractRingType>) polygonType
-          .getExterior()
-          .getValue()
-          .getRing()).getValue();
-      if (abstractRingType instanceof LinearRingType) {
-        shell = createLinearRing(locator.field("Exterior").field("Value").field("Ring").field( //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-            "Value"), (LinearRingType) abstractRingType); //$NON-NLS-1$
-      }
-      else {
-        throw new ConversionFailedException(locator.field("Exterior").field("Value").field("Ring"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-            "Only linear rings are supported."); //$NON-NLS-1$
-      }
-    }
-    else {
-      shell = null;
-    }
-
-    final LinearRing[] holes;
-    if (polygonType.isSetInterior()) {
-      final ObjectLocator interiorObjectLocator = locator.field("Interior"); //$NON-NLS-1$
-      final List<LinearRing> holesList = new ArrayList<LinearRing>(polygonType.getInterior().size());
-      for (int index = 0; index < polygonType.getInterior().size(); index++) {
-        final ObjectLocator entryLocator = interiorObjectLocator.entry(index);
-        final JAXBElement<AbstractRingPropertyType> ringElement = polygonType.getInterior().get(
-            index);
-
-        final AbstractRingType abstractRingType = ringElement.getValue().getRing().getValue();
-        if (abstractRingType instanceof LinearRingType) {
-          holesList.add(createLinearRing(entryLocator.field("Value").field("Ring").field("Value"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-
-              (LinearRingType) abstractRingType));
-        }
-        else {
-          throw new ConversionFailedException(entryLocator, "Only linear rings are supported."); //$NON-NLS-1$
-        }
-      }
-
-      holes = holesList.toArray(new LinearRing[holesList.size()]);
-    }
-    else {
-      holes = null;
-    }
-    return geometryFactory.createPolygon(shell, holes);
+    return polygonConverter.createPolygon(locator, polygonType);
   }
 
   public Polygon createPolygon(ObjectLocator locator, PolygonPropertyType polygonPropertyType)
       throws ConversionFailedException {
-    if (polygonPropertyType.isSetPolygon()) {
-      return createPolygon(locator.field("Polygon"), polygonPropertyType.getPolygon()); //$NON-NLS-1$
-    }
-    else {
-      throw new ConversionFailedException(locator, "Expected [Polygon] element."); //$NON-NLS-1$
-    }
+    return polygonConverter.createPolygon(locator, polygonPropertyType);
   }
 
   public MultiPoint createMultiPoint(ObjectLocator locator, MultiPointType multiPointType)
       throws ConversionFailedException {
-    if (multiPointType.isSetPointMember()) {
-      final List<PointPropertyType> pointMembers = multiPointType.getPointMember();
-      final List<Point> points = new ArrayList<Point>(pointMembers.size());
-      for (int index = 0; index < pointMembers.size(); index++) {
-        final PointPropertyType pointPropertyType = pointMembers.get(index);
-        points.add(createPoint(locator.field("PointMember").entry(index), pointPropertyType)); //$NON-NLS-1$
-      }
-      return geometryFactory.createMultiPoint(points.toArray(new Point[points.size()]));
-    }
-    else if (multiPointType.isSetPointMembers()) {
-      final List<PointType> pointMembers = multiPointType.getPointMembers().getPoint();
-      final List<Point> points = new ArrayList<Point>(pointMembers.size());
-      for (int index = 0; index < pointMembers.size(); index++) {
-
-        points
-            .add(createPoint(locator.field("PointMembers").entry(index), pointMembers.get(index))); //$NON-NLS-1$
-      }
-      return geometryFactory.createMultiPoint(points.toArray(new Point[points.size()]));
-    }
-    else {
-      throw new ConversionFailedException(
-          locator,
-          "Either [PointMember] or [PointMembers] elements are expected."); //$NON-NLS-1$
-    }
+    return multiPointConverter.createMultiPoint(locator, multiPointType);
   }
 
   public MultiPoint createMultiPoint(
       ObjectLocator locator,
       MultiPointPropertyType multiPointPropertyType) throws ConversionFailedException {
-    if (multiPointPropertyType.isSetMultiPoint()) {
-      return createMultiPoint(locator.field("MultiPoint"), multiPointPropertyType.getMultiPoint()); //$NON-NLS-1$
-    }
-    else {
-      throw new ConversionFailedException(locator, "Expected [MultiPoint] element."); //$NON-NLS-1$
-    }
+    return multiPointConverter.createMultiPoint(locator, multiPointPropertyType);
   }
 
   public MultiLineString createMultiLineString(
       ObjectLocator locator,
       MultiLineStringType multiLineStringType) throws ConversionFailedException {
-    final List<LineStringPropertyType> lineStringMembers = multiLineStringType
-        .getLineStringMember();
-    final List<LineString> lineStrings = new ArrayList<LineString>(lineStringMembers.size());
-    for (int index = 0; index < lineStringMembers.size(); index++) {
-      final LineStringPropertyType lineStringPropertyType = lineStringMembers.get(index);
-
-      final LineStringType lineStringType = lineStringPropertyType.getLineString();
-      lineStrings.add(createLineString(locator.field("LineStringMember").entry(index).field( //$NON-NLS-1$
-          "LineString"), lineStringType)); //$NON-NLS-1$
-    }
-    return geometryFactory.createMultiLineString(lineStrings.toArray(new LineString[lineStrings
-        .size()]));
+    return multiLineStringConverter.createMultiLineString(locator, multiLineStringType);
   }
 
   public MultiLineString createMultiLineString(
       ObjectLocator locator,
       MultiLineStringPropertyType multiLineStringPropertyType) throws ConversionFailedException {
-    if (multiLineStringPropertyType.isSetMultiLineString()) {
-      return createMultiLineString(locator.field("MultiLineString"), multiLineStringPropertyType //$NON-NLS-1$
-          .getMultiLineString());
-    }
-    else {
-      throw new ConversionFailedException(locator, "Expected [MultiLineString] element."); //$NON-NLS-1$
-    }
+    return multiLineStringConverter.createMultiLineString(locator, multiLineStringPropertyType);
   }
 
   public MultiPolygon createMultiPolygon(ObjectLocator locator, MultiPolygonType multiPolygonType)
       throws ConversionFailedException {
-    final List<PolygonPropertyType> polygonMembers = multiPolygonType.getPolygonMember();
-    final List<Polygon> polygons = new ArrayList<Polygon>(polygonMembers.size());
-    for (int index = 0; index < polygonMembers.size(); index++) {
-      final PolygonPropertyType polygonPropertyType = polygonMembers.get(index);
-      final PolygonType polygonType = polygonPropertyType.getPolygon();
-      polygons.add(createPolygon(locator.field("PolygonMember").entry(index).field("Polygon"), //$NON-NLS-1$ //$NON-NLS-2$
-          polygonType));
-
-    }
-    return geometryFactory.createMultiPolygon(polygons.toArray(new Polygon[polygons.size()]));
+    return multiPolygonConverter.createMultiPolygon(locator, multiPolygonType);
   }
 
   public MultiPolygon createMultiPolygon(
       ObjectLocator locator,
       MultiPolygonPropertyType multiPolygonPropertyType) throws ConversionFailedException {
-    if (multiPolygonPropertyType.isSetMultiPolygon()) {
-      return createMultiPolygon(locator.field("MultiPolygon"), multiPolygonPropertyType //$NON-NLS-1$
-          .getMultiPolygon());
-    }
-    else {
-      throw new ConversionFailedException(locator, "Expected [MultiPolygon] element."); //$NON-NLS-1$
-    }
+    return multiPolygonConverter.createMultiPolygon(locator, multiPolygonPropertyType);
   }
 
   public GeometryCollection createGeometryCollection(
       ObjectLocator locator,
       AbstractGeometricAggregateType abstractGeometryType) throws ConversionFailedException {
-    if (abstractGeometryType instanceof MultiPointType) {
-      return createMultiPoint(locator, (MultiPointType) abstractGeometryType);
-    }
-    else if (abstractGeometryType instanceof MultiLineStringType) {
-      return createMultiLineString(locator, (MultiLineStringType) abstractGeometryType);
-    }
-    else if (abstractGeometryType instanceof MultiPolygonType) {
-      return createMultiPolygon(locator, (MultiPolygonType) abstractGeometryType);
-    }
-    else {
-      throw new ConversionFailedException(locator, "Unexpected type."); //$NON-NLS-1$
-    }
-
+    return geometryCollectionConverter.createGeometryCollection(locator, abstractGeometryType);
   }
 
   public GeometryCollection createGeometryCollection(
       ObjectLocator locator,
       MultiGeometryPropertyType multiGeometryPropertyType) throws ConversionFailedException {
-    if (multiGeometryPropertyType.isSetGeometricAggregate()) {
-      return createGeometryCollection(locator.field("GeometricAggregate").field("Value"), //$NON-NLS-1$ //$NON-NLS-2$
-          multiGeometryPropertyType.getGeometricAggregate().getValue());
-    }
-    else {
-      throw new ConversionFailedException(locator, "Expected [GeometricAggregate] element."); //$NON-NLS-1$
-    }
+    return geometryCollectionConverter.createGeometryCollection(locator, multiGeometryPropertyType);
   }
 
   public Geometry createGeometry(Object abstractGeometryType) throws ConversionFailedException {
@@ -560,59 +210,6 @@ public class GML311ToJTSConverter {
 
   public Geometry createGeometry(ObjectLocator locator, Object abstractGeometryType)
       throws ConversionFailedException {
-    if (abstractGeometryType instanceof PointType) {
-      return createPoint(locator, (PointType) abstractGeometryType);
-    }
-    else if (abstractGeometryType instanceof PointPropertyType) {
-      return createPoint(locator, (PointPropertyType) abstractGeometryType);
-    }
-    else if (abstractGeometryType instanceof PolygonType) {
-      return createPolygon(locator, (PolygonType) abstractGeometryType);
-    }
-    else if (abstractGeometryType instanceof PolygonPropertyType) {
-      return createPolygon(locator, (PolygonPropertyType) abstractGeometryType);
-    }
-    else if (abstractGeometryType instanceof LineStringType) {
-      return createLineString(locator, (LineStringType) abstractGeometryType);
-    }
-    else if (abstractGeometryType instanceof LineStringPropertyType) {
-      return createLineString(locator, (LineStringPropertyType) abstractGeometryType);
-    }
-    else if (abstractGeometryType instanceof LinearRingType) {
-      return createLinearRing(locator, (LinearRingType) abstractGeometryType);
-    }
-    else if (abstractGeometryType instanceof LinearRingPropertyType) {
-      return createLinearRing(locator, (LinearRingPropertyType) abstractGeometryType);
-    }
-    else if (abstractGeometryType instanceof MultiPointType) {
-      return createMultiPoint(locator, (MultiPointType) abstractGeometryType);
-    }
-    else if (abstractGeometryType instanceof MultiPointPropertyType) {
-      return createMultiPoint(locator, (MultiPointPropertyType) abstractGeometryType);
-    }
-    else if (abstractGeometryType instanceof MultiLineStringType) {
-      return createMultiLineString(locator, (MultiLineStringType) abstractGeometryType);
-    }
-    else if (abstractGeometryType instanceof MultiLineStringPropertyType) {
-      return createMultiLineString(locator, (MultiLineStringPropertyType) abstractGeometryType);
-    }
-    else if (abstractGeometryType instanceof MultiPolygonType) {
-      return createMultiPolygon(locator, (MultiPolygonType) abstractGeometryType);
-    }
-    else if (abstractGeometryType instanceof MultiPolygonPropertyType) {
-      return createMultiPolygon(locator, (MultiPolygonPropertyType) abstractGeometryType);
-    }
-    else if (abstractGeometryType instanceof AbstractGeometricAggregateType) {
-      return createGeometryCollection(
-          locator,
-          (AbstractGeometricAggregateType) abstractGeometryType);
-    }
-    else if (abstractGeometryType instanceof MultiGeometryPropertyType) {
-      return createGeometryCollection(locator, (MultiGeometryPropertyType) abstractGeometryType);
-    }
-    else {
-      throw new ConversionFailedException(locator, "Unexpected type."); //$NON-NLS-1$
-    }
-
+    return geometryConverter.createGeometry(locator, abstractGeometryType);
   }
 }
