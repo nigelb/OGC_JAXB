@@ -9,7 +9,9 @@ import net.opengis.gml.v_3_1_1.ObjectFactory;
 
 import com.vividsolutions.jts.geom.LinearRing;
 
-public class JTSToGML311LinearRingConverter extends AbstractJTSToGML311Converter {
+public class JTSToGML311LinearRingConverter
+    extends
+    AbstractJTSToGML311Converter<LinearRingType, AbstractRingPropertyType, LinearRing> {
   private final JTSToGML311CoordinateConverter coordinateConverter;
 
   public JTSToGML311LinearRingConverter(ObjectFactory objectFactory) {
@@ -21,7 +23,7 @@ public class JTSToGML311LinearRingConverter extends AbstractJTSToGML311Converter
     this(new ObjectFactory());
   }
 
-  public LinearRingType createLinearRingType(LinearRing linearRing) {
+  public LinearRingType createGeometryType(LinearRing linearRing) {
     final LinearRingType resultLinearRing = getObjectFactory().createLinearRingType();
 
     for (DirectPositionType directPosition : coordinateConverter.convertCoordinates(linearRing
@@ -33,15 +35,15 @@ public class JTSToGML311LinearRingConverter extends AbstractJTSToGML311Converter
     return resultLinearRing;
   }
 
-  public AbstractRingPropertyType createAbstractRingPropertyType(final LinearRing ring) {
+  public AbstractRingPropertyType createPropertyType(final LinearRing ring) {
     final AbstractRingPropertyType abstractRingProperty = getObjectFactory()
         .createAbstractRingPropertyType();
 
-    abstractRingProperty.setRing(getObjectFactory().createLinearRing(createLinearRingType(ring)));
+    abstractRingProperty.setRing(getObjectFactory().createLinearRing(createGeometryType(ring)));
     return abstractRingProperty;
   }
 
-  public JAXBElement<LinearRingType> createLinearRing(LinearRing linearRing) {
-    return getObjectFactory().createLinearRing(createLinearRingType(linearRing));
+  public JAXBElement<LinearRingType> createElement(LinearRing linearRing) {
+    return getObjectFactory().createLinearRing(createGeometryType(linearRing));
   }
 }

@@ -9,7 +9,9 @@ import net.opengis.gml.v_3_1_1.ObjectFactory;
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryCollection;
 
-public class JTSToGML311MultiGeometryConverter extends AbstractJTSToGML311Converter {
+public class JTSToGML311MultiGeometryConverter
+    extends
+    AbstractJTSToGML311Converter<MultiGeometryType, MultiGeometryPropertyType, GeometryCollection> {
   private final JTSToGML311GeometryConverter geometryConverter;
 
   public JTSToGML311MultiGeometryConverter(
@@ -19,27 +21,26 @@ public class JTSToGML311MultiGeometryConverter extends AbstractJTSToGML311Conver
     this.geometryConverter = geometryConverter;
   }
 
-  public MultiGeometryType createMultiGeometryType(GeometryCollection multiGeometry) {
+  public MultiGeometryType createGeometryType(GeometryCollection multiGeometry) {
     final MultiGeometryType multiGeometryType = getObjectFactory().createMultiGeometryType();
 
     for (int index = 0; index < multiGeometry.getNumGeometries(); index++) {
       final Geometry geometry = multiGeometry.getGeometryN(index);
 
-      multiGeometryType.getGeometryMember().add(
-          geometryConverter.createGeometryPropertyType(geometry));
+      multiGeometryType.getGeometryMember().add(geometryConverter.createPropertyType(geometry));
 
     }
     return multiGeometryType;
   }
 
-  public MultiGeometryPropertyType createMultiGeometryPropertyType(GeometryCollection multiGeometry) {
+  public MultiGeometryPropertyType createPropertyType(GeometryCollection multiGeometry) {
     final MultiGeometryPropertyType multiGeometryPropertyType = getObjectFactory()
         .createMultiGeometryPropertyType();
-    multiGeometryPropertyType.setGeometricAggregate(createMultiGeometry(multiGeometry));
+    multiGeometryPropertyType.setGeometricAggregate(createElement(multiGeometry));
     return multiGeometryPropertyType;
   }
 
-  public JAXBElement<MultiGeometryType> createMultiGeometry(GeometryCollection geometryCollection) {
-    return getObjectFactory().createMultiGeometry(createMultiGeometryType(geometryCollection));
+  public JAXBElement<MultiGeometryType> createElement(GeometryCollection geometryCollection) {
+    return getObjectFactory().createMultiGeometry(createGeometryType(geometryCollection));
   }
 }

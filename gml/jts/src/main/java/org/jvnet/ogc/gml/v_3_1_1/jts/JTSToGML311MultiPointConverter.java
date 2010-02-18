@@ -9,7 +9,9 @@ import net.opengis.gml.v_3_1_1.ObjectFactory;
 import com.vividsolutions.jts.geom.MultiPoint;
 import com.vividsolutions.jts.geom.Point;
 
-public class JTSToGML311MultiPointConverter extends AbstractJTSToGML311Converter {
+public class JTSToGML311MultiPointConverter
+    extends
+    AbstractJTSToGML311Converter<MultiPointType, MultiPointPropertyType, MultiPoint> {
   private final JTSToGML311PointConverter pointConverter;
 
   public JTSToGML311MultiPointConverter(ObjectFactory objectFactory) {
@@ -21,25 +23,25 @@ public class JTSToGML311MultiPointConverter extends AbstractJTSToGML311Converter
     this(new ObjectFactory());
   }
 
-  public MultiPointType createMultiPointType(MultiPoint multiPoint) {
+  public MultiPointType createGeometryType(MultiPoint multiPoint) {
     final MultiPointType multiPointType = getObjectFactory().createMultiPointType();
 
     for (int index = 0; index < multiPoint.getNumGeometries(); index++) {
       final Point point = (Point) multiPoint.getGeometryN(index);
-      multiPointType.getPointMember().add(pointConverter.createPointPropertyType(point));
+      multiPointType.getPointMember().add(pointConverter.createPropertyType(point));
     }
     return multiPointType;
   }
 
-  public MultiPointPropertyType createMultiPointPropertyType(MultiPoint multiPoint) {
+  public MultiPointPropertyType createPropertyType(MultiPoint multiPoint) {
     final MultiPointPropertyType multiPointPropertyType = getObjectFactory()
         .createMultiPointPropertyType();
-    multiPointPropertyType.setMultiPoint(createMultiPointType(multiPoint));
+    multiPointPropertyType.setMultiPoint(createGeometryType(multiPoint));
     return multiPointPropertyType;
   }
 
-  public JAXBElement<MultiPointType> createMultiPoint(MultiPoint multiPoint) {
-    return getObjectFactory().createMultiPoint(createMultiPointType(multiPoint));
+  public JAXBElement<MultiPointType> createElement(MultiPoint multiPoint) {
+    return getObjectFactory().createMultiPoint(createGeometryType(multiPoint));
   }
 
 }

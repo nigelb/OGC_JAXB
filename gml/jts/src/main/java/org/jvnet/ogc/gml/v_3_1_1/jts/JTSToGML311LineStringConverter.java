@@ -9,7 +9,9 @@ import net.opengis.gml.v_3_1_1.ObjectFactory;
 
 import com.vividsolutions.jts.geom.LineString;
 
-public class JTSToGML311LineStringConverter extends AbstractJTSToGML311Converter {
+public class JTSToGML311LineStringConverter
+    extends
+    AbstractJTSToGML311Converter<LineStringType, LineStringPropertyType, LineString> {
   private final JTSToGML311CoordinateConverter coordinateConverter;
 
   public JTSToGML311LineStringConverter(ObjectFactory objectFactory) {
@@ -21,7 +23,7 @@ public class JTSToGML311LineStringConverter extends AbstractJTSToGML311Converter
     this(new ObjectFactory());
   }
 
-  public LineStringType createLineStringType(LineString lineString) {
+  public LineStringType createGeometryType(LineString lineString) {
 
     final LineStringType resultLineString = getObjectFactory().createLineStringType();
 
@@ -34,14 +36,14 @@ public class JTSToGML311LineStringConverter extends AbstractJTSToGML311Converter
     return resultLineString;
   }
 
-  public LineStringPropertyType createLineStringPropertyType(LineString lineString) {
+  public LineStringPropertyType createPropertyType(LineString lineString) {
     final LineStringPropertyType lineStringPropertyType = getObjectFactory()
         .createLineStringPropertyType();
-    lineStringPropertyType.setLineString(createLineStringType(lineString));
+    lineStringPropertyType.setLineString(createGeometryType(lineString));
     return lineStringPropertyType;
   }
 
-  public JAXBElement<LineStringType> createLineString(LineString linearString) {
-    return getObjectFactory().createLineString(createLineStringType(linearString));
+  public JAXBElement<LineStringType> createElement(LineString linearString) {
+    return getObjectFactory().createLineString(createGeometryType(linearString));
   }
 }

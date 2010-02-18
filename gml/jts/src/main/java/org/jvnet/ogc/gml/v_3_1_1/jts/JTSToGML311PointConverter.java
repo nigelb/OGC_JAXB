@@ -9,7 +9,9 @@ import net.opengis.gml.v_3_1_1.PointType;
 
 import com.vividsolutions.jts.geom.Point;
 
-public class JTSToGML311PointConverter extends AbstractJTSToGML311Converter {
+public class JTSToGML311PointConverter
+    extends
+    AbstractJTSToGML311Converter<PointType, PointPropertyType, Point> {
   private final JTSToGML311CoordinateConverter coordinateConverter;
 
   public JTSToGML311PointConverter(ObjectFactory objectFactory) {
@@ -21,7 +23,7 @@ public class JTSToGML311PointConverter extends AbstractJTSToGML311Converter {
     this(new ObjectFactory());
   }
 
-  public PointType createPointType(Point point) {
+  public PointType createGeometryType(Point point) {
 
     final PointType resultPoint = getObjectFactory().createPointType();
 
@@ -34,15 +36,16 @@ public class JTSToGML311PointConverter extends AbstractJTSToGML311Converter {
 
   }
 
-  public JAXBElement<PointType> createPoint(Point point) {
-    return getObjectFactory().createPoint(createPointType(point));
-  }
-
-  public PointPropertyType createPointPropertyType(Point point) {
+  public PointPropertyType createPropertyType(Point point) {
     final PointPropertyType pointPropertyType = getObjectFactory().createPointPropertyType();
 
-    pointPropertyType.setPoint(createPointType(point));
+    pointPropertyType.setPoint(createGeometryType(point));
     return pointPropertyType;
 
   }
+
+  public JAXBElement<PointType> createElement(Point point) {
+    return getObjectFactory().createPoint(createGeometryType(point));
+  }
+
 }

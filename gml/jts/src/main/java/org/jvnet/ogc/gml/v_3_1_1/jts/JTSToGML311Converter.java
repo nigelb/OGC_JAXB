@@ -82,94 +82,94 @@ public class JTSToGML311Converter {
   }
 
   public PointType createPointType(Point point) {
-    return pointConverter.createPointType(point);
+    return pointConverter.createGeometryType(point);
   }
 
   public JAXBElement<PointType> createPoint(Point point) {
-    return pointConverter.createPoint(point);
+    return pointConverter.createElement(point);
   }
 
   public PointPropertyType createPointPropertyType(Point point) {
-    return pointConverter.createPointPropertyType(point);
+    return pointConverter.createPropertyType(point);
   }
 
   public LineStringType createLineStringType(LineString lineString) {
-    return lineStringConverter.createLineStringType(lineString);
+    return lineStringConverter.createGeometryType(lineString);
   }
 
   public LineStringPropertyType createLineStringPropertyType(LineString lineString) {
-    return lineStringConverter.createLineStringPropertyType(lineString);
+    return lineStringConverter.createPropertyType(lineString);
   }
 
   public JAXBElement<LineStringType> createLineString(LineString linearString) {
-    return lineStringConverter.createLineString(linearString);
+    return lineStringConverter.createElement(linearString);
   }
 
   public LinearRingType createLinearRingType(LinearRing linearRing) {
-    return linearRingConverter.createLinearRingType(linearRing);
+    return linearRingConverter.createGeometryType(linearRing);
   }
 
   public JAXBElement<LinearRingType> createLinearRing(LinearRing linearRing) {
-    return linearRingConverter.createLinearRing(linearRing);
+    return linearRingConverter.createElement(linearRing);
   }
 
   public PolygonType createPolygonType(Polygon polygon) {
-    return polygonConverter.createPolygonType(polygon);
+    return polygonConverter.createGeometryType(polygon);
   }
 
   public PolygonPropertyType createPolygonPropertyType(Polygon polygon) {
-    return polygonConverter.createPolygonPropertyType(polygon);
+    return polygonConverter.createPropertyType(polygon);
   }
 
   public JAXBElement<PolygonType> createPolygon(Polygon polygon) {
-    return polygonConverter.createPolygon(polygon);
+    return polygonConverter.createElement(polygon);
   }
 
   public AbstractRingPropertyType createAbstractRingPropertyType(final LinearRing ring) {
-    return linearRingConverter.createAbstractRingPropertyType(ring);
+    return linearRingConverter.createPropertyType(ring);
   }
 
   public MultiPointType createMultiPointType(MultiPoint multiPoint) {
-    return multiPointConverter.createMultiPointType(multiPoint);
+    return multiPointConverter.createGeometryType(multiPoint);
   }
 
   public JAXBElement<MultiPointType> createMultiPoint(MultiPoint multiPoint) {
-    return multiPointConverter.createMultiPoint(multiPoint);
+    return multiPointConverter.createElement(multiPoint);
   }
 
   public MultiLineStringType createMultiLineStringType(MultiLineString multiLineString) {
-    return multiLineStringConverter.createMultiLineStringType(multiLineString);
+    return multiLineStringConverter.createGeometryType(multiLineString);
   }
 
   public JAXBElement<MultiLineStringType> createMultiLineString(MultiLineString multiLineString) {
-    return multiLineStringConverter.createMultiLineString(multiLineString);
+    return multiLineStringConverter.createElement(multiLineString);
   }
 
   public MultiPolygonType createMultiPolygonType(MultiPolygon multiPolygon) {
-    return multiPolygonConverter.createMultiPolygonType(multiPolygon);
+    return multiPolygonConverter.createGeometryType(multiPolygon);
   }
 
   public JAXBElement<MultiPolygonType> createMultiPolygon(MultiPolygon multiPolygon) {
-    return multiPolygonConverter.createMultiPolygon(multiPolygon);
+    return multiPolygonConverter.createElement(multiPolygon);
   }
 
   public MultiGeometryType createMultiGeometryType(GeometryCollection multiGeometry) {
-    return multiGeometryConverter.createMultiGeometryType(multiGeometry);
+    return multiGeometryConverter.createGeometryType(multiGeometry);
   }
 
   public JAXBElement<MultiGeometryType> createMultiGeometry(GeometryCollection geometryCollection) {
-    return multiGeometryConverter.createMultiGeometry(geometryCollection);
+    return multiGeometryConverter.createElement(geometryCollection);
   }
 
   public GeometryPropertyType createGeometryPropertyType(Geometry geometry) {
-    return geometryConverter.createGeometryPropertyType(geometry);
+    return geometryConverter.createPropertyType(geometry);
   }
 
   public JAXBElement<? extends AbstractGeometryType> createGeometry(Geometry geometry) {
-    return geometryConverter.createGeometry(geometry);
+    return geometryConverter.createElement(geometry);
   }
 
   public AbstractGeometryType createAbstractGeometryType(Geometry geometry) {
-    return geometryConverter.createAbstractGeometryType(geometry);
+    return geometryConverter.createGeometryType(geometry);
   }
 }
