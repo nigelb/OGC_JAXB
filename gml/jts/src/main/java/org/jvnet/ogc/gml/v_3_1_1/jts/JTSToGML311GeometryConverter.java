@@ -36,7 +36,7 @@ public class JTSToGML311GeometryConverter extends AbstractJTSToGML311Converter {
     multiPointConverter = new JTSToGML311MultiPointConverter(objectFactory);
     multiLineStringConverter = new JTSToGML311MultiLineStringConverter(objectFactory);
     multiPolygonConverter = new JTSToGML311MultiPolygonConverter(objectFactory);
-    multiGeometryConverter = new JTSToGML311MultiGeometryConverter(objectFactory);
+    multiGeometryConverter = new JTSToGML311MultiGeometryConverter(objectFactory, this);
   }
 
   public JTSToGML311GeometryConverter() {

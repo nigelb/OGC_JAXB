@@ -12,5 +12,5 @@ public abstract class AbstractJTSToGML311Converter {
 
   public ObjectFactory getObjectFactory() {
     return objectFactory;
-  };
+  }
 }

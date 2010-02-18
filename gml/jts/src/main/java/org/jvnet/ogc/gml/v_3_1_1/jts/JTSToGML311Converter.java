@@ -65,8 +65,8 @@ public class JTSToGML311Converter {
     multiPointConverter = new JTSToGML311MultiPointConverter(objectFactory);
     multiLineStringConverter = new JTSToGML311MultiLineStringConverter(objectFactory);
     multiPolygonConverter = new JTSToGML311MultiPolygonConverter(objectFactory);
-    multiGeometryConverter = new JTSToGML311MultiGeometryConverter(objectFactory);
     geometryConverter = new JTSToGML311GeometryConverter(objectFactory);
+    multiGeometryConverter = new JTSToGML311MultiGeometryConverter(objectFactory, geometryConverter);
   }
 
   public JTSToGML311Converter() {

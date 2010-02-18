@@ -11,13 +11,11 @@ import com.vividsolutions.jts.geom.GeometryCollection;
 public class JTSToGML311MultiGeometryConverter extends AbstractJTSToGML311Converter {
   private final JTSToGML311GeometryConverter geometryConverter;
 
-  public JTSToGML311MultiGeometryConverter(ObjectFactory objectFactory) {
+  public JTSToGML311MultiGeometryConverter(
+      ObjectFactory objectFactory,
+      JTSToGML311GeometryConverter geometryConverter) {
     super(objectFactory);
-    geometryConverter = new JTSToGML311GeometryConverter(objectFactory);
-  }
-
-  public JTSToGML311MultiGeometryConverter() {
-    this(new ObjectFactory());
+    this.geometryConverter = geometryConverter;
   }
 
   public MultiGeometryType createMultiGeometryType(GeometryCollection multiGeometry) {
