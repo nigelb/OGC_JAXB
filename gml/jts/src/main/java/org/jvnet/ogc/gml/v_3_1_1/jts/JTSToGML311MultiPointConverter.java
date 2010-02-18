@@ -2,6 +2,7 @@ package org.jvnet.ogc.gml.v_3_1_1.jts;
 
 import javax.xml.bind.JAXBElement;
 
+import net.opengis.gml.v_3_1_1.MultiPointPropertyType;
 import net.opengis.gml.v_3_1_1.MultiPointType;
 import net.opengis.gml.v_3_1_1.ObjectFactory;
 
@@ -28,6 +29,13 @@ public class JTSToGML311MultiPointConverter extends AbstractJTSToGML311Converter
       multiPointType.getPointMember().add(pointConverter.createPointPropertyType(point));
     }
     return multiPointType;
+  }
+
+  public MultiPointPropertyType createMultiPointPropertyType(MultiPoint multiPoint) {
+    final MultiPointPropertyType multiPointPropertyType = getObjectFactory()
+        .createMultiPointPropertyType();
+    multiPointPropertyType.setMultiPoint(createMultiPointType(multiPoint));
+    return multiPointPropertyType;
   }
 
   public JAXBElement<MultiPointType> createMultiPoint(MultiPoint multiPoint) {

@@ -2,6 +2,7 @@ package org.jvnet.ogc.gml.v_3_1_1.jts;
 
 import javax.xml.bind.JAXBElement;
 
+import net.opengis.gml.v_3_1_1.MultiPolygonPropertyType;
 import net.opengis.gml.v_3_1_1.MultiPolygonType;
 import net.opengis.gml.v_3_1_1.ObjectFactory;
 
@@ -28,6 +29,13 @@ public class JTSToGML311MultiPolygonConverter extends AbstractJTSToGML311Convert
     }
 
     return multiPolygonType;
+  }
+
+  public MultiPolygonPropertyType createMultiPolygonPropertyType(MultiPolygon multiPolygon) {
+    final MultiPolygonPropertyType multiPolygonPropertyType = getObjectFactory()
+        .createMultiPolygonPropertyType();
+    multiPolygonPropertyType.setMultiPolygon(createMultiPolygonType(multiPolygon));
+    return multiPolygonPropertyType;
   }
 
   public JAXBElement<MultiPolygonType> createMultiPolygon(MultiPolygon multiPolygon) {

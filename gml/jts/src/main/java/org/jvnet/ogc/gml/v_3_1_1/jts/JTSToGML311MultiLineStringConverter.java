@@ -2,6 +2,7 @@ package org.jvnet.ogc.gml.v_3_1_1.jts;
 
 import javax.xml.bind.JAXBElement;
 
+import net.opengis.gml.v_3_1_1.MultiLineStringPropertyType;
 import net.opengis.gml.v_3_1_1.MultiLineStringType;
 import net.opengis.gml.v_3_1_1.ObjectFactory;
 
@@ -29,6 +30,14 @@ public class JTSToGML311MultiLineStringConverter extends AbstractJTSToGML311Conv
     }
 
     return multiLineStringType;
+  }
+
+  public MultiLineStringPropertyType createMultiLineStringPropertyType(
+      MultiLineString multiLineString) {
+    final MultiLineStringPropertyType multiLineStringPropertyType = getObjectFactory()
+        .createMultiLineStringPropertyType();
+    multiLineStringPropertyType.setMultiLineString(createMultiLineStringType(multiLineString));
+    return multiLineStringPropertyType;
   }
 
   public JAXBElement<MultiLineStringType> createMultiLineString(MultiLineString multiLineString) {

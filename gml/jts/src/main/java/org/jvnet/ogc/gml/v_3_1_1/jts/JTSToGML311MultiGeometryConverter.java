@@ -2,6 +2,7 @@ package org.jvnet.ogc.gml.v_3_1_1.jts;
 
 import javax.xml.bind.JAXBElement;
 
+import net.opengis.gml.v_3_1_1.MultiGeometryPropertyType;
 import net.opengis.gml.v_3_1_1.MultiGeometryType;
 import net.opengis.gml.v_3_1_1.ObjectFactory;
 
@@ -29,6 +30,13 @@ public class JTSToGML311MultiGeometryConverter extends AbstractJTSToGML311Conver
 
     }
     return multiGeometryType;
+  }
+
+  public MultiGeometryPropertyType createMultiGeometryPropertyType(GeometryCollection multiGeometry) {
+    final MultiGeometryPropertyType multiGeometryPropertyType = getObjectFactory()
+        .createMultiGeometryPropertyType();
+    multiGeometryPropertyType.setGeometricAggregate(createMultiGeometry(multiGeometry));
+    return multiGeometryPropertyType;
   }
 
   public JAXBElement<MultiGeometryType> createMultiGeometry(GeometryCollection geometryCollection) {
