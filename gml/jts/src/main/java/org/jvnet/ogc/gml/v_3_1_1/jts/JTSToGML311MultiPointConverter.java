@@ -23,6 +23,7 @@ public class JTSToGML311MultiPointConverter
     this(new ObjectFactory());
   }
 
+  @Override
   public MultiPointType createGeometryType(MultiPoint multiPoint) {
     final MultiPointType multiPointType = getObjectFactory().createMultiPointType();
 
@@ -33,6 +34,7 @@ public class JTSToGML311MultiPointConverter
     return multiPointType;
   }
 
+  @Override
   public MultiPointPropertyType createPropertyType(MultiPoint multiPoint) {
     final MultiPointPropertyType multiPointPropertyType = getObjectFactory()
         .createMultiPointPropertyType();
@@ -40,6 +42,7 @@ public class JTSToGML311MultiPointConverter
     return multiPointPropertyType;
   }
 
+  @Override
   public JAXBElement<MultiPointType> createElement(MultiPoint multiPoint) {
     return getObjectFactory().createMultiPoint(createGeometryType(multiPoint));
   }

@@ -23,6 +23,7 @@ public class JTSToGML311MultiLineStringConverter
     this(new ObjectFactory());
   }
 
+  @Override
   public MultiLineStringType createGeometryType(MultiLineString multiLineString) {
     final MultiLineStringType multiLineStringType = getObjectFactory().createMultiLineStringType();
     for (int index = 0; index < multiLineString.getNumGeometries(); index++) {
@@ -34,14 +35,15 @@ public class JTSToGML311MultiLineStringConverter
     return multiLineStringType;
   }
 
-  public MultiLineStringPropertyType createPropertyType(
-      MultiLineString multiLineString) {
+  @Override
+  public MultiLineStringPropertyType createPropertyType(MultiLineString multiLineString) {
     final MultiLineStringPropertyType multiLineStringPropertyType = getObjectFactory()
         .createMultiLineStringPropertyType();
     multiLineStringPropertyType.setMultiLineString(createGeometryType(multiLineString));
     return multiLineStringPropertyType;
   }
 
+  @Override
   public JAXBElement<MultiLineStringType> createElement(MultiLineString multiLineString) {
     return getObjectFactory().createMultiLineString(createGeometryType(multiLineString));
   }

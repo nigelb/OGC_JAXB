@@ -23,6 +23,7 @@ public class JTSToGML311MultiPolygonConverter
     this(new ObjectFactory());
   }
 
+  @Override
   public MultiPolygonType createGeometryType(MultiPolygon multiPolygon) {
     final MultiPolygonType multiPolygonType = getObjectFactory().createMultiPolygonType();
     for (int index = 0; index < multiPolygon.getNumGeometries(); index++) {
@@ -33,6 +34,7 @@ public class JTSToGML311MultiPolygonConverter
     return multiPolygonType;
   }
 
+  @Override
   public MultiPolygonPropertyType createPropertyType(MultiPolygon multiPolygon) {
     final MultiPolygonPropertyType multiPolygonPropertyType = getObjectFactory()
         .createMultiPolygonPropertyType();
@@ -40,6 +42,7 @@ public class JTSToGML311MultiPolygonConverter
     return multiPolygonPropertyType;
   }
 
+  @Override
   public JAXBElement<MultiPolygonType> createElement(MultiPolygon multiPolygon) {
     return getObjectFactory().createMultiPolygon(createGeometryType(multiPolygon));
   }

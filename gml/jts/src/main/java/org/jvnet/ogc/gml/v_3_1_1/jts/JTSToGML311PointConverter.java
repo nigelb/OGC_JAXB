@@ -23,6 +23,7 @@ public class JTSToGML311PointConverter
     this(new ObjectFactory());
   }
 
+  @Override
   public PointType createGeometryType(Point point) {
 
     final PointType resultPoint = getObjectFactory().createPointType();
@@ -36,6 +37,7 @@ public class JTSToGML311PointConverter
 
   }
 
+  @Override
   public PointPropertyType createPropertyType(Point point) {
     final PointPropertyType pointPropertyType = getObjectFactory().createPointPropertyType();
 
@@ -44,6 +46,7 @@ public class JTSToGML311PointConverter
 
   }
 
+  @Override
   public JAXBElement<PointType> createElement(Point point) {
     return getObjectFactory().createPoint(createGeometryType(point));
   }

@@ -21,6 +21,7 @@ public class JTSToGML311MultiGeometryConverter
     this.geometryConverter = geometryConverter;
   }
 
+  @Override
   public MultiGeometryType createGeometryType(GeometryCollection multiGeometry) {
     final MultiGeometryType multiGeometryType = getObjectFactory().createMultiGeometryType();
 
@@ -33,6 +34,7 @@ public class JTSToGML311MultiGeometryConverter
     return multiGeometryType;
   }
 
+  @Override
   public MultiGeometryPropertyType createPropertyType(GeometryCollection multiGeometry) {
     final MultiGeometryPropertyType multiGeometryPropertyType = getObjectFactory()
         .createMultiGeometryPropertyType();
@@ -40,6 +42,7 @@ public class JTSToGML311MultiGeometryConverter
     return multiGeometryPropertyType;
   }
 
+  @Override
   public JAXBElement<MultiGeometryType> createElement(GeometryCollection geometryCollection) {
     return getObjectFactory().createMultiGeometry(createGeometryType(geometryCollection));
   }

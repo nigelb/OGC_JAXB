@@ -23,6 +23,7 @@ public class JTSToGML311LineStringConverter
     this(new ObjectFactory());
   }
 
+  @Override
   public LineStringType createGeometryType(LineString lineString) {
 
     final LineStringType resultLineString = getObjectFactory().createLineStringType();
@@ -36,6 +37,7 @@ public class JTSToGML311LineStringConverter
     return resultLineString;
   }
 
+  @Override
   public LineStringPropertyType createPropertyType(LineString lineString) {
     final LineStringPropertyType lineStringPropertyType = getObjectFactory()
         .createLineStringPropertyType();
@@ -43,6 +45,7 @@ public class JTSToGML311LineStringConverter
     return lineStringPropertyType;
   }
 
+  @Override
   public JAXBElement<LineStringType> createElement(LineString linearString) {
     return getObjectFactory().createLineString(createGeometryType(linearString));
   }

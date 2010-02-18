@@ -24,6 +24,7 @@ public class JTSToGML311PolygonConverter
     this(new ObjectFactory());
   }
 
+  @Override
   public PolygonType createGeometryType(Polygon polygon) {
     final PolygonType resultPolygon = getObjectFactory().createPolygonType();
     {
@@ -41,12 +42,14 @@ public class JTSToGML311PolygonConverter
 
   }
 
+  @Override
   public PolygonPropertyType createPropertyType(Polygon polygon) {
     final PolygonPropertyType polygonPropertyType = getObjectFactory().createPolygonPropertyType();
     polygonPropertyType.setPolygon(createGeometryType(polygon));
     return polygonPropertyType;
   }
 
+  @Override
   public JAXBElement<PolygonType> createElement(Polygon polygon) {
     return getObjectFactory().createPolygon(createGeometryType(polygon));
   }

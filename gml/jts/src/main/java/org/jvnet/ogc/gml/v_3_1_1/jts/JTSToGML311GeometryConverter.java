@@ -45,6 +45,7 @@ public class JTSToGML311GeometryConverter
     this(new ObjectFactory());
   }
 
+  @Override
   public AbstractGeometryType createGeometryType(Geometry geometry) {
     if (geometry instanceof Point) {
       return pointConverter.createGeometryType((Point) geometry);
@@ -77,6 +78,7 @@ public class JTSToGML311GeometryConverter
 
   }
 
+  @Override
   public GeometryPropertyType createPropertyType(Geometry geometry) {
     final GeometryPropertyType geometryPropertyType = getObjectFactory()
         .createGeometryPropertyType();
@@ -84,6 +86,7 @@ public class JTSToGML311GeometryConverter
     return geometryPropertyType;
   }
 
+  @Override
   public JAXBElement<? extends AbstractGeometryType> createElement(Geometry geometry) {
     if (geometry instanceof Point) {
       return pointConverter.createElement((Point) geometry);

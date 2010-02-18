@@ -23,6 +23,7 @@ public class JTSToGML311LinearRingConverter
     this(new ObjectFactory());
   }
 
+  @Override
   public LinearRingType createGeometryType(LinearRing linearRing) {
     final LinearRingType resultLinearRing = getObjectFactory().createLinearRingType();
 
@@ -35,6 +36,7 @@ public class JTSToGML311LinearRingConverter
     return resultLinearRing;
   }
 
+  @Override
   public AbstractRingPropertyType createPropertyType(final LinearRing ring) {
     final AbstractRingPropertyType abstractRingProperty = getObjectFactory()
         .createAbstractRingPropertyType();
@@ -43,6 +45,7 @@ public class JTSToGML311LinearRingConverter
     return abstractRingProperty;
   }
 
+  @Override
   public JAXBElement<LinearRingType> createElement(LinearRing linearRing) {
     return getObjectFactory().createLinearRing(createGeometryType(linearRing));
   }
