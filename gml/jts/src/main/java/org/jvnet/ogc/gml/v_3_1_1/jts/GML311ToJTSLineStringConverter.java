@@ -6,6 +6,7 @@ import java.util.List;
 import javax.xml.bind.JAXBElement;
 
 import net.opengis.gml.v_3_1_1.CoordType;
+import net.opengis.gml.v_3_1_1.DirectPositionType;
 import net.opengis.gml.v_3_1_1.LineStringPropertyType;
 import net.opengis.gml.v_3_1_1.LineStringType;
 import net.opengis.gml.v_3_1_1.PointPropertyType;
@@ -64,6 +65,10 @@ public class GML311ToJTSLineStringConverter
         else if (value instanceof CoordType) {
           coordinates
               .add(coordinateConverter.createCoordinate(itemValueLocator, (CoordType) value));
+        }
+        else if (value instanceof DirectPositionType) {
+          coordinates
+              .add(coordinateConverter.createCoordinate(itemValueLocator, (DirectPositionType) value));
         }
         else {
           throw new ConversionFailedException(itemLocator, "Unexpected type."); //$NON-NLS-1$

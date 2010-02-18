@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gml:Point
+  xmlns:gml="http://www.opengis.net/gml"
+  srsName="http://www.opengis.net/gml/srs/epsg.xml#63266405">
+	<gml:coordinates decimal="." cs="," ts=" ">-59.478340,-52.226578</gml:coordinates>
+</gml:Point>

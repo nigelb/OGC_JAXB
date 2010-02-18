@@ -37,7 +37,7 @@ public class GML311ToJTSPointConverter
     else if (pointType.isSetCoordinates()) {
       final Coordinate[] coords = coordinateConverter.createCoordinates(locator
           .field("Coordinates"), pointType.getCoordinates()); //$NON-NLS-1$
-      if (coords.length == 1) {
+      if (coords.length != 1) {
         throw new ConversionFailedException(locator.field("Coordinates"), //$NON-NLS-1$
             "Expected exactly one coordinate."); //$NON-NLS-1$
       }

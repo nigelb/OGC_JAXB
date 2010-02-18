@@ -102,27 +102,30 @@ public class GML311ToJTSCoordinateConverter {
       String ds,
       String cs,
       String ts) throws ConversionFailedException {
-    final String coordinateSeparator = cs == null ? " " : cs; //$NON-NLS-1$
+    
+    final String tupleSeparator = ts == null ? " " : ts; //$NON-NLS-1$
 
-    final String[] coordinates = StringUtils.split(value, coordinateSeparator);
-    final Coordinate[] coordinatesArray = new Coordinate[coordinates.length];
-    for (int index = 0; index < coordinates.length; index++) {
-      coordinatesArray[index] = createCoordinate(locator.entry(index), coordinates[index], ds, ts);
+    final String[] tuples = StringUtils.split(value, tupleSeparator);
+    
+    final Coordinate[] coordinatesArray = new Coordinate[tuples.length];
+    for (int index = 0; index < tuples.length; index++) {
+      coordinatesArray[index] = createCoordinate(locator.entry(index), tuples[index], ds, cs);
     }
     return coordinatesArray;
   }
 
-  public Coordinate createCoordinate(ObjectLocator locator, String value, String ds, String ts)
+  public Coordinate createCoordinate(ObjectLocator locator, String value, String ds, String cs)
       throws ConversionFailedException {
-    final String tupleSeparator = ts == null ? "," : ts; //$NON-NLS-1$
 
-    final String[] tuples = StringUtils.split(value, tupleSeparator);
+    final String coordinateSeparator = cs == null ? "," : cs; //$NON-NLS-1$
 
-    final double[] coordinateComponents = new double[tuples.length];
-    for (int index = 0; index < tuples.length; index++) {
+    final String[] coordinates = StringUtils.split(value, coordinateSeparator);
+
+    final double[] coordinateComponents = new double[coordinates.length];
+    for (int index = 0; index < coordinates.length; index++) {
       coordinateComponents[index] = createCoordinateComponent(
           locator.entry(index),
-          tuples[index],
+          coordinates[index],
           ds);
     }
     if (coordinateComponents.length == 2) {
