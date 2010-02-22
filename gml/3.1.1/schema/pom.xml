@@ -18,12 +18,13 @@
 			<groupId>com.sun.xml.bind</groupId>
 			<artifactId>jaxb-impl</artifactId>
 			<version>2.1.12</version>
+            <scope>provided</scope>
 		</dependency>
-		<dependency>
+		<!-- dependency>
 			<groupId>org.jvnet.jaxb2_commons</groupId>
 			<artifactId>jaxb2-basics-runtime</artifactId>
 			<version>0.5.3-SNAPSHOT</version>
-		</dependency>
+		</dependency-->
 	</dependencies>
 	<build>
 		<defaultGoal>install</defaultGoal>
@@ -37,11 +38,11 @@
 					</schemaIncludes>
 					<episode>false</episode>
 					<args>
-						<arg>-XtoString</arg>
-						<arg>-Xequals</arg>
-						<arg>-XhashCode</arg>
-						<arg>-Xinheritance</arg>
-						<arg>-Xcopyable</arg>
+						<!-- arg>-XtoString</arg-->
+						<!-- arg>-Xequals</arg-->
+						<!--arg>-XhashCode</arg-->
+						<!--arg>-Xinheritance</arg-->
+						<!-- arg>-Xcopyable</arg-->
 						<arg>-Xsetters</arg>
 					</args>
 					<plugins>
