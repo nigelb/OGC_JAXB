@@ -67,4 +67,11 @@ public class JTSToGML311ConverterTest extends TestCase {
 
   }
 
+  public void testPoint3() throws Exception {
+
+    final Point point = geometryFactory.createPoint(new Coordinate(10, 20));
+    final JAXBElement<? extends AbstractGeometryType> element = converter.createElement(point);
+    Assert.assertEquals(null, element.getValue().getSrsName()); //$NON-NLS-1$
+
+  }
 }
