@@ -4,7 +4,6 @@ import javax.xml.bind.JAXBElement;
 
 import net.opengis.gml.v_3_1_1.MultiPolygonPropertyType;
 import net.opengis.gml.v_3_1_1.MultiPolygonType;
-import net.opengis.gml.v_3_1_1.ObjectFactory;
 
 import com.vividsolutions.jts.geom.MultiPolygon;
 import com.vividsolutions.jts.geom.Polygon;
@@ -14,17 +13,21 @@ public class JTSToGML311MultiPolygonConverter
     AbstractJTSToGML311Converter<MultiPolygonType, MultiPolygonPropertyType, MultiPolygon> {
   private final JTSToGML311PolygonConverter polygonConverter;
 
-  public JTSToGML311MultiPolygonConverter(ObjectFactory objectFactory) {
-    super(objectFactory);
-    polygonConverter = new JTSToGML311PolygonConverter(objectFactory);
+  public JTSToGML311MultiPolygonConverter(JTSToGML311PolygonConverter polygonConverter) {
+    super(polygonConverter.getObjectFactory(), polygonConverter.getSrsReferenceGroupConverter());
+    this.polygonConverter = polygonConverter;
   }
 
   public JTSToGML311MultiPolygonConverter() {
-    this(new ObjectFactory());
+    this(new JTSToGML311PolygonConverter(new JTSToGML311LinearRingConverter(
+        new JTSToGML311CoordinateConverter(
+            JTSToGML311Constants.DEFAULT_OBJECT_FACTORY,
+            JTSToGML311Constants.DEFAULT_SRS_REFERENCE_GROUP_CONVERTER))
+    ));
   }
 
   @Override
-  public MultiPolygonType createGeometryType(MultiPolygon multiPolygon) {
+  protected MultiPolygonType doCreateGeometryType(MultiPolygon multiPolygon) {
     final MultiPolygonType multiPolygonType = getObjectFactory().createMultiPolygonType();
     for (int index = 0; index < multiPolygon.getNumGeometries(); index++) {
       final Polygon polygon = (Polygon) multiPolygon.getGeometryN(index);

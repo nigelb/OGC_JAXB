@@ -4,7 +4,6 @@ import javax.xml.bind.JAXBElement;
 
 import net.opengis.gml.v_3_1_1.MultiLineStringPropertyType;
 import net.opengis.gml.v_3_1_1.MultiLineStringType;
-import net.opengis.gml.v_3_1_1.ObjectFactory;
 
 import com.vividsolutions.jts.geom.LineString;
 import com.vividsolutions.jts.geom.MultiLineString;
@@ -14,17 +13,20 @@ public class JTSToGML311MultiLineStringConverter
     AbstractJTSToGML311Converter<MultiLineStringType, MultiLineStringPropertyType, MultiLineString> {
   private final JTSToGML311LineStringConverter lineStringConverter;
 
-  public JTSToGML311MultiLineStringConverter(ObjectFactory objectFactory) {
-    super(objectFactory);
-    lineStringConverter = new JTSToGML311LineStringConverter(objectFactory);
+  public JTSToGML311MultiLineStringConverter(JTSToGML311LineStringConverter lineStringConverter) {
+    super(lineStringConverter.getObjectFactory(), lineStringConverter
+        .getSrsReferenceGroupConverter());
+    this.lineStringConverter = lineStringConverter;
   }
 
   public JTSToGML311MultiLineStringConverter() {
-    this(new ObjectFactory());
+    this(new JTSToGML311LineStringConverter(new JTSToGML311CoordinateConverter(
+        JTSToGML311Constants.DEFAULT_OBJECT_FACTORY,
+        JTSToGML311Constants.DEFAULT_SRS_REFERENCE_GROUP_CONVERTER)));
   }
 
   @Override
-  public MultiLineStringType createGeometryType(MultiLineString multiLineString) {
+  protected MultiLineStringType doCreateGeometryType(MultiLineString multiLineString) {
     final MultiLineStringType multiLineStringType = getObjectFactory().createMultiLineStringType();
     for (int index = 0; index < multiLineString.getNumGeometries(); index++) {
       final LineString lineString = (LineString) multiLineString.getGeometryN(index);

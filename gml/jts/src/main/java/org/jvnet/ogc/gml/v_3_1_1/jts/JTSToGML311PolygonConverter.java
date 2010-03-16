@@ -3,7 +3,6 @@ package org.jvnet.ogc.gml.v_3_1_1.jts;
 import javax.xml.bind.JAXBElement;
 
 import net.opengis.gml.v_3_1_1.AbstractRingPropertyType;
-import net.opengis.gml.v_3_1_1.ObjectFactory;
 import net.opengis.gml.v_3_1_1.PolygonPropertyType;
 import net.opengis.gml.v_3_1_1.PolygonType;
 
@@ -15,17 +14,20 @@ public class JTSToGML311PolygonConverter
     AbstractJTSToGML311Converter<PolygonType, PolygonPropertyType, Polygon> {
   private final JTSToGML311LinearRingConverter linearRingConverter;
 
-  public JTSToGML311PolygonConverter(ObjectFactory objectFactory) {
-    super(objectFactory);
-    linearRingConverter = new JTSToGML311LinearRingConverter(objectFactory);
+  public JTSToGML311PolygonConverter(JTSToGML311LinearRingConverter linearRingConverter) {
+    super(linearRingConverter.getObjectFactory(), linearRingConverter
+        .getSrsReferenceGroupConverter());
+    this.linearRingConverter = linearRingConverter;
   }
 
   public JTSToGML311PolygonConverter() {
-    this(new ObjectFactory());
+    this(new JTSToGML311LinearRingConverter(new JTSToGML311CoordinateConverter(
+        JTSToGML311Constants.DEFAULT_OBJECT_FACTORY,
+        JTSToGML311Constants.DEFAULT_SRS_REFERENCE_GROUP_CONVERTER)));
   }
 
   @Override
-  public PolygonType createGeometryType(Polygon polygon) {
+  protected PolygonType doCreateGeometryType(Polygon polygon) {
     final PolygonType resultPolygon = getObjectFactory().createPolygonType();
     {
       final LinearRing exteriorRing = (LinearRing) polygon.getExteriorRing();

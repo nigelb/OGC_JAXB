@@ -8,13 +8,28 @@ import com.vividsolutions.jts.geom.Coordinate;
 public class JTSToGML311CoordinateConverter {
   private final ObjectFactory objectFactory;
 
-  public JTSToGML311CoordinateConverter(ObjectFactory objectFactory) {
+  private final JTSToGML311SRSReferenceGroupConverterInterface srsReferenceGroupConverter;
+
+  public JTSToGML311CoordinateConverter(
+      ObjectFactory objectFactory,
+      JTSToGML311SRSReferenceGroupConverterInterface srsReferenceGroupConverter) {
     super();
     this.objectFactory = objectFactory;
+    this.srsReferenceGroupConverter = srsReferenceGroupConverter;
+  }
+  
+  public ObjectFactory getObjectFactory() {
+    return objectFactory;
+  }
+  
+  public JTSToGML311SRSReferenceGroupConverterInterface getSrsReferenceGroupConverter() {
+    return srsReferenceGroupConverter;
   }
 
   public JTSToGML311CoordinateConverter() {
-    this(new ObjectFactory());
+    this(
+        JTSToGML311Constants.DEFAULT_OBJECT_FACTORY,
+        JTSToGML311Constants.DEFAULT_SRS_REFERENCE_GROUP_CONVERTER);
   }
 
   public DirectPositionType convertCoordinate(Coordinate coordinate) {

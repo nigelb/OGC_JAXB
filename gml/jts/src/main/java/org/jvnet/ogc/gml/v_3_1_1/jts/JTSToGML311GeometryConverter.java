@@ -20,6 +20,7 @@ public class JTSToGML311GeometryConverter
     extends
     AbstractJTSToGML311Converter<AbstractGeometryType, GeometryPropertyType, Geometry> {
 
+  private final JTSToGML311CoordinateConverter coordinateConverter;
   private final JTSToGML311PointConverter pointConverter;
   private final JTSToGML311LinearRingConverter linearRingConverter;
   private final JTSToGML311LineStringConverter lineStringConverter;
@@ -29,24 +30,35 @@ public class JTSToGML311GeometryConverter
   private final JTSToGML311MultiPolygonConverter multiPolygonConverter;
   private final JTSToGML311MultiGeometryConverter multiGeometryConverter;
 
-  public JTSToGML311GeometryConverter(ObjectFactory objectFactory) {
-    super(objectFactory);
-    pointConverter = new JTSToGML311PointConverter(objectFactory);
-    linearRingConverter = new JTSToGML311LinearRingConverter(objectFactory);
-    lineStringConverter = new JTSToGML311LineStringConverter(objectFactory);
-    polygonConverter = new JTSToGML311PolygonConverter(objectFactory);
-    multiPointConverter = new JTSToGML311MultiPointConverter(objectFactory);
-    multiLineStringConverter = new JTSToGML311MultiLineStringConverter(objectFactory);
-    multiPolygonConverter = new JTSToGML311MultiPolygonConverter(objectFactory);
-    multiGeometryConverter = new JTSToGML311MultiGeometryConverter(objectFactory, this);
+  public JTSToGML311GeometryConverter(JTSToGML311CoordinateConverter coordinateConverter) {
+    super(coordinateConverter.getObjectFactory(), coordinateConverter
+        .getSrsReferenceGroupConverter());
+    this.coordinateConverter = coordinateConverter;
+    this.pointConverter = new JTSToGML311PointConverter(this.coordinateConverter);
+    this.linearRingConverter = new JTSToGML311LinearRingConverter(this.coordinateConverter);
+    this.lineStringConverter = new JTSToGML311LineStringConverter(this.coordinateConverter);
+    this.polygonConverter = new JTSToGML311PolygonConverter(this.linearRingConverter);
+    this.multiPointConverter = new JTSToGML311MultiPointConverter(this.pointConverter);
+    this.multiLineStringConverter = new JTSToGML311MultiLineStringConverter(
+        this.lineStringConverter);
+    this.multiPolygonConverter = new JTSToGML311MultiPolygonConverter(this.polygonConverter);
+    this.multiGeometryConverter = new JTSToGML311MultiGeometryConverter(this);
   }
 
   public JTSToGML311GeometryConverter() {
-    this(new ObjectFactory());
+    this(new JTSToGML311CoordinateConverter(
+        JTSToGML311Constants.DEFAULT_OBJECT_FACTORY,
+        JTSToGML311Constants.DEFAULT_SRS_REFERENCE_GROUP_CONVERTER));
+  }
+
+  public JTSToGML311GeometryConverter(
+      ObjectFactory objectFactory,
+      JTSToGML311SRSReferenceGroupConverterInterface srsReferenceGroupConverter) {
+    this(new JTSToGML311CoordinateConverter(objectFactory, srsReferenceGroupConverter));
   }
 
   @Override
-  public AbstractGeometryType createGeometryType(Geometry geometry) {
+  protected AbstractGeometryType doCreateGeometryType(Geometry geometry) {
     if (geometry instanceof Point) {
       return pointConverter.createGeometryType((Point) geometry);
     }

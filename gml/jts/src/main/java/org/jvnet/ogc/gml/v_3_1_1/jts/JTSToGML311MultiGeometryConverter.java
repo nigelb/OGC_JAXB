@@ -4,7 +4,6 @@ import javax.xml.bind.JAXBElement;
 
 import net.opengis.gml.v_3_1_1.MultiGeometryPropertyType;
 import net.opengis.gml.v_3_1_1.MultiGeometryType;
-import net.opengis.gml.v_3_1_1.ObjectFactory;
 
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryCollection;
@@ -14,15 +13,13 @@ public class JTSToGML311MultiGeometryConverter
     AbstractJTSToGML311Converter<MultiGeometryType, MultiGeometryPropertyType, GeometryCollection> {
   private final JTSToGML311GeometryConverter geometryConverter;
 
-  public JTSToGML311MultiGeometryConverter(
-      ObjectFactory objectFactory,
-      JTSToGML311GeometryConverter geometryConverter) {
-    super(objectFactory);
+  public JTSToGML311MultiGeometryConverter(JTSToGML311GeometryConverter geometryConverter) {
+    super(geometryConverter.getObjectFactory(), geometryConverter.getSrsReferenceGroupConverter());
     this.geometryConverter = geometryConverter;
   }
 
   @Override
-  public MultiGeometryType createGeometryType(GeometryCollection multiGeometry) {
+  protected MultiGeometryType doCreateGeometryType(GeometryCollection multiGeometry) {
     final MultiGeometryType multiGeometryType = getObjectFactory().createMultiGeometryType();
 
     for (int index = 0; index < multiGeometry.getNumGeometries(); index++) {

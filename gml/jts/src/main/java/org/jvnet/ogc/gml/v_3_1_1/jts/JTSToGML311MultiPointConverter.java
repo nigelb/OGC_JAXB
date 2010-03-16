@@ -4,7 +4,6 @@ import javax.xml.bind.JAXBElement;
 
 import net.opengis.gml.v_3_1_1.MultiPointPropertyType;
 import net.opengis.gml.v_3_1_1.MultiPointType;
-import net.opengis.gml.v_3_1_1.ObjectFactory;
 
 import com.vividsolutions.jts.geom.MultiPoint;
 import com.vividsolutions.jts.geom.Point;
@@ -14,17 +13,19 @@ public class JTSToGML311MultiPointConverter
     AbstractJTSToGML311Converter<MultiPointType, MultiPointPropertyType, MultiPoint> {
   private final JTSToGML311PointConverter pointConverter;
 
-  public JTSToGML311MultiPointConverter(ObjectFactory objectFactory) {
-    super(objectFactory);
-    pointConverter = new JTSToGML311PointConverter(objectFactory);
+  public JTSToGML311MultiPointConverter(JTSToGML311PointConverter pointConverter) {
+    super(pointConverter.getObjectFactory(), pointConverter.getSrsReferenceGroupConverter());
+    this.pointConverter = pointConverter;
   }
 
   public JTSToGML311MultiPointConverter() {
-    this(new ObjectFactory());
+    this(new JTSToGML311PointConverter(new JTSToGML311CoordinateConverter(
+        JTSToGML311Constants.DEFAULT_OBJECT_FACTORY,
+        JTSToGML311Constants.DEFAULT_SRS_REFERENCE_GROUP_CONVERTER)));
   }
 
   @Override
-  public MultiPointType createGeometryType(MultiPoint multiPoint) {
+  protected MultiPointType doCreateGeometryType(MultiPoint multiPoint) {
     final MultiPointType multiPointType = getObjectFactory().createMultiPointType();
 
     for (int index = 0; index < multiPoint.getNumGeometries(); index++) {

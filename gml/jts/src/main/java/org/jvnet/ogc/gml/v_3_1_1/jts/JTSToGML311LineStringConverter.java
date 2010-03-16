@@ -5,7 +5,6 @@ import javax.xml.bind.JAXBElement;
 import net.opengis.gml.v_3_1_1.DirectPositionType;
 import net.opengis.gml.v_3_1_1.LineStringPropertyType;
 import net.opengis.gml.v_3_1_1.LineStringType;
-import net.opengis.gml.v_3_1_1.ObjectFactory;
 
 import com.vividsolutions.jts.geom.LineString;
 
@@ -14,17 +13,20 @@ public class JTSToGML311LineStringConverter
     AbstractJTSToGML311Converter<LineStringType, LineStringPropertyType, LineString> {
   private final JTSToGML311CoordinateConverter coordinateConverter;
 
-  public JTSToGML311LineStringConverter(ObjectFactory objectFactory) {
-    super(objectFactory);
-    coordinateConverter = new JTSToGML311CoordinateConverter(objectFactory);
+  public JTSToGML311LineStringConverter(JTSToGML311CoordinateConverter coordinateConverter) {
+    super(coordinateConverter.getObjectFactory(), coordinateConverter
+        .getSrsReferenceGroupConverter());
+    this.coordinateConverter = coordinateConverter;
   }
 
   public JTSToGML311LineStringConverter() {
-    this(new ObjectFactory());
+    this(new JTSToGML311CoordinateConverter(
+        JTSToGML311Constants.DEFAULT_OBJECT_FACTORY,
+        JTSToGML311Constants.DEFAULT_SRS_REFERENCE_GROUP_CONVERTER));
   }
 
   @Override
-  public LineStringType createGeometryType(LineString lineString) {
+  protected LineStringType doCreateGeometryType(LineString lineString) {
 
     final LineStringType resultLineString = getObjectFactory().createLineStringType();
 

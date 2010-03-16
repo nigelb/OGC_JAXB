@@ -5,7 +5,6 @@ import javax.xml.bind.JAXBElement;
 import net.opengis.gml.v_3_1_1.AbstractRingPropertyType;
 import net.opengis.gml.v_3_1_1.DirectPositionType;
 import net.opengis.gml.v_3_1_1.LinearRingType;
-import net.opengis.gml.v_3_1_1.ObjectFactory;
 
 import com.vividsolutions.jts.geom.LinearRing;
 
@@ -14,17 +13,20 @@ public class JTSToGML311LinearRingConverter
     AbstractJTSToGML311Converter<LinearRingType, AbstractRingPropertyType, LinearRing> {
   private final JTSToGML311CoordinateConverter coordinateConverter;
 
-  public JTSToGML311LinearRingConverter(ObjectFactory objectFactory) {
-    super(objectFactory);
-    coordinateConverter = new JTSToGML311CoordinateConverter(objectFactory);
+  public JTSToGML311LinearRingConverter(JTSToGML311CoordinateConverter coordinateConverter) {
+    super(coordinateConverter.getObjectFactory(), coordinateConverter
+        .getSrsReferenceGroupConverter());
+    this.coordinateConverter = coordinateConverter;
   }
 
   public JTSToGML311LinearRingConverter() {
-    this(new ObjectFactory());
+    this(new JTSToGML311CoordinateConverter(
+        JTSToGML311Constants.DEFAULT_OBJECT_FACTORY,
+        JTSToGML311Constants.DEFAULT_SRS_REFERENCE_GROUP_CONVERTER));
   }
 
   @Override
-  public LinearRingType createGeometryType(LinearRing linearRing) {
+  protected LinearRingType doCreateGeometryType(LinearRing linearRing) {
     final LinearRingType resultLinearRing = getObjectFactory().createLinearRingType();
 
     for (DirectPositionType directPosition : coordinateConverter.convertCoordinates(linearRing
