@@ -1,7 +1,6 @@
 package net.opengis.gml.v_3_1_1;
 
 import java.math.BigInteger;
-import java.util.List;
 
 import org.jvnet.jaxb2_commons.lang.CopyTo;
 import org.jvnet.jaxb2_commons.lang.Copyable;
@@ -15,6 +14,19 @@ public class DefaultSRSReferenceGroup extends DefaultSRSInformationGroup
     SRSReferenceGroup,
     Copyable,
     CopyTo {
+
+  public DefaultSRSReferenceGroup() {
+  }
+
+  public DefaultSRSReferenceGroup(SRSReferenceGroup that) {
+    super(that);
+    if (that.isSetSrsDimension()) {
+      this.setSrsDimension(that.getSrsDimension());
+    }
+    if (this.isSetSrsName()) {
+      this.setSrsName(that.getSrsName());
+    }
+  }
 
   protected String srsName;
   protected BigInteger srsDimension;
@@ -66,38 +78,9 @@ public class DefaultSRSReferenceGroup extends DefaultSRSInformationGroup
   @Override
   public Object copyTo(ObjectLocator locator, Object target, CopyBuilder copyBuilder) {
     final Object draftCopy = ((target == null) ? createNewInstance() : target);
+    super.copyTo(locator, draftCopy, copyBuilder);
     if (draftCopy instanceof SRSReferenceGroup) {
       final SRSReferenceGroup copy = ((SRSReferenceGroup) draftCopy);
-      if (this.isSetAxisLabels()) {
-        List<String> sourceAxisLabels;
-        sourceAxisLabels = this.getAxisLabels();
-        @SuppressWarnings("unchecked")
-        List<String> copyAxisLabels = ((List<String>) copyBuilder.copy(LocatorUtils.field(
-            locator,
-            "axisLabels"), sourceAxisLabels));
-        copy.unsetAxisLabels();
-        List<String> uniqueAxisLabelsl = copy.getAxisLabels();
-        uniqueAxisLabelsl.addAll(copyAxisLabels);
-      }
-      else {
-        copy.unsetAxisLabels();
-      }
-
-      if (this.isSetUomLabels()) {
-        List<String> sourceUomLabels;
-        sourceUomLabels = this.getUomLabels();
-        @SuppressWarnings("unchecked")
-        List<String> copyUomLabels = ((List<String>) copyBuilder.copy(LocatorUtils.field(
-            locator,
-            "uomLabels"), sourceUomLabels));
-        copy.unsetUomLabels();
-        List<String> uniqueUomLabelsl = copy.getUomLabels();
-        uniqueUomLabelsl.addAll(copyUomLabels);
-      }
-      else {
-        copy.unsetUomLabels();
-      }
-
       if (this.isSetSrsName()) {
         String sourceSrsName;
         sourceSrsName = this.getSrsName();
@@ -115,7 +98,7 @@ public class DefaultSRSReferenceGroup extends DefaultSRSInformationGroup
         sourceSrsDimension = this.getSrsDimension();
         BigInteger copySrsDimension = ((BigInteger) copyBuilder.copy(LocatorUtils.field(
             locator,
-            "srsName"), sourceSrsDimension));
+            "srsDimension"), sourceSrsDimension));
         copy.setSrsDimension(copySrsDimension);
       }
       else {
@@ -123,6 +106,61 @@ public class DefaultSRSReferenceGroup extends DefaultSRSInformationGroup
       }
     }
     return draftCopy;
+  }
+
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = super.hashCode();
+    result = prime * result + ((srsDimension == null) ? 0 : srsDimension.hashCode());
+    result = prime * result + ((srsName == null) ? 0 : srsName.hashCode());
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (!super.equals(obj))
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    DefaultSRSReferenceGroup other = (DefaultSRSReferenceGroup) obj;
+    if (getSrsDimension() == null) {
+      if (other.getSrsDimension() != null) {
+        return false;
+      }
+    }
+    else if (!getSrsDimension().equals(other.getSrsDimension())) {
+      return false;
+    }
+    if (getSrsName() == null) {
+      if (other.getSrsName() != null) {
+        return false;
+      }
+    }
+    else if (!getSrsName().equals(other.getSrsName())) {
+      return false;
+    }
+
+    if (getAxisLabels() == null) {
+      if (other.getAxisLabels() != null) {
+        return false;
+      }
+    }
+    else if (!getAxisLabels().equals(other.getAxisLabels())) {
+      return false;
+    }
+
+    if (getUomLabels() == null) {
+      if (other.getUomLabels() != null) {
+        return false;
+      }
+    }
+    else if (!getUomLabels().equals(other.getUomLabels())) {
+      return false;
+    }
+    return true;
   }
 
 }
