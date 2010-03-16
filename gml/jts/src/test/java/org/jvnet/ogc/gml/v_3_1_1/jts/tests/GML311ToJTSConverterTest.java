@@ -11,7 +11,6 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 import net.opengis.gml.v_3_1_1.ObjectFactory;
 
-import org.apache.commons.lang.ObjectUtils;
 import org.jvnet.ogc.gml.v_3_1_1.jts.ConversionFailedException;
 import org.jvnet.ogc.gml.v_3_1_1.jts.GML311ToJTSConverter;
 

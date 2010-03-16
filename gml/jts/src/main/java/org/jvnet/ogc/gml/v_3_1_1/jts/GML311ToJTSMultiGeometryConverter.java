@@ -15,6 +15,7 @@ import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.GeometryCollection;
 import com.vividsolutions.jts.geom.GeometryFactory;
 
+@SuppressWarnings("nls")
 public class GML311ToJTSMultiGeometryConverter
     extends
     AbstractGML311ToJTSConverter<MultiGeometryType, MultiGeometryPropertyType, GeometryCollection> {

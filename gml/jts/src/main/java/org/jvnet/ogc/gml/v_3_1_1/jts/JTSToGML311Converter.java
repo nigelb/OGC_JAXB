@@ -42,7 +42,6 @@ public class JTSToGML311Converter {
   // + MultiLineString
   // + MultiPolygon
 
-  private final ObjectFactory objectFactory;
   private final JTSToGML311CoordinateConverter coordinateConverter;
   private final JTSToGML311PointConverter pointConverter;
   private final JTSToGML311LinearRingConverter linearRingConverter;
@@ -56,7 +55,6 @@ public class JTSToGML311Converter {
 
   public JTSToGML311Converter(ObjectFactory objectFactory) {
     super();
-    this.objectFactory = objectFactory;
     coordinateConverter = new JTSToGML311CoordinateConverter(objectFactory);
     pointConverter = new JTSToGML311PointConverter(objectFactory);
     linearRingConverter = new JTSToGML311LinearRingConverter(objectFactory);
