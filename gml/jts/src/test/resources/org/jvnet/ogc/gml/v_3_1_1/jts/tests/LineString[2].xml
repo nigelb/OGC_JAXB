@@ -2,54 +2,5 @@
 <gml:LineString
   xmlns:gml="http://www.opengis.net/gml"
   srsName="http://www.opengis.net/gml/srs/epsg.xml#63266405">
-	<gml:pos>-59.478340 -52.226578</gml:pos>
-    <gml:pointProperty>
-      <gml:Point>
-        <gml:pos>-59.484871 -52.223564</gml:pos>
-      </gml:Point>
-    </gml:pointProperty>
-    <gml:pointRep>
-      <gml:Point>
-        <gml:pos>-59.488991 -52.198524</gml:pos>
-      </gml:Point>
-    </gml:pointRep>
-    <gml:coord>
-      <gml:X>-59.485958</gml:X>
-      <gml:Y>-52.169559</gml:Y>
-    </gml:coord>
-    <gml:pos>-59.480400 -52.152615</gml:pos>
-    <gml:pointProperty>
-      <gml:Point>
-        <gml:coordinates>-59.465576,-52.141491</gml:coordinates>
-      </gml:Point>
-    </gml:pointProperty>
-    <gml:pointRep>
-      <gml:Point>
-        <gml:pos>-59.462002 -52.136417</gml:pos>
-      </gml:Point>
-    </gml:pointRep>
-    <gml:coord>
-      <gml:X>-59.447968</gml:X>
-      <gml:Y>-52.127190</gml:Y>
-    </gml:coord>
-    <gml:pos>-59.422928 -52.120701</gml:pos>
-    <gml:pointProperty>
-      <gml:Point>
-        <gml:coord>
-          <gml:X>-59.411915</gml:X>
-          <gml:Y>-52.117844</gml:Y>
-        </gml:coord>
-      </gml:Point>
-    </gml:pointProperty>
-    <gml:pointRep>
-      <gml:Point>
-        <gml:pos>-59.397972 -52.116440</gml:pos>
-      </gml:Point>
-    </gml:pointRep>
-    <gml:coord>
-      <gml:X>-59.371311</gml:X>
-      <gml:Y>-52.121300</gml:Y>
-    </gml:coord>
+	<gml:coordinates>-59.478340,-52.226578 -59.484871,-52.223564 -59.488991,-52.198524 -59.485958,-52.169559 -59.480400,-52.152615 -59.465576,-52.141491 -59.462002,-52.136417 -59.447968,-52.127190 -59.422928,-52.120701 -59.411915,-52.117844 -59.397972,-52.116440 -59.371311,-52.121300</gml:coordinates>
 </gml:LineString>
-
-           
