@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gml:LineString
+  xmlns:gml="http://www.opengis.net/gml"
+  srsName="http://www.opengis.net/gml/srs/epsg.xml#63266405">
+  <gml:pos>-59.478340 -52.226578</gml:pos>
+  <gml:pos>-59.484871 -52.223564</gml:pos>
+  <gml:pos>-59.488991 -52.198524</gml:pos>
+  <gml:pos>-59.485958 -52.169559</gml:pos>
+  <gml:pos>-59.480400 -52.152615</gml:pos>
+  <gml:pos>-59.465576 -52.141491</gml:pos>
+  <gml:pos>-59.462002 -52.136417</gml:pos>
+  <gml:pos>-59.447968 -52.127190</gml:pos>
+  <gml:pos>-59.422928 -52.120701</gml:pos>
+  <gml:pos>-59.411915 -52.117844</gml:pos>
+  <gml:pos>-59.397972 -52.116440</gml:pos>
+  <gml:pos>-59.371311 -52.121300</gml:pos>
+</gml:LineString>

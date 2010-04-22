@@ -85,13 +85,24 @@ public class GML311ToJTSConverterTest extends TestCase {
     Assert.assertEquals(12, lineString.getCoordinates().length);
 
   }
+  
+  public void testLineString3() throws Exception {
+
+    final LineString lineString = (LineString) unmarshal("LineString[2].xml"); //$NON-NLS-1$
+    Assert.assertFalse(lineString.isEmpty());
+    Assert.assertTrue(lineString.isValid());
+    Assert.assertEquals(12, lineString.getCoordinates().length);
+
+  }
 
   public void testLineStrings() throws Exception {
     final LineString lineString0 = (LineString) unmarshal("LineString[0].xml"); //$NON-NLS-1$
     final LineString lineString1 = (LineString) unmarshal("LineString[1].xml"); //$NON-NLS-1$
     final LineString lineString2 = (LineString) unmarshal("LineString[2].xml"); //$NON-NLS-1$
+    final LineString lineString3 = (LineString) unmarshal("LineString[2].xml"); //$NON-NLS-1$
     Assert.assertTrue(lineString0.equals(lineString1));
     Assert.assertTrue(lineString1.equals(lineString2));
+    Assert.assertTrue(lineString2.equals(lineString3));
   }
 
   public void testPolygon0() throws Exception {
