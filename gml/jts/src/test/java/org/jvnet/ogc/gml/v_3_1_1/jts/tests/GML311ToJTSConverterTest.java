@@ -16,6 +16,7 @@ import org.jvnet.ogc.gml.v_3_1_1.jts.GML311ToJTSConverter;
 
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.LineString;
+import com.vividsolutions.jts.geom.LinearRing;
 import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.geom.Polygon;
 
@@ -104,6 +105,33 @@ public class GML311ToJTSConverterTest extends TestCase {
     Assert.assertTrue(lineString1.equals(lineString2));
     Assert.assertTrue(lineString2.equals(lineString3));
   }
+  
+  public void testLinearRing0() throws Exception {
+
+    final LinearRing linearRing = (LinearRing) unmarshal("LinearRing[0].xml"); //$NON-NLS-1$
+    Assert.assertFalse(linearRing.isEmpty());
+    Assert.assertTrue(linearRing.isValid());
+    Assert.assertEquals(13, linearRing.getCoordinates().length);
+
+  }
+
+  public void testLinearRing1() throws Exception {
+
+    final LinearRing linearRing = (LinearRing) unmarshal("LinearRing[1].xml"); //$NON-NLS-1$
+    Assert.assertFalse(linearRing.isEmpty());
+    Assert.assertTrue(linearRing.isValid());
+    Assert.assertEquals(13, linearRing.getCoordinates().length);
+
+  }
+  
+  public void testLinearRings() throws Exception {
+    final LinearRing linearRing0 = (LinearRing) unmarshal("LinearRing[0].xml"); //$NON-NLS-1$
+    final LinearRing linearRing1 = (LinearRing) unmarshal("LinearRing[1].xml"); //$NON-NLS-1$
+    Assert.assertTrue(linearRing0.equals(linearRing1));
+  }
+  
+  
+  
 
   public void testPolygon0() throws Exception {
 
@@ -111,4 +139,22 @@ public class GML311ToJTSConverterTest extends TestCase {
     Assert.assertEquals(20, polygon.getCoordinates().length);
 
   }
+
+  public void testPolygon1() throws Exception {
+    final Polygon polygon = (Polygon) unmarshal("Polygon[1].xml"); //$NON-NLS-1$
+    Assert.assertEquals(20, polygon.getCoordinates().length);
+  }
+  
+  public void testPolygon2() throws Exception {
+    final Polygon polygon = (Polygon) unmarshal("Polygon[2].xml"); //$NON-NLS-1$
+    final double area = polygon.getArea();
+    Assert.assertEquals(3600, area, 1);;
+  }
+
+  public void testPolygons() throws Exception {
+    final Polygon polygon0 = (Polygon) unmarshal("Polygon[0].xml"); //$NON-NLS-1$
+    final Polygon polygon1 = (Polygon) unmarshal("Polygon[1].xml"); //$NON-NLS-1$
+    Assert.assertTrue(polygon0.equals(polygon1));
+  }
+  
 }

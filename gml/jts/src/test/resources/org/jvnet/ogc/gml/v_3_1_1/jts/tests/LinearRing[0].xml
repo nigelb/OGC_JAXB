@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<gml:LineString xmlns:gml="http://www.opengis.net/gml">
+<gml:LinearRing xmlns:gml="http://www.opengis.net/gml">
   <gml:pos>-59.478340 -52.226578</gml:pos>
   <gml:pos>-59.484871 -52.223564</gml:pos>
   <gml:pos>-59.488991 -52.198524</gml:pos>
@@ -12,4 +12,5 @@
   <gml:pos>-59.411915 -52.117844</gml:pos>
   <gml:pos>-59.397972 -52.116440</gml:pos>
   <gml:pos>-59.371311 -52.121300</gml:pos>
-</gml:LineString>
+  <gml:pos>-59.478340 -52.226578</gml:pos>
+</gml:LinearRing>
