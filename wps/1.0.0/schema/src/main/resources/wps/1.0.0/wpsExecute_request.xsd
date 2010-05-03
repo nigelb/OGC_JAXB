@@ -307,11 +307,13 @@ For conditions, see OGC Software Notice http://www.opengeospatial.org/ogc/softwa
 		<attributeGroup ref="wps:ComplexDataEncoding"/>
 	</complexType>
 	<!-- =========================================================== -->
-	<complexType name="ComplexDataType" mixed="true">
+	<!-- ** complexType name="ComplexDataType" mixed="true" -->
+	<complexType name="ComplexDataType">
 		<annotation>
 			<documentation>Complex data (such as an image), including a definition of the complex value data structure (i.e., schema, format, and encoding).  May be an ows:Manifest data structure.</documentation>
 		</annotation>
-		<complexContent mixed="true">
+		<!-- ** complexContent mixed="true" -->
+		<complexContent>
 			<extension base="anyType">
 				<attributeGroup ref="wps:ComplexDataEncoding"/>
 			</extension>

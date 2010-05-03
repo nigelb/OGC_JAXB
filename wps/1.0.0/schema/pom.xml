@@ -56,6 +56,7 @@
 						<arg>-Xcopyable</arg>
 						<arg>-Xsetters</arg>
 						<arg>-Xwildcard</arg>
+						<arg>-Xinject-code</arg>
 					</args>
 					<plugins>
 						<plugin>
