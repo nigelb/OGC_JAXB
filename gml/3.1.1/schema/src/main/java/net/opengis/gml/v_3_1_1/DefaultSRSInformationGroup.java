@@ -3,14 +3,13 @@ package net.opengis.gml.v_3_1_1;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jvnet.jaxb2_commons.lang.CopyStrategy;
 import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Copyable;
-import org.jvnet.jaxb2_commons.lang.builder.CopyBuilder;
-import org.jvnet.jaxb2_commons.lang.builder.JAXBCopyBuilder;
+import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
-public class DefaultSRSInformationGroup implements SRSInformationGroup, Copyable, CopyTo {
+public class DefaultSRSInformationGroup implements SRSInformationGroup, CopyTo {
 
   public DefaultSRSInformationGroup() {
   }
@@ -75,21 +74,11 @@ public class DefaultSRSInformationGroup implements SRSInformationGroup, Copyable
 
   @Override
   public Object copyTo(Object target) {
-    return copyTo(null, target);
+    return copyTo(null, target, JAXBCopyStrategy.INSTANCE);
   }
 
   @Override
-  public Object copyTo(ObjectLocator locator, Object target) {
-    return copyTo(locator, target, JAXBCopyBuilder.INSTANCE);
-  }
-
-  @Override
-  public Object copyTo(Object target, CopyBuilder copyBuilder) {
-    return copyTo(null, target, JAXBCopyBuilder.INSTANCE);
-  }
-
-  @Override
-  public Object copyTo(ObjectLocator locator, Object target, CopyBuilder copyBuilder) {
+  public Object copyTo(ObjectLocator locator, Object target, CopyStrategy copyStrategy) {
     final Object draftCopy = ((target == null) ? createNewInstance() : target);
     if (draftCopy instanceof SRSInformationGroup) {
       final SRSInformationGroup copy = ((SRSInformationGroup) draftCopy);
@@ -97,7 +86,7 @@ public class DefaultSRSInformationGroup implements SRSInformationGroup, Copyable
         List<String> sourceAxisLabels;
         sourceAxisLabels = this.getAxisLabels();
         @SuppressWarnings("unchecked")
-        List<String> copyAxisLabels = ((List<String>) copyBuilder.copy(LocatorUtils.field(
+        List<String> copyAxisLabels = ((List<String>) copyStrategy.copy(LocatorUtils.field(
             locator,
             "axisLabels"), sourceAxisLabels));
         copy.unsetAxisLabels();
@@ -112,7 +101,7 @@ public class DefaultSRSInformationGroup implements SRSInformationGroup, Copyable
         List<String> sourceUomLabels;
         sourceUomLabels = this.getUomLabels();
         @SuppressWarnings("unchecked")
-        List<String> copyUomLabels = ((List<String>) copyBuilder.copy(LocatorUtils.field(
+        List<String> copyUomLabels = ((List<String>) copyStrategy.copy(LocatorUtils.field(
             locator,
             "uomLabels"), sourceUomLabels));
         copy.unsetUomLabels();

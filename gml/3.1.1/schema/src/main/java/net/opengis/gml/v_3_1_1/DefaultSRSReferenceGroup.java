@@ -2,17 +2,15 @@ package net.opengis.gml.v_3_1_1;
 
 import java.math.BigInteger;
 
+import org.jvnet.jaxb2_commons.lang.CopyStrategy;
 import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Copyable;
-import org.jvnet.jaxb2_commons.lang.builder.CopyBuilder;
-import org.jvnet.jaxb2_commons.lang.builder.JAXBCopyBuilder;
+import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
 public class DefaultSRSReferenceGroup extends DefaultSRSInformationGroup
     implements
     SRSReferenceGroup,
-    Copyable,
     CopyTo {
 
   public DefaultSRSReferenceGroup() {
@@ -62,29 +60,19 @@ public class DefaultSRSReferenceGroup extends DefaultSRSInformationGroup
 
   @Override
   public Object copyTo(Object target) {
-    return copyTo(null, target);
+    return copyTo(null, target, JAXBCopyStrategy.INSTANCE);
   }
 
   @Override
-  public Object copyTo(ObjectLocator locator, Object target) {
-    return copyTo(locator, target, JAXBCopyBuilder.INSTANCE);
-  }
-
-  @Override
-  public Object copyTo(Object target, CopyBuilder copyBuilder) {
-    return copyTo(null, target, JAXBCopyBuilder.INSTANCE);
-  }
-
-  @Override
-  public Object copyTo(ObjectLocator locator, Object target, CopyBuilder copyBuilder) {
+  public Object copyTo(ObjectLocator locator, Object target, CopyStrategy copyStrategy) {
     final Object draftCopy = ((target == null) ? createNewInstance() : target);
-    super.copyTo(locator, draftCopy, copyBuilder);
+    super.copyTo(locator, draftCopy, copyStrategy);
     if (draftCopy instanceof SRSReferenceGroup) {
       final SRSReferenceGroup copy = ((SRSReferenceGroup) draftCopy);
       if (this.isSetSrsName()) {
         String sourceSrsName;
         sourceSrsName = this.getSrsName();
-        String copySrsName = ((String) copyBuilder.copy(
+        String copySrsName = ((String) copyStrategy.copy(
             LocatorUtils.field(locator, "srsName"),
             sourceSrsName));
         copy.setSrsName(copySrsName);
@@ -96,7 +84,7 @@ public class DefaultSRSReferenceGroup extends DefaultSRSInformationGroup
       if (this.isSetSrsDimension()) {
         BigInteger sourceSrsDimension;
         sourceSrsDimension = this.getSrsDimension();
-        BigInteger copySrsDimension = ((BigInteger) copyBuilder.copy(LocatorUtils.field(
+        BigInteger copySrsDimension = ((BigInteger) copyStrategy.copy(LocatorUtils.field(
             locator,
             "srsDimension"), sourceSrsDimension));
         copy.setSrsDimension(copySrsDimension);
