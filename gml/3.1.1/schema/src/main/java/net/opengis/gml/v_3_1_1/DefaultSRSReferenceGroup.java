@@ -72,9 +72,10 @@ public class DefaultSRSReferenceGroup extends DefaultSRSInformationGroup
       if (this.isSetSrsName()) {
         String sourceSrsName;
         sourceSrsName = this.getSrsName();
-        String copySrsName = ((String) copyStrategy.copy(
-            LocatorUtils.field(locator, "srsName"),
-            sourceSrsName));
+        String copySrsName = ((String) copyStrategy.copy(LocatorUtils.field(
+            locator,
+            "srsName",
+            sourceSrsName), sourceSrsName));
         copy.setSrsName(copySrsName);
       }
       else {
@@ -86,7 +87,8 @@ public class DefaultSRSReferenceGroup extends DefaultSRSInformationGroup
         sourceSrsDimension = this.getSrsDimension();
         BigInteger copySrsDimension = ((BigInteger) copyStrategy.copy(LocatorUtils.field(
             locator,
-            "srsDimension"), sourceSrsDimension));
+            "srsDimension",
+            sourceSrsDimension), sourceSrsDimension));
         copy.setSrsDimension(copySrsDimension);
       }
       else {

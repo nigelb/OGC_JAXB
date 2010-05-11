@@ -88,7 +88,8 @@ public class DefaultSRSInformationGroup implements SRSInformationGroup, CopyTo {
         @SuppressWarnings("unchecked")
         List<String> copyAxisLabels = ((List<String>) copyStrategy.copy(LocatorUtils.field(
             locator,
-            "axisLabels"), sourceAxisLabels));
+            "axisLabels",
+            sourceAxisLabels), sourceAxisLabels));
         copy.unsetAxisLabels();
         List<String> uniqueAxisLabelsl = copy.getAxisLabels();
         uniqueAxisLabelsl.addAll(copyAxisLabels);
@@ -103,7 +104,8 @@ public class DefaultSRSInformationGroup implements SRSInformationGroup, CopyTo {
         @SuppressWarnings("unchecked")
         List<String> copyUomLabels = ((List<String>) copyStrategy.copy(LocatorUtils.field(
             locator,
-            "uomLabels"), sourceUomLabels));
+            "uomLabels",
+            sourceUomLabels), sourceUomLabels));
         copy.unsetUomLabels();
         List<String> uniqueUomLabelsl = copy.getUomLabels();
         uniqueUomLabelsl.addAll(copyUomLabels);
