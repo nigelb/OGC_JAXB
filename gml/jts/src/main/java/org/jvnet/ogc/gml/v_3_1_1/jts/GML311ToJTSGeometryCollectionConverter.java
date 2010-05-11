@@ -61,7 +61,9 @@ public class GML311ToJTSGeometryCollectionConverter
       ObjectLocator locator,
       MultiGeometryPropertyType multiGeometryPropertyType) throws ConversionFailedException {
     if (multiGeometryPropertyType.isSetGeometricAggregate()) {
-      return createGeometry(locator.field("GeometricAggregate").field("Value"), //$NON-NLS-1$ //$NON-NLS-2$
+      return createGeometry(
+          locator
+              .field("geometricAggregate", multiGeometryPropertyType.getGeometricAggregate()).field("value", multiGeometryPropertyType.getGeometricAggregate().getValue()), //$NON-NLS-1$ //$NON-NLS-2$
           multiGeometryPropertyType.getGeometricAggregate().getValue());
     }
     else {

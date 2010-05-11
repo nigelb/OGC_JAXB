@@ -30,7 +30,7 @@ public class GML311ToJTSCoordinateConverter {
 
     }
     else {
-      throw new ConversionFailedException(locator.field("Value"), //$NON-NLS-1$
+      throw new ConversionFailedException(locator.field("value", value), //$NON-NLS-1$
           "Direct position type is expected to have 2 or 3 items."); //$NON-NLS-1$
     }
 
@@ -44,13 +44,13 @@ public class GML311ToJTSCoordinateConverter {
         .intValue() : 2;
 
     if (dimensions < 2 || dimensions > 3) {
-      throw new ConversionFailedException(locator.field("SrsDimension"), //$NON-NLS-1$
+      throw new ConversionFailedException(locator.field("srsDimension", dimensions), //$NON-NLS-1$
           "Only two- or three-dimensional coordinates are supported."); //$NON-NLS-1$
     }
 
     final List<Double> values = directPositionListType.getValue();
     if (values.size() % dimensions != 0) {
-      throw new ConversionFailedException(locator.field("Value"), //$NON-NLS-1$
+      throw new ConversionFailedException(locator.field("value", values), //$NON-NLS-1$
           "Wrong number of entries in the list."); //$NON-NLS-1$
     }
 
@@ -102,14 +102,18 @@ public class GML311ToJTSCoordinateConverter {
       String ds,
       String cs,
       String ts) throws ConversionFailedException {
-    
+
     final String tupleSeparator = ts == null ? " " : ts; //$NON-NLS-1$
 
     final String[] tuples = StringUtils.split(value, tupleSeparator);
-    
+
     final Coordinate[] coordinatesArray = new Coordinate[tuples.length];
     for (int index = 0; index < tuples.length; index++) {
-      coordinatesArray[index] = createCoordinate(locator.entry(index), tuples[index], ds, cs);
+      coordinatesArray[index] = createCoordinate(
+          locator.entry(index, tuples[index]),
+          tuples[index],
+          ds,
+          cs);
     }
     return coordinatesArray;
   }
@@ -123,10 +127,9 @@ public class GML311ToJTSCoordinateConverter {
 
     final double[] coordinateComponents = new double[coordinates.length];
     for (int index = 0; index < coordinates.length; index++) {
-      coordinateComponents[index] = createCoordinateComponent(
-          locator.entry(index),
-          coordinates[index],
-          ds);
+      coordinateComponents[index] = createCoordinateComponent(locator.entry(
+          index,
+          coordinates[index]), coordinates[index], ds);
     }
     if (coordinateComponents.length == 2) {
       return new Coordinate(coordinateComponents[0], coordinateComponents[1]);

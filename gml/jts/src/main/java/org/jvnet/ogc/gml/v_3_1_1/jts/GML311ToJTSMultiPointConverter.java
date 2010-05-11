@@ -39,8 +39,10 @@ public class GML311ToJTSMultiPointConverter
       final List<Point> points = new ArrayList<Point>(pointMembers.size());
       for (int index = 0; index < pointMembers.size(); index++) {
         final PointPropertyType pointPropertyType = pointMembers.get(index);
-        points.add(pointConverter.createGeometry(
-            locator.field("PointMember").entry(index), pointPropertyType)); //$NON-NLS-1$
+        points
+            .add(pointConverter
+                .createGeometry(
+                    locator.field("pointMember", pointMembers).entry(index, pointPropertyType), pointPropertyType)); //$NON-NLS-1$
       }
       return getGeometryFactory().createMultiPoint(points.toArray(new Point[points.size()]));
     }
@@ -49,8 +51,11 @@ public class GML311ToJTSMultiPointConverter
       final List<Point> points = new ArrayList<Point>(pointMembers.size());
       for (int index = 0; index < pointMembers.size(); index++) {
 
-        points.add(pointConverter.createGeometry(
-            locator.field("PointMembers").entry(index), pointMembers.get(index))); //$NON-NLS-1$
+        points
+            .add(pointConverter
+                .createGeometry(
+                    locator
+                        .field("pointMembers", pointMembers).entry(index, pointMembers.get(index)), pointMembers.get(index))); //$NON-NLS-1$
       }
       return getGeometryFactory().createMultiPoint(points.toArray(new Point[points.size()]));
     }
@@ -66,7 +71,8 @@ public class GML311ToJTSMultiPointConverter
       ObjectLocator locator,
       MultiPointPropertyType multiPointPropertyType) throws ConversionFailedException {
     if (multiPointPropertyType.isSetMultiPoint()) {
-      return createGeometry(locator.field("MultiPoint"), multiPointPropertyType.getMultiPoint()); //$NON-NLS-1$
+      return createGeometry(
+          locator.field("multiPoint", multiPointPropertyType.getMultiPoint()), multiPointPropertyType.getMultiPoint()); //$NON-NLS-1$
     }
     else {
       throw new ConversionFailedException(locator, "Expected [MultiPoint] element."); //$NON-NLS-1$

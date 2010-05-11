@@ -3,6 +3,8 @@ package org.jvnet.ogc.gml.v_3_1_1.jts;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.JAXBElement;
+
 import net.opengis.gml.v_3_1_1.AbstractGeometricAggregateType;
 import net.opengis.gml.v_3_1_1.AbstractGeometryType;
 import net.opengis.gml.v_3_1_1.GeometryPropertyType;
@@ -42,29 +44,34 @@ public class GML311ToJTSMultiGeometryConverter
         + multiGeometryType.getGeometryMembers().getGeometry().size());
 
     if (multiGeometryType.isSetGeometryMember()) {
-      final ObjectLocator geometryMemberLocator = locator.field("GeometryMember");
+      final ObjectLocator geometryMemberLocator = locator.field("geometryMember", multiGeometryType
+          .getGeometryMember());
       for (int index = 0; index < multiGeometryType.getGeometryMember().size(); index++) {
         final GeometryPropertyType geometryPropertyType = multiGeometryType
             .getGeometryMember()
             .get(index);
-        geometries.add(this.geometryConverter.createGeometry(
-            geometryMemberLocator.entry(index),
-            geometryPropertyType));
+        geometries.add(this.geometryConverter.createGeometry(geometryMemberLocator.entry(
+            index,
+            geometryPropertyType), geometryPropertyType));
       }
     }
     if (multiGeometryType.isSetGeometryMembers()) {
-      final ObjectLocator geometryMemberLocator = locator
-          .field("GeometryMembers")
-          .field("Geometry");
+      final ObjectLocator geometryMemberLocator = locator.field(
+          "geometryMembers",
+          multiGeometryType.getGeometryMembers()).field(
+          "geometry",
+          multiGeometryType.getGeometryMembers().getGeometry());
       for (int index = 0; index < multiGeometryType.getGeometryMembers().getGeometry().size(); index++) {
         final AbstractGeometryType abstractGeometryType = multiGeometryType
             .getGeometryMembers()
             .getGeometry()
             .get(index)
             .getValue();
-        geometries.add(this.geometryConverter.createGeometry(geometryMemberLocator
-            .entry(index)
-            .field("Value"), abstractGeometryType));
+        geometries.add(this.geometryConverter.createGeometry(geometryMemberLocator.entry(
+            index,
+            multiGeometryType.getGeometryMembers().getGeometry().get(index)).field(
+            "value",
+            abstractGeometryType), abstractGeometryType));
       }
     }
     return getGeometryFactory().createGeometryCollection(
@@ -76,16 +83,16 @@ public class GML311ToJTSMultiGeometryConverter
       ObjectLocator locator,
       MultiGeometryPropertyType multiGeometryPropertyType) throws ConversionFailedException {
     if (multiGeometryPropertyType.isSetGeometricAggregate()) {
-      final AbstractGeometricAggregateType value = multiGeometryPropertyType
-          .getGeometricAggregate()
-          .getValue();
+      final JAXBElement<? extends AbstractGeometricAggregateType> geometricAggregate = multiGeometryPropertyType
+          .getGeometricAggregate();
+      final AbstractGeometricAggregateType value = geometricAggregate.getValue();
       if (value instanceof MultiGeometryType) {
-        return createGeometry(locator.field("GeometricAggregate"), //$NON-NLS-1$
+        return createGeometry(locator.field("geometricAggregate", geometricAggregate), //$NON-NLS-1$
             (MultiGeometryType) value);
       }
       else {
         throw new ConversionFailedException(
-            locator.field("GeometricAggregate"),
+            locator.field("geometricAggregate", geometricAggregate),
             "Expected [MultiGeometry] element.");
       }
     }

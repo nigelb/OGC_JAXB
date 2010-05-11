@@ -32,14 +32,15 @@ public class GML311ToJTSPointConverter
 
     if (pointType.isSetPos()) {
       return getGeometryFactory().createPoint(
-          coordinateConverter.createCoordinate(locator.field("Pos"), pointType.getPos())); //$NON-NLS-1$
+          coordinateConverter.createCoordinate(
+              locator.field("pos", pointType.getPos()), pointType.getPos())); //$NON-NLS-1$
     }
     else if (pointType.isSetCoordinates()) {
-      final Coordinate[] coords = coordinateConverter.createCoordinates(locator
-          .field("Coordinates"), pointType.getCoordinates()); //$NON-NLS-1$
+      final Coordinate[] coords = coordinateConverter.createCoordinates(locator.field(
+          "coordinates", pointType.getCoordinates()), pointType.getCoordinates()); //$NON-NLS-1$
       if (coords.length != 1) {
-        throw new ConversionFailedException(locator.field("Coordinates"), //$NON-NLS-1$
-            "Expected exactly one coordinate."); //$NON-NLS-1$
+        throw new ConversionFailedException(locator
+            .field("coordinates", pointType.getCoordinates()), "Expected exactly one coordinate."); //$NON-NLS-1$
       }
       else {
         return getGeometryFactory().createPoint(coords[0]);
@@ -49,8 +50,9 @@ public class GML311ToJTSPointConverter
     }
     else if (pointType.isSetCoord()) {
       return getGeometryFactory().createPoint(
-          coordinateConverter.createCoordinate(locator.field("Coord"), pointType //$NON-NLS-1$
-              .getCoord()));
+          coordinateConverter.createCoordinate(
+              locator.field("coord", pointType.getCoord()),
+              pointType.getCoord()));
     }
     else {
       throw new ConversionFailedException(
@@ -64,7 +66,8 @@ public class GML311ToJTSPointConverter
   public Point createGeometry(ObjectLocator locator, PointPropertyType pointPropertyType)
       throws ConversionFailedException {
     if (pointPropertyType.isSetPoint()) {
-      return createGeometry(locator.field("Point"), pointPropertyType.getPoint()); //$NON-NLS-1$
+      return createGeometry(
+          locator.field("point", pointPropertyType.getPoint()), pointPropertyType.getPoint()); //$NON-NLS-1$
     }
     else {
       throw new ConversionFailedException(locator, "Expected [Point] element."); //$NON-NLS-1$

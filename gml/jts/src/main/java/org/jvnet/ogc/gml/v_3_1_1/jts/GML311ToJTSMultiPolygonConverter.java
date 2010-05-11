@@ -39,9 +39,12 @@ public class GML311ToJTSMultiPolygonConverter
     for (int index = 0; index < polygonMembers.size(); index++) {
       final PolygonPropertyType polygonPropertyType = polygonMembers.get(index);
       final PolygonType polygonType = polygonPropertyType.getPolygon();
-      polygons.add(polygonConverter.createGeometry(locator
-          .field("PolygonMember").entry(index).field("Polygon"), //$NON-NLS-1$ //$NON-NLS-2$
-          polygonType));
+      polygons
+          .add(polygonConverter
+              .createGeometry(
+                  locator
+                      .field("polygonMember", polygonMembers).entry(index, polygonPropertyType).field("polygon", polygonType), //$NON-NLS-1$ //$NON-NLS-2$
+                  polygonType));
 
     }
     return getGeometryFactory().createMultiPolygon(polygons.toArray(new Polygon[polygons.size()]));
@@ -52,8 +55,8 @@ public class GML311ToJTSMultiPolygonConverter
       ObjectLocator locator,
       MultiPolygonPropertyType multiPolygonPropertyType) throws ConversionFailedException {
     if (multiPolygonPropertyType.isSetMultiPolygon()) {
-      return createGeometry(locator.field("MultiPolygon"), multiPolygonPropertyType //$NON-NLS-1$
-          .getMultiPolygon());
+      return createGeometry(locator.field("multiPolygon", multiPolygonPropertyType
+          .getMultiPolygon()), multiPolygonPropertyType.getMultiPolygon());
     }
     else {
       throw new ConversionFailedException(locator, "Expected [MultiPolygon] element."); //$NON-NLS-1$

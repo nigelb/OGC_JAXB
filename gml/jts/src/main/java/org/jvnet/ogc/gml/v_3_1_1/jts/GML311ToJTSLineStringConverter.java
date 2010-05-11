@@ -45,12 +45,13 @@ public class GML311ToJTSLineStringConverter
     if (lineStringType.isSetPosOrPointPropertyOrPointRep()) {
 
       final List<Coordinate> coordinates = new LinkedList<Coordinate>();
-      final FieldObjectLocator fieldLocator = locator.field("PosOrPointPropertyOrPointRep"); //$NON-NLS-1$
+      final FieldObjectLocator fieldLocator = locator.field(
+          "PosOrPointPropertyOrPointRep", lineStringType.getPosOrPointPropertyOrPointRep()); //$NON-NLS-1$
       for (int index = 0; index < lineStringType.getPosOrPointPropertyOrPointRep().size(); index++) {
-        final ListEntryObjectLocator itemLocator = fieldLocator.entry(index);
         final JAXBElement<?> item = lineStringType.getPosOrPointPropertyOrPointRep().get(index);
+        final ListEntryObjectLocator itemLocator = fieldLocator.entry(index, item);
         final Object value = item.getValue();
-        final ObjectLocator itemValueLocator = itemLocator.field("Value"); //$NON-NLS-1$
+        final ObjectLocator itemValueLocator = itemLocator.field("value", value); //$NON-NLS-1$
 
         if (value instanceof PointType) {
           coordinates.add(pointConverter.createGeometry(
@@ -67,8 +68,9 @@ public class GML311ToJTSLineStringConverter
               .add(coordinateConverter.createCoordinate(itemValueLocator, (CoordType) value));
         }
         else if (value instanceof DirectPositionType) {
-          coordinates
-              .add(coordinateConverter.createCoordinate(itemValueLocator, (DirectPositionType) value));
+          coordinates.add(coordinateConverter.createCoordinate(
+              itemValueLocator,
+              (DirectPositionType) value));
         }
         else {
           throw new ConversionFailedException(itemLocator, "Unexpected type."); //$NON-NLS-1$
@@ -80,15 +82,15 @@ public class GML311ToJTSLineStringConverter
     }
     else if (lineStringType.isSetPosList()) {
 
-      final Coordinate[] coordinates = coordinateConverter.createCoordinates(locator
-          .field("PosList"), lineStringType //$NON-NLS-1$
-          .getPosList());
+      final Coordinate[] coordinates = coordinateConverter.createCoordinates(locator.field(
+          "posList",//$NON-NLS-1$
+          lineStringType.getPosList()), lineStringType.getPosList());
       return getGeometryFactory().createLineString(coordinates);
 
     }
     else if (lineStringType.isSetCoordinates()) {
-      final Coordinate[] coordinates = coordinateConverter.createCoordinates(locator
-          .field("Coordinates"), //$NON-NLS-1$
+      final Coordinate[] coordinates = coordinateConverter.createCoordinates(locator.field(
+          "coordinates", lineStringType.getCoordinates()), //$NON-NLS-1$
           lineStringType.getCoordinates());
       return getGeometryFactory().createLineString(coordinates);
 
@@ -103,7 +105,8 @@ public class GML311ToJTSLineStringConverter
       ObjectLocator locator,
       LineStringPropertyType lineStringPropertyType) throws ConversionFailedException {
     if (lineStringPropertyType.isSetLineString()) {
-      return createGeometry(locator.field("LineString"), lineStringPropertyType.getLineString()); //$NON-NLS-1$
+      return createGeometry(
+          locator.field("lineString", lineStringPropertyType.getLineString()), lineStringPropertyType.getLineString()); //$NON-NLS-1$
     }
     else {
       throw new ConversionFailedException(locator, "Expected [LineString] element."); //$NON-NLS-1$
