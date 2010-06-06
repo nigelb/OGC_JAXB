@@ -67,17 +67,14 @@ public class DefaultSRSInformationGroup implements SRSInformationGroup, CopyTo {
     this.uomLabels = null;
   }
 
-  @Override
   public Object createNewInstance() {
     return new DefaultSRSInformationGroup();
   }
 
-  @Override
   public Object copyTo(Object target) {
     return copyTo(null, target, JAXBCopyStrategy.INSTANCE);
   }
 
-  @Override
   public Object copyTo(ObjectLocator locator, Object target, CopyStrategy copyStrategy) {
     final Object draftCopy = ((target == null) ? createNewInstance() : target);
     if (draftCopy instanceof SRSInformationGroup) {
