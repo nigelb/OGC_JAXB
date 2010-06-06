@@ -37,7 +37,6 @@
 			<plugin>
 				<groupId>org.jvnet.jaxb2.maven2</groupId>
 				<artifactId>maven-jaxb2-plugin</artifactId>
-				<version>0.7.2</version>
 				<configuration>
 					<schemaIncludes>
 						<value>wps/*/wpsAll.xsd</value>
