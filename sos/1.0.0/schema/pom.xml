@@ -66,10 +66,6 @@
 					</schemaIncludes>
 					<!--episode>false</episode-->
 					<episodes>
-						<episode>
-							<groupId>org.jvnet.ogc</groupId>
-							<artifactId>gml-v_3_1_1-schema</artifactId>
-						</episode>
 						<!--episode>
 							<groupId>org.jvnet.ogc</groupId>
 							<artifactId>ows-v_1_0_0-schema</artifactId>
