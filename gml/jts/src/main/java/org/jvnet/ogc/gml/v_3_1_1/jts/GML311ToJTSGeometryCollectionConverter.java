@@ -12,62 +12,63 @@ import com.vividsolutions.jts.geom.GeometryCollection;
 import com.vividsolutions.jts.geom.GeometryFactory;
 
 public class GML311ToJTSGeometryCollectionConverter
-    extends
-    AbstractGML311ToJTSConverter<AbstractGeometricAggregateType, MultiGeometryPropertyType, GeometryCollection> {
+		extends
+		AbstractGML311ToJTSConverter<AbstractGeometricAggregateType, MultiGeometryPropertyType, GeometryCollection> {
 
-  // + GeometryCollection
-  // + MultiPoint
-  // + MultiLineString
-  // + MultiPolygon
+	// + GeometryCollection
+	// + MultiPoint
+	// + MultiLineString
+	// + MultiPolygon
 
-  private final GML311ToJTSMultiPointConverter multiPointConverter;
-  private final GML311ToJTSMultiLineStringConverter multiLineStringConverter;
-  private final GML311ToJTSMultiPolygonConverter multiPolygonConverter;
+	private final GML311ToJTSMultiPointConverter multiPointConverter;
+	private final GML311ToJTSMultiLineStringConverter multiLineStringConverter;
+	private final GML311ToJTSMultiPolygonConverter multiPolygonConverter;
 
-  public GML311ToJTSGeometryCollectionConverter(GeometryFactory geometryFactory) {
-    super(geometryFactory);
-    multiPointConverter = new GML311ToJTSMultiPointConverter(geometryFactory);
-    multiLineStringConverter = new GML311ToJTSMultiLineStringConverter();
-    multiPolygonConverter = new GML311ToJTSMultiPolygonConverter();
-  }
+	public GML311ToJTSGeometryCollectionConverter(
+			GeometryFactory geometryFactory) {
+		super(geometryFactory);
+		multiPointConverter = new GML311ToJTSMultiPointConverter(
+				geometryFactory);
+		multiLineStringConverter = new GML311ToJTSMultiLineStringConverter();
+		multiPolygonConverter = new GML311ToJTSMultiPolygonConverter();
+	}
 
-  public GML311ToJTSGeometryCollectionConverter() {
-    this(new GeometryFactory());
-  }
+	public GML311ToJTSGeometryCollectionConverter() {
+		this(new GeometryFactory());
+	}
 
-  @Override
-  public GeometryCollection createGeometry(
-      ObjectLocator locator,
-      AbstractGeometricAggregateType abstractGeometryType) throws ConversionFailedException {
-    if (abstractGeometryType instanceof MultiPointType) {
-      return multiPointConverter.createGeometry(locator, (MultiPointType) abstractGeometryType);
-    }
-    else if (abstractGeometryType instanceof MultiLineStringType) {
-      return multiLineStringConverter.createGeometry(
-          locator,
-          (MultiLineStringType) abstractGeometryType);
-    }
-    else if (abstractGeometryType instanceof MultiPolygonType) {
-      return multiPolygonConverter.createGeometry(locator, (MultiPolygonType) abstractGeometryType);
-    }
-    else {
-      throw new ConversionFailedException(locator, "Unexpected type."); //$NON-NLS-1$
-    }
+	@Override
+	public GeometryCollection createGeometry(ObjectLocator locator,
+			AbstractGeometricAggregateType abstractGeometryType)
+			throws ConversionFailedException {
+		if (abstractGeometryType instanceof MultiPointType) {
+			return multiPointConverter.createGeometry(locator,
+					(MultiPointType) abstractGeometryType);
+		} else if (abstractGeometryType instanceof MultiLineStringType) {
+			return multiLineStringConverter.createGeometry(locator,
+					(MultiLineStringType) abstractGeometryType);
+		} else if (abstractGeometryType instanceof MultiPolygonType) {
+			return multiPolygonConverter.createGeometry(locator,
+					(MultiPolygonType) abstractGeometryType);
+		} else {
+			throw new ConversionFailedException(locator, "Unexpected type."); //$NON-NLS-1$
+		}
 
-  }
+	}
 
-  @Override
-  public GeometryCollection createGeometry(
-      ObjectLocator locator,
-      MultiGeometryPropertyType multiGeometryPropertyType) throws ConversionFailedException {
-    if (multiGeometryPropertyType.isSetGeometricAggregate()) {
-      return createGeometry(
-          locator
-              .field("geometricAggregate", multiGeometryPropertyType.getGeometricAggregate()).field("value", multiGeometryPropertyType.getGeometricAggregate().getValue()), //$NON-NLS-1$ //$NON-NLS-2$
-          multiGeometryPropertyType.getGeometricAggregate().getValue());
-    }
-    else {
-      throw new ConversionFailedException(locator, "Expected [GeometricAggregate] element."); //$NON-NLS-1$
-    }
-  }
+	@Override
+	public GeometryCollection createGeometry(ObjectLocator locator,
+			MultiGeometryPropertyType multiGeometryPropertyType)
+			throws ConversionFailedException {
+		if (multiGeometryPropertyType.isSetGeometricAggregate()) {
+			return createGeometry(
+					locator.property(
+							"geometricAggregate", multiGeometryPropertyType.getGeometricAggregate()).property("value", multiGeometryPropertyType.getGeometricAggregate().getValue()), //$NON-NLS-1$ //$NON-NLS-2$
+					multiGeometryPropertyType.getGeometricAggregate()
+							.getValue());
+		} else {
+			throw new ConversionFailedException(locator,
+					"Expected [GeometricAggregate] element."); //$NON-NLS-1$
+		}
+	}
 }

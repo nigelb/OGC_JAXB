@@ -47,16 +47,16 @@ public class GML311ToJTSPolygonConverter
         shell = linearRingConverter
             .createGeometry(
                 locator
-                    .field("exterior", polygonType.getExterior())
-                    .field("value", polygonType.getExterior().getValue())
-                    .field("ring", polygonType.getExterior().getValue().getRing())
-                    .field("value", abstractRingType), (LinearRingType) abstractRingType); //$NON-NLS-1$
+                    .property("exterior", polygonType.getExterior())
+                    .property("value", polygonType.getExterior().getValue())
+                    .property("ring", polygonType.getExterior().getValue().getRing())
+                    .property("value", abstractRingType), (LinearRingType) abstractRingType); //$NON-NLS-1$
       }
       else {
         throw new ConversionFailedException(
-            locator.field("exterior", polygonType.getExterior()).field(
+            locator.property("exterior", polygonType.getExterior()).property(
                 "value",
-                polygonType.getExterior().getValue()).field(
+                polygonType.getExterior().getValue()).property(
                 "ring",
                 polygonType.getExterior().getValue().getRing()),
             "Only linear rings are supported."); //$NON-NLS-1$
@@ -68,19 +68,19 @@ public class GML311ToJTSPolygonConverter
 
     final LinearRing[] holes;
     if (polygonType.isSetInterior()) {
-      final ObjectLocator interiorObjectLocator = locator.field(
+      final ObjectLocator interiorObjectLocator = locator.property(
           "interior", polygonType.getInterior()); //$NON-NLS-1$
       final List<LinearRing> holesList = new ArrayList<LinearRing>(polygonType.getInterior().size());
       for (int index = 0; index < polygonType.getInterior().size(); index++) {
         final JAXBElement<AbstractRingPropertyType> ringElement = polygonType.getInterior().get(
             index);
-        final ObjectLocator entryLocator = interiorObjectLocator.entry(index, ringElement);
+        final ObjectLocator entryLocator = interiorObjectLocator.item(index, ringElement);
 
         final AbstractRingType abstractRingType = ringElement.getValue().getRing().getValue();
         if (abstractRingType instanceof LinearRingType) {
-          holesList.add(linearRingConverter.createGeometry(entryLocator.field(
+          holesList.add(linearRingConverter.createGeometry(entryLocator.property(
               "value",
-              ringElement.getValue()).field("ring", ringElement.getValue().getRing()).field(
+              ringElement.getValue()).property("ring", ringElement.getValue().getRing()).property(
               "value",
               ringElement.getValue().getRing().getValue()),
 
@@ -104,7 +104,7 @@ public class GML311ToJTSPolygonConverter
       throws ConversionFailedException {
     if (polygonPropertyType.isSetPolygon()) {
       return createGeometry(
-          locator.field("polygon", polygonPropertyType.getPolygon()), polygonPropertyType.getPolygon()); //$NON-NLS-1$
+          locator.property("polygon", polygonPropertyType.getPolygon()), polygonPropertyType.getPolygon()); //$NON-NLS-1$
     }
     else {
       throw new ConversionFailedException(locator, "Expected [Polygon] element."); //$NON-NLS-1$

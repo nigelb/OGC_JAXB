@@ -33,14 +33,14 @@ public class GML311ToJTSPointConverter
     if (pointType.isSetPos()) {
       return getGeometryFactory().createPoint(
           coordinateConverter.createCoordinate(
-              locator.field("pos", pointType.getPos()), pointType.getPos())); //$NON-NLS-1$
+              locator.property("pos", pointType.getPos()), pointType.getPos())); //$NON-NLS-1$
     }
     else if (pointType.isSetCoordinates()) {
-      final Coordinate[] coords = coordinateConverter.createCoordinates(locator.field(
+      final Coordinate[] coords = coordinateConverter.createCoordinates(locator.property(
           "coordinates", pointType.getCoordinates()), pointType.getCoordinates()); //$NON-NLS-1$
       if (coords.length != 1) {
         throw new ConversionFailedException(locator
-            .field("coordinates", pointType.getCoordinates()), "Expected exactly one coordinate."); //$NON-NLS-1$
+            .property("coordinates", pointType.getCoordinates()), "Expected exactly one coordinate."); //$NON-NLS-1$
       }
       else {
         return getGeometryFactory().createPoint(coords[0]);
@@ -51,7 +51,7 @@ public class GML311ToJTSPointConverter
     else if (pointType.isSetCoord()) {
       return getGeometryFactory().createPoint(
           coordinateConverter.createCoordinate(
-              locator.field("coord", pointType.getCoord()),
+              locator.property("coord", pointType.getCoord()),
               pointType.getCoord()));
     }
     else {
@@ -67,7 +67,7 @@ public class GML311ToJTSPointConverter
       throws ConversionFailedException {
     if (pointPropertyType.isSetPoint()) {
       return createGeometry(
-          locator.field("point", pointPropertyType.getPoint()), pointPropertyType.getPoint()); //$NON-NLS-1$
+          locator.property("point", pointPropertyType.getPoint()), pointPropertyType.getPoint()); //$NON-NLS-1$
     }
     else {
       throw new ConversionFailedException(locator, "Expected [Point] element."); //$NON-NLS-1$

@@ -41,15 +41,15 @@ public class GML311ToJTSLinearRingConverter
   public LinearRing createGeometry(ObjectLocator locator, LinearRingType linearRingType)
       throws ConversionFailedException {
     if (linearRingType.isSetPosOrPointPropertyOrPointRep()) {
-      final ObjectLocator fieldLocator = locator.field(
+      final ObjectLocator fieldLocator = locator.property(
           "posOrPointPropertyOrPointRep", linearRingType.getPosOrPointPropertyOrPointRep()); //$NON-NLS-1$
 
       final List<Coordinate> coordinates = new LinkedList<Coordinate>();
       for (int index = 0; index < linearRingType.getPosOrPointPropertyOrPointRep().size(); index++) {
         final JAXBElement<?> item = linearRingType.getPosOrPointPropertyOrPointRep().get(index);
-        final ObjectLocator itemLocator = fieldLocator.entry(index, item);
+        final ObjectLocator itemLocator = fieldLocator.item(index, item);
         final Object value = item.getValue();
-        final ObjectLocator itemValueLocator = itemLocator.field("value", value); //$NON-NLS-1$
+        final ObjectLocator itemValueLocator = itemLocator.property("value", value); //$NON-NLS-1$
 
         if (value instanceof DirectPositionType) {
           coordinates.add(coordinateConverter.createCoordinate(
@@ -80,14 +80,14 @@ public class GML311ToJTSLinearRingConverter
     }
     else if (linearRingType.isSetPosList()) {
 
-      final Coordinate[] coordinates = coordinateConverter.createCoordinates(locator.field(
+      final Coordinate[] coordinates = coordinateConverter.createCoordinates(locator.property(
           "posList", linearRingType.getPosList()), linearRingType //$NON-NLS-1$
           .getPosList());
       return getGeometryFactory().createLinearRing(coordinates);
 
     }
     else if (linearRingType.isSetCoordinates()) {
-      final Coordinate[] coordinates = coordinateConverter.createCoordinates(locator.field(
+      final Coordinate[] coordinates = coordinateConverter.createCoordinates(locator.property(
           "coordinates", linearRingType.getCoordinates()), //$NON-NLS-1$
           linearRingType.getCoordinates());
       return getGeometryFactory().createLinearRing(coordinates);
@@ -104,7 +104,7 @@ public class GML311ToJTSLinearRingConverter
       LinearRingPropertyType linearRingPropertyType) throws ConversionFailedException {
     if (linearRingPropertyType.isSetLinearRing()) {
       return createGeometry(
-          locator.field("linearRing", linearRingPropertyType.getLinearRing()), linearRingPropertyType.getLinearRing()); //$NON-NLS-1$
+          locator.property("linearRing", linearRingPropertyType.getLinearRing()), linearRingPropertyType.getLinearRing()); //$NON-NLS-1$
     }
     else {
       throw new ConversionFailedException(locator, "Expected [LinearRing] element."); //$NON-NLS-1$

@@ -42,8 +42,8 @@ public class GML311ToJTSMultiLineStringConverter
       final LineStringPropertyType lineStringPropertyType = lineStringMembers.get(index);
 
       final LineStringType lineStringType = lineStringPropertyType.getLineString();
-      lineStrings.add(lineStringConverter.createGeometry(locator.field(
-          "lineStringMember", lineStringMembers).entry(index, lineStringPropertyType).field( //$NON-NLS-1$
+      lineStrings.add(lineStringConverter.createGeometry(locator.property(
+          "lineStringMember", lineStringMembers).item(index, lineStringPropertyType).property( //$NON-NLS-1$
           "lineString",
           lineStringType), lineStringType));
     }
@@ -56,7 +56,7 @@ public class GML311ToJTSMultiLineStringConverter
       ObjectLocator locator,
       MultiLineStringPropertyType multiLineStringPropertyType) throws ConversionFailedException {
     if (multiLineStringPropertyType.isSetMultiLineString()) {
-      return createGeometry(locator.field("multiLineString", multiLineStringPropertyType
+      return createGeometry(locator.property("multiLineString", multiLineStringPropertyType
           .getMultiLineString()), multiLineStringPropertyType.getMultiLineString());
     }
     else {

@@ -44,21 +44,21 @@ public class GML311ToJTSMultiGeometryConverter
         + multiGeometryType.getGeometryMembers().getGeometry().size());
 
     if (multiGeometryType.isSetGeometryMember()) {
-      final ObjectLocator geometryMemberLocator = locator.field("geometryMember", multiGeometryType
+      final ObjectLocator geometryMemberLocator = locator.property("geometryMember", multiGeometryType
           .getGeometryMember());
       for (int index = 0; index < multiGeometryType.getGeometryMember().size(); index++) {
         final GeometryPropertyType geometryPropertyType = multiGeometryType
             .getGeometryMember()
             .get(index);
-        geometries.add(this.geometryConverter.createGeometry(geometryMemberLocator.entry(
+        geometries.add(this.geometryConverter.createGeometry(geometryMemberLocator.item(
             index,
             geometryPropertyType), geometryPropertyType));
       }
     }
     if (multiGeometryType.isSetGeometryMembers()) {
-      final ObjectLocator geometryMemberLocator = locator.field(
+      final ObjectLocator geometryMemberLocator = locator.property(
           "geometryMembers",
-          multiGeometryType.getGeometryMembers()).field(
+          multiGeometryType.getGeometryMembers()).property(
           "geometry",
           multiGeometryType.getGeometryMembers().getGeometry());
       for (int index = 0; index < multiGeometryType.getGeometryMembers().getGeometry().size(); index++) {
@@ -67,9 +67,9 @@ public class GML311ToJTSMultiGeometryConverter
             .getGeometry()
             .get(index)
             .getValue();
-        geometries.add(this.geometryConverter.createGeometry(geometryMemberLocator.entry(
+        geometries.add(this.geometryConverter.createGeometry(geometryMemberLocator.item(
             index,
-            multiGeometryType.getGeometryMembers().getGeometry().get(index)).field(
+            multiGeometryType.getGeometryMembers().getGeometry().get(index)).property(
             "value",
             abstractGeometryType), abstractGeometryType));
       }
@@ -87,12 +87,12 @@ public class GML311ToJTSMultiGeometryConverter
           .getGeometricAggregate();
       final AbstractGeometricAggregateType value = geometricAggregate.getValue();
       if (value instanceof MultiGeometryType) {
-        return createGeometry(locator.field("geometricAggregate", geometricAggregate), //$NON-NLS-1$
+        return createGeometry(locator.property("geometricAggregate", geometricAggregate), //$NON-NLS-1$
             (MultiGeometryType) value);
       }
       else {
         throw new ConversionFailedException(
-            locator.field("geometricAggregate", geometricAggregate),
+            locator.property("geometricAggregate", geometricAggregate),
             "Expected [MultiGeometry] element.");
       }
     }
