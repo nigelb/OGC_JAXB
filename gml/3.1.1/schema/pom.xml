@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jvnet.ogc</groupId>
 	<artifactId>gml-v_3_1_1-schema</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.1</version>
 	<packaging>jar</packaging>
 	<name>OGC GML Schema 3.1.1</name>
 	<parent>
@@ -17,7 +17,7 @@
 		<dependency>
 			<groupId>com.sun.xml.bind</groupId>
 			<artifactId>jaxb-impl</artifactId>
-			<version>2.1.12</version>
+			<version>2.1.13</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -32,24 +32,28 @@
 			<plugin>
 				<groupId>org.jvnet.jaxb2.maven2</groupId>
 				<artifactId>maven-jaxb2-plugin</artifactId>
+				<version>0.7.3</version>
 				<configuration>
 					<schemaIncludes>
 						<value>gml/*/base/gml.xsd</value>
 					</schemaIncludes>
 					<episode>false</episode>
 					<args>
-						<!-- arg>-XtoString</arg-->
-						<!-- arg>-Xequals</arg-->
-						<!--arg>-XhashCode</arg-->
-						<!-- arg>-Xcopyable</arg-->
+						<arg>-XtoString</arg>
+						<arg>-Xequals</arg>
+						<arg>-XhashCode</arg>
+						<arg>-Xcopyable</arg>
+						<arg>-Xmergeable</arg>
 						<arg>-Xsetters</arg>
+						<arg>-Xwildcard</arg>
+						<arg>-Xinject-code</arg>
 						<arg>-Xinheritance</arg>
 					</args>
 					<plugins>
 						<plugin>
 							<groupId>org.jvnet.jaxb2_commons</groupId>
 							<artifactId>jaxb2-basics</artifactId>
-							<version>0.5.3</version>
+							<version>0.5.3.MR1</version>
 						</plugin>
 					</plugins>
 				</configuration>
