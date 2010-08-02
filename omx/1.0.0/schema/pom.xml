@@ -9,9 +9,13 @@
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
 		<artifactId>omx-v_1_0_0</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.2-SNAPSHOT</version>
 	</parent>
 	<dependencies>
+		<dependency>
+			<groupId>org.jvnet.jaxb2_commons</groupId>
+			<artifactId>jaxb2-basics-runtime</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.sun.xml.bind</groupId>
 			<artifactId>jaxb-impl</artifactId>
@@ -19,12 +23,12 @@
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>om-v_1_0_0-schema</artifactId>
-			<version>1.0.0</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>cv-v_0_2_1-schema</artifactId>
-			<version>1.0.0</version>
+			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -41,27 +45,22 @@
 						<episode>
 							<groupId>org.jvnet.ogc</groupId>
 							<artifactId>om-v_1_0_0-schema</artifactId>
-							<version>1.0.0</version>
 						</episode>
 						<episode>
 							<groupId>org.jvnet.ogc</groupId>
 							<artifactId>swecommon-v_1_0_1-schema</artifactId>
-							<version>1.0.0</version>
 						</episode>
 						<episode>
 							<groupId>org.jvnet.ogc</groupId>
 							<artifactId>gml-v_3_1_1-schema</artifactId>
-							<version>1.0.0</version>
 						</episode>
 						<episode>
 							<groupId>org.jvnet.ogc</groupId>
 							<artifactId>sensorml-v_1_0_1-schema</artifactId>
-							<version>1.0.0</version>
 						</episode>
 						<episode>
 							<groupId>org.jvnet.ogc</groupId>
 							<artifactId>cv-v_0_2_1-schema</artifactId>
-							<version>1.0.0</version>
 						</episode>
 					</episodes>
 				</configuration>

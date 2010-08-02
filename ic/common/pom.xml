@@ -9,19 +9,19 @@
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
 		<artifactId>ic</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.2-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<dependencies>
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>ic-v_2_0-schema</artifactId>
-			<version>1.0.0</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>ic-v_2_1-schema</artifactId>
-			<version>1.0.0</version>
+			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 	<build>

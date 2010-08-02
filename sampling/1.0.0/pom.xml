@@ -8,7 +8,7 @@
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
 		<artifactId>sampling</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.2-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<modules>

@@ -9,39 +9,39 @@
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
 		<artifactId>ows</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.2-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<dependencies>
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>ows-v_0_3_0-schema</artifactId>
-			<version>1.0.0</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>ows-v_0_3_1-schema</artifactId>
-			<version>1.0.0</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>ows-v_0_3_2-schema</artifactId>
-			<version>1.0.0</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>ows-v_0_4_0-schema</artifactId>
-			<version>1.0.0</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>ows-v_1_0_0-schema</artifactId>
-			<version>1.0.0</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>ows-v_1_1_0-schema</artifactId>
-			<version>1.0.0</version>
+			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 	<build>

@@ -8,19 +8,19 @@
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
 		<artifactId>se</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.2-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<dependencies>
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>filter-common</artifactId>
-			<version>1.0.0</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>se-v_1_1_0-schema</artifactId>
-			<version>1.0.0</version>
+			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 	<build>

@@ -5,7 +5,7 @@
 	<groupId>org.jvnet.ogc</groupId>
 	<artifactId>project</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0.0</version>
+	<version>1.0.2-SNAPSHOT</version>
 	<name>OGC Project</name>
 	<url>http://static.highsource.org/ogc-schemas</url>
 	<description>OGC Schemas project provides JAXB 2.x bindings for XML Schemas defined by the Open Geospatial Consortium (OGC).</description>
@@ -148,9 +148,19 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
+				<groupId>org.jvnet.jaxb2_commons</groupId>
+				<artifactId>jaxb2-basics</artifactId>
+				<version>0.6.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jvnet.jaxb2_commons</groupId>
+				<artifactId>jaxb2-basics-runtime</artifactId>
+				<version>0.6.0</version>
+			</dependency>
+			<dependency>
 				<groupId>com.sun.xml.bind</groupId>
 				<artifactId>jaxb-impl</artifactId>
-				<version>2.1.12</version>
+				<version>2.1.13</version>
 				<scope>provided</scope>
 			</dependency>
 			<dependency>
@@ -167,6 +177,11 @@
 				<groupId>commons-lang</groupId>
 				<artifactId>commons-lang</artifactId>
 				<version>2.4</version>
+			</dependency>
+			<dependency>
+				<groupId>com.vividsolutions</groupId>
+				<artifactId>jts</artifactId>
+				<version>1.9</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -207,7 +222,7 @@
 				<plugin>
 					<groupId>org.jvnet.jaxb2.maven2</groupId>
 					<artifactId>maven-jaxb2-plugin</artifactId>
-					<version>0.7.2</version>
+					<version>0.7.4</version>
 					<executions>
 						<execution>
 							<goals>
@@ -218,6 +233,23 @@
 					<configuration>
 						<strict>false</strict>
 						<extension>true</extension>
+						<args>
+							<arg>-XtoString</arg>
+							<arg>-Xequals</arg>
+							<arg>-XhashCode</arg>
+							<arg>-Xcopyable</arg>
+							<arg>-Xmergeable</arg>
+							<arg>-Xsetters</arg>
+							<arg>-Xwildcard</arg>
+							<arg>-Xinject-code</arg>
+							<arg>-Xinheritance</arg>
+						</args>
+						<plugins>
+							<plugin>
+								<groupId>org.jvnet.jaxb2_commons</groupId>
+								<artifactId>jaxb2-basics</artifactId>
+							</plugin>
+						</plugins>
 					</configuration>
 				</plugin>
 			</plugins>
@@ -239,21 +271,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<repositories>
-		<repository>
-			<id>maven2-repository.dev.java.net</id>
-			<url>http://download.java.net/maven/2</url>
-		</repository>
-		<repository>
-			<id>maven-repository.dev.java.net</id>
-			<url>http://download.java.net/maven/1</url>
-			<layout>legacy</layout>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>maven2-repository.dev.java.net</id>
-			<url>http://download.java.net/maven/2</url>
-		</pluginRepository>
-	</pluginRepositories>
 </project>

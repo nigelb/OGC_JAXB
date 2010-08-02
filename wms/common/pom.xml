@@ -9,34 +9,34 @@
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
 		<artifactId>wms</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.2-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<dependencies>
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>wms-v_1_0_0-schema</artifactId>
-			<version>1.0.0</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>wms-v_1_0_7-schema</artifactId>
-			<version>1.0.0</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>wms-v_1_1_0-schema</artifactId>
-			<version>1.0.0</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>wms-v_1_1_1-schema</artifactId>
-			<version>1.0.0</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>wms-v_1_3_0-schema</artifactId>
-			<version>1.0.0</version>
+			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 	<build>
