@@ -49,14 +49,17 @@
 						<episode>
 							<groupId>org.jvnet.ogc</groupId>
 							<artifactId>swecommon-v_1_0_1-schema</artifactId>
+							<version>${project.version}</version>
 						</episode>
 						<episode>
 							<groupId>org.jvnet.ogc</groupId>
 							<artifactId>gml-v_3_1_1-schema</artifactId>
+							<version>${project.version}</version>
 						</episode>
 						<episode>
 							<groupId>org.jvnet.ogc</groupId>
 							<artifactId>sensorml-v_1_0_1-schema</artifactId>
+							<version>${project.version}</version>
 						</episode>
 						<episode>
 							<groupId>org.jvnet.ogc</groupId>
