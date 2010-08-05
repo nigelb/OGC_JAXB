@@ -201,6 +201,14 @@ For conditions, see OGC Software Notice http://www.opengeospatial.org/ogc/softwa
 				<annotation>
 					<documentation> </documentation>
 				</annotation>
+				<!-- ** -->
+				<sequence>
+					<element name="DefaultValue" type="wps:ComplexDataType" minOccurs="0">
+						<annotation>
+							<documentation>Optional default value.</documentation>
+						</annotation>
+					</element>
+				</sequence>
 				<attribute name="maximumMegabytes" type="integer" use="optional">
 					<annotation>
 						<documentation>The maximum file size, in megabytes, of this input.  If the input exceeds this size, the server will return an error instead of processing the inputs. </documentation>
