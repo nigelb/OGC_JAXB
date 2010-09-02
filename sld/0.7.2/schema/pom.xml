@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
 		<artifactId>sld-v_0_7_2</artifactId>
-		<version>1.0.2-SNAPSHOT</version>
+		<version>1.0.2</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<dependencies>
