@@ -1,0 +1,339 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.jvnet.ogc</groupId>
+	<artifactId>project</artifactId>
+	<version>1.0.2</version>
+	<packaging>pom</packaging>
+	<name>OGC Project</name>
+	<description>OGC Schemas project provides JAXB 2.x bindings for XML Schemas defined by the Open Geospatial Consortium (OGC).</description>
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>4</version>
+	</parent>
+	<url>http://static.highsource.org/ogc-schemas</url>
+	<licenses>
+		<license>
+			<name>BSD-Style License</name>
+			<url>http://confluence.highsource.org/display/OGCS/License</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<scm>
+		<connection>scm:svn:https://ogc.dev.java.net/svn/ogc/trunk/</connection>
+		<developerConnection>scm:svn:https://ogc.dev.java.net/svn/ogc/trunk/</developerConnection>
+		<url>https://ogc.dev.java.net/source/browse/ogc/trunk/</url>
+	</scm>
+	<issueManagement>
+		<system>JIRA</system>
+		<url>http://jira.highsource.org/browse/OGCS</url>
+	</issueManagement>
+	<inceptionYear>2008</inceptionYear>
+	<mailingLists>
+		<mailingList>
+			<name>Users List</name>
+			<subscribe>users-subscribe@ogc.dev.java.net</subscribe>
+			<unsubscribe>users-unsubscribe@ogc.dev.java.net</unsubscribe>
+			<post>users@ogc.dev.java.net</post>
+			<archive>https://ogc.dev.java.net/servlets/SummarizeList?listName=users</archive>
+		</mailingList>
+	</mailingLists>
+	<developers>
+		<developer>
+			<id>lexi</id>
+			<name>Aleksei Valikov</name>
+			<email>valikov@gmx.net</email>
+		</developer>
+	</developers>
+	<contributors>
+		<!--contributor>
+			<name></name>
+			<email></email>
+			<organization></organization>
+			<organizationUrl></organizationUrl>
+			<timezone></timezone>
+		</contributor-->
+	</contributors>
+	<organization>
+		<name>Highsource</name>
+		<url>http://www.highsource.org</url>
+	</organization>
+	<modules>
+
+		<!-- Schemas -->
+		<module>schemas</module>
+
+		<!-- CityGML -->
+		<!-- module>citygml</module-->
+
+		<!-- GML Encoding of Discrete Coverages (interleaved pattern) -->
+		<module>cv</module>
+
+		<!-- Context -->
+		<module>context</module>
+
+		<!-- CSW -->
+		<module>csw</module>
+
+		<!-- CTS -->
+		<module>cts</module>
+
+		<!-- Filter -->
+		<module>filter</module>
+
+		<!-- GML -->
+		<module>gml</module>
+
+		<!-- ISO 19139 -->
+		<module>iso/19139</module>
+
+		<!-- IC -->
+		<module>ic</module>
+
+ 		<!-- KML -->
+		<module>kml</module>
+
+		<!-- OLS -->
+		<module>ols</module>
+
+		<!-- OM -->
+		<module>om</module>
+
+		<!-- OMX -->
+		<module>omx</module>
+
+ 		<!-- OWS -->
+		<module>ows</module>
+
+		<!-- Sampling  -->
+		<module>sampling</module>
+
+ 		<!-- SE -->
+		<module>se</module>
+
+		<!-- SensorML  -->
+		<module>sensorML</module>
+
+		<!-- SLD -->
+		<module>sld</module>
+		
+		<!-- SOS -->
+		<module>sos</module>
+
+		<!-- SPS -->
+		<module>sps</module>
+		
+		<!-- SWECommon -->
+		<module>sweCommon</module>
+
+		<!-- TML -->
+		<module>tml</module>
+
+ 		<!-- WCS -->
+		<module>wcs</module>
+
+		<!-- WFS -->
+		<module>wfs</module>
+
+		<!-- WMS -->
+		<module>wms</module>
+
+ 		<!-- WPS -->
+		<module>wps</module>
+
+		<module>examples</module>
+		<module>common</module>
+		<module>dist</module>
+		
+
+	</modules>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.8.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jvnet.jaxb2_commons</groupId>
+				<artifactId>jaxb2-basics</artifactId>
+				<version>0.6.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jvnet.jaxb2_commons</groupId>
+				<artifactId>jaxb2-basics-runtime</artifactId>
+				<version>0.6.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.sun.xml.bind</groupId>
+				<artifactId>jaxb-impl</artifactId>
+				<version>2.1.13</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>net.sf.saxon</groupId>
+				<artifactId>saxon</artifactId>
+				<version>8.7</version>
+			</dependency>
+			<dependency>
+				<groupId>net.sf.saxon</groupId>
+				<artifactId>saxon-dom</artifactId>
+				<version>8.7</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>2.4</version>
+			</dependency>
+			<dependency>
+				<groupId>com.vividsolutions</groupId>
+				<artifactId>jts</artifactId>
+				<version>1.9</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<distributionManagement>
+		<site>
+			<url>${sftp.static.highsource.org}/ogc-schemas</url>
+		</site>
+	</distributionManagement>
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+				 	<inherited>true</inherited>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.5</source>
+						<target>1.5</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.jvnet.jaxb2.maven2</groupId>
+					<artifactId>maven-jaxb2-plugin</artifactId>
+					<version>0.7.4</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>generate</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<strict>false</strict>
+						<extension>true</extension>
+						<args>
+							<arg>-XtoString</arg>
+							<arg>-Xequals</arg>
+							<arg>-XhashCode</arg>
+							<arg>-Xcopyable</arg>
+							<arg>-Xmergeable</arg>
+							<arg>-Xsetters</arg>
+							<arg>-Xwildcard</arg>
+							<arg>-Xinject-code</arg>
+							<arg>-Xinheritance</arg>
+						</args>
+						<plugins>
+							<plugin>
+								<groupId>org.jvnet.jaxb2_commons</groupId>
+								<artifactId>jaxb2-basics</artifactId>
+							</plugin>
+						</plugins>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<inherited>true</inherited>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<phase>package</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<properties> 
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> 
+	</properties> 
+ 
+	<profiles> 
+		<profile> 
+			<id>release-profile</id> 
+			<activation> 
+				<property> 
+					<name>performRelease</name> 
+					<value>true</value> 
+				</property> 
+			</activation> 
+			<build> 
+				<plugins> 
+					<plugin> 
+						<groupId>org.apache.maven.plugins</groupId> 
+						<artifactId>maven-javadoc-plugin</artifactId> 
+						<version>2.5</version> 
+						<executions> 
+							<execution> 
+								<id>attach-javadocs</id> 
+								<goals> 
+									<goal>jar</goal> 
+								</goals> 
+								<configuration>
+									<minmemory>128m</minmemory>
+									<maxmemory>1g</maxmemory>
+									<additionalJOption>-J-verbose:gc</additionalJOption>
+									<quiet>true</quiet>
+								</configuration>
+							</execution> 
+						</executions> 
+					</plugin> 
+				</plugins> 
+			</build> 
+		</profile>
+		<profile> 
+			<id>javadoc-sources-profile</id> 
+			<build> 
+				<plugins> 
+					<plugin> 
+						<groupId>org.apache.maven.plugins</groupId> 
+						<artifactId>maven-javadoc-plugin</artifactId> 
+						<version>2.5</version> 
+						<executions> 
+							<execution> 
+								<id>attach-javadocs</id> 
+								<goals> 
+									<goal>jar</goal> 
+								</goals> 
+								<configuration>
+									<minmemory>128m</minmemory>
+									<maxmemory>1g</maxmemory>
+									<additionalJOption>-J-verbose:gc</additionalJOption>
+									<quiet>true</quiet>
+								</configuration>
+							</execution> 
+						</executions> 
+					</plugin> 
+				</plugins> 
+			</build> 
+		</profile> 
+	</profiles> 
+</project>

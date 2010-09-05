@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<xml-java-binding-schema>
+	<options package="net.opengis.wms.v_1_0_0"/>
+	<!--element name="mapping" type="class">
+		<attribute name="class" property="ClassName"/>
+	</element>
+	<element name="class-cache" type="class">
+		<attribute name="class" property="ClassName"/>
+	</element>
+	<element name="listener" type="class">
+		<attribute name="class" property="ClassName"/>
+	</element-->
+
+</xml-java-binding-schema>

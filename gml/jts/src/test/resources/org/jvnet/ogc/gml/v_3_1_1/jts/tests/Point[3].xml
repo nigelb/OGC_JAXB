@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gml:Point
+  xmlns:gml="http://www.opengis.net/gml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.opengis.net/gml http://schemas.opengis.net/gml/3.1.1/base/gml.xsd"
+  srsName="urn:ogc:def:crs:EPSG::4326">
+  <gml:pos>-59.478340 -52.226578</gml:pos>
+</gml:Point>

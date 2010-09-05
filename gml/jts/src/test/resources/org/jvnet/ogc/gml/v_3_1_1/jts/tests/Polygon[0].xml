@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gml:Polygon xmlns:gml="http://www.opengis.net/gml">
+  <gml:exterior>
+    <gml:LinearRing>
+      <gml:pos>-120.000000 65.588264</gml:pos>
+      <gml:pos>-120.003571 65.590782</gml:pos>
+      <gml:pos>-120.011292 65.590965</gml:pos>
+      <gml:pos>-120.022491 65.595215</gml:pos>
+      <gml:pos>-120.031212 65.592880</gml:pos>
+      <gml:pos>-120.019363 65.586121</gml:pos>
+      <gml:pos>-120.030350 65.585365</gml:pos>
+      <gml:pos>-120.045082 65.581848</gml:pos>
+      <gml:pos>-120.059540 65.584938</gml:pos>
+      <gml:pos>-120.067284 65.590500</gml:pos>
+      <gml:pos>-120.067284 65.595436</gml:pos>
+      <gml:pos>-120.067337 65.613441</gml:pos>
+      <gml:pos>-120.067337 65.613777</gml:pos>
+      <gml:pos>-120.060997 65.606346</gml:pos>
+      <gml:pos>-120.045517 65.605545</gml:pos>
+      <gml:pos>-120.022675 65.599777</gml:pos>
+      <gml:pos>-120.003975 65.601036</gml:pos>
+      <gml:pos>-120.000000 65.602081</gml:pos>
+      <gml:pos>-120.000000 65.602081</gml:pos>
+      <gml:pos>-120.000000 65.588264</gml:pos>
+    </gml:LinearRing>
+  </gml:exterior>
+</gml:Polygon>

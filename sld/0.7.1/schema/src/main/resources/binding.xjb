@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<xml-java-binding-schema>
+	<options package="net.opengis.sld.v_0_7_1"/>
+</xml-java-binding-schema>

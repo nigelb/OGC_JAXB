@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<title>OGC Schemas project - JAXB bindings for OGC (Open Geospatial Consortium) XML Schemas</title>
+		<meta name="google-site-verification" content="-CLg7rtXhKW1LC1Y3C0FdYeNdy4Q8Vm9DeXSLDf9P6Q" />
+	</head>
+	<body>
+		<table border="0" cellpadding="2" cellspacing="2" 
+			style="page-break-before: always">
+			<tr>
+				<td>
+					<img alt="duke" 
+						src="https://jaxb.dev.java.net/javaxml-duke.gif" 
+						name="Duke" align="middle" width="68" height="86" 
+						border="0"/>
+				</td>
+				<td>
+					<h1>OGC Schemas project</h1>
+				</td>
+			</tr>
+		</table>
+		<p>OGC Schemas project provides JAXB 2.x bindings for XML Schemas defined by the Open Geospatial Consortium (OGC).</p>
+		<p>This is a project in the <a href="http://jwsdp.dev.java.net/index.html">JWSDP</a> subcommunity of the Java community on <a 
+			href="http://community.java.net/java-ws-xml">Web Services and XML</a> at java.net.</p>
+
+		<h3>Overview</h3>
+
+		<p>This project is developed for Java programmers who would like to use JAXB to work with XML schemas defined by the Open Geospatial Consortium, Inc (OGC).</p>
+		<p>OGC defines a number of standards (WMS, WFS, SLD etc.) which are widely used in GIS community. Many of these standards provide XML schemas (and sometimes DTDs) which define formats for XML documents.</p>
+		<p>When implementing GIS software in Java, developers often need to process XML data complying to these schemas. One of the popular technologies for XML processing is JAXB (Java Architecture for XML Binding).</p>
+		<p>JAXB Reference Implementation comes with a schema compiler called XJC which consumes an XML schema and generates classes specific to the originating schema (schema-derived classes). Unfortunately, compiling OGC schemas with XJC is not easy:
+			<ul>
+				<li>OGC schemas rarely compile "as is". You typically need to provide special "binding" file which customizes compilation (for instance, renames classes or properties and so on).</li>
+				<li>OGC schemas have a lot of dependencies.</li>
+				<li>Some of OGC schemas are not valid per se.</li>
+				<li>Some of OGC schemas are defined in several versions.</li>
+			</ul>
+		</p>
+		<p>The OGC Schemas project is aimed to compile all (as many as possible) of the OGC XML Schemas with JAXB RI schema compiler in order to make them usable in Java GIS environments via JAXB.</p>
+		<p><a href="http://confluence.highsource.org/display/OGCS/Schemas">Here</a> is a list of OGC XML Schemas supported at the moment.</p>
+
+		<p>Beyond that this project also provides useful tools for working with GIS-related XML documents.</p>
+
+		<h3>Project Homepage</h3>
+
+		<p>OGC Schemas project homepage was moved to the following address:</p>
+		<p><a href="http://confluence.highsource.org/display/OGCS/Home"><b>http://confluence.highsource.org/display/OGCS/Home</b></a></p>
+
+		<h3>Documentation</h3>
+
+		<p>OGC Schemas project documentation can be found here:</p>
+		<p><a href="http://confluence.highsource.org/display/OGCS/Documentation"><b>http://confluence.highsource.org/display/OGCS/Documentation</b></a></p>
+
+		<h3>Downloads</h3>
+
+		<p>OGC Schemas project downloads can be found here:</p>
+		<p><a href="http://confluence.highsource.org/display/OGCS/Downloads"><b>http://confluence.highsource.org/display/OGCS/Downloads</b></a></p>
+	</body>
+</html>

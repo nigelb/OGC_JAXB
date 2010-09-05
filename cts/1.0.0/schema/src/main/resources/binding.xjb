@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<xml-java-binding-schema>
+	<options package="net.opengis.cts.v_1_0_0"/>
+</xml-java-binding-schema>

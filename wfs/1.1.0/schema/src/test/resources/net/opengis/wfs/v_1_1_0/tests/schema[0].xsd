@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified"
+	targetNamespace="http://www.opengis.org/cipi1.2/level0/bts" xmlns:bts="http://www.opengis.org/cipi1.2/level0/bts"
+	xmlns:gml="http://www.opengis.net/gml" xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:import namespace="http://www.opengis.net/gml"
+		schemaLocation="http://schemas.opengis.net/gml/3.1.1/base/feature.xsd" />
+	<xs:element name="FeatureCollection" substitutionGroup="gml:_FeatureCollection"
+		type="bts:FeatureCollectionType" />
+	<xs:complexType name="FeatureCollectionType">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractFeatureCollectionType" />
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Roads_bts" substitutionGroup="gml:_Feature"
+		type="bts:Roads_btsType" />
+	<xs:complexType name="Roads_btsType">
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractFeatureType">
+				<xs:sequence>
+					<xs:element maxOccurs="1" minOccurs="1" name="Objectid_1">
+						<xs:simpleType>
+							<xs:restriction base="xs:integer">
+								<xs:totalDigits value="10" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="1" name="Objectid">
+						<xs:simpleType>
+							<xs:restriction base="xs:integer">
+								<xs:totalDigits value="10" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="1" name="FNode_">
+						<xs:simpleType>
+							<xs:restriction base="xs:integer">
+								<xs:totalDigits value="10" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="1" name="TNode_">
+						<xs:simpleType>
+							<xs:restriction base="xs:integer">
+								<xs:totalDigits value="10" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="LPoly_">
+						<xs:simpleType>
+							<xs:restriction base="xs:integer">
+								<xs:totalDigits value="10" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="RPoly_">
+						<xs:simpleType>
+							<xs:restriction base="xs:integer">
+								<xs:totalDigits value="10" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="Length">
+						<xs:simpleType>
+							<xs:restriction base="xs:decimal">
+								<xs:totalDigits value="27" />
+								<xs:fractionDigits value="8" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="1" name="Bdt_roads_">
+						<xs:simpleType>
+							<xs:restriction base="xs:integer">
+								<xs:totalDigits value="10" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="1" name="Bdt_roads1">
+						<xs:simpleType>
+							<xs:restriction base="xs:integer">
+								<xs:totalDigits value="10" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="Prefix">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="2" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="Name">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="30" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="Type">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="4" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="Suffix">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="2" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="1" name="Fcc">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="3" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="1" name="Fips">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="11" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="Shape_len">
+						<xs:simpleType>
+							<xs:restriction base="xs:decimal">
+								<xs:totalDigits value="30" />
+								<xs:fractionDigits value="15" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element maxOccurs="1" minOccurs="0" name="Geometry"
+						type="gml:CurvePropertyType" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

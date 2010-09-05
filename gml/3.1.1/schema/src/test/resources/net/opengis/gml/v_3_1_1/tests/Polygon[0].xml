@@ -1,0 +1,8 @@
+<Polygon
+  xmlns="http://www.opengis.net/gml">
+  <exterior>
+    <LinearRing>
+      <coordinates>9500.0,4300.0 9566.8,4306.2 9572.2,4325.5 9568.8,4341.0 9513.7,4343.6 9500.0,4300.0</coordinates>
+    </LinearRing>
+  </exterior>
+</Polygon>

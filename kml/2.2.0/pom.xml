@@ -1,0 +1,21 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.jvnet.ogc</groupId>
+	<artifactId>kml-v_2_2_0</artifactId>
+	<packaging>pom</packaging>
+	<name>OGC KML 2.2.0</name>
+	<parent>
+		<groupId>org.jvnet.ogc</groupId>
+		<artifactId>kml</artifactId>
+		<version>1.0.2</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<modules>
+		<module>schema</module>
+	</modules>
+	<build>
+		<defaultGoal>install</defaultGoal>
+	</build>
+</project>
