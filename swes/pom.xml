@@ -5,7 +5,7 @@
 	<groupId>org.jvnet.ogc</groupId>
 	<artifactId>swes</artifactId>
 	<packaging>pom</packaging>
-	<name>OGC SWES</name>
+	<name>OGC SWE Service Common</name>
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
 		<artifactId>project</artifactId>
