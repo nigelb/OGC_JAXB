@@ -46,6 +46,11 @@
 			<name>Aleksei Valikov</name>
 			<email>valikov@gmx.net</email>
 		</developer>
+                <developer>
+			<id>ingoldt</id>
+			<name>Tom Ingold</name>
+			<email>ingoldt@saic.com</email>
+		</developer>
 	</developers>
 	<contributors>
 		<!--contributor>
@@ -128,6 +133,8 @@
 		<!-- SWECommon -->
 		<module>sweCommon</module>
 
+                <!-- SWE Service Common -->
+		<module>swes</module>
 		<!-- TML -->
 		<module>tml</module>
 
