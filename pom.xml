@@ -100,6 +100,9 @@
  		<!-- KML -->
 		<module>kml</module>
 
+                <!-- OASIS -->
+		<module>oasis</module>
+
 		<!-- OLS -->
 		<module>ols</module>
 
