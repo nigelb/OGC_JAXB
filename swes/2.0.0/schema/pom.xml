@@ -32,6 +32,11 @@
 				<artifactId>ows-v_1_1_0-schema</artifactId>
 				<version>${project.version}</version>
 		  </dependency>
+                    <dependency>
+				<groupId>org.jvnet.ogc</groupId>
+				<artifactId>ws-notification-schema</artifactId>
+				<version>${project.version}</version>
+		  </dependency>
 		  <dependency>
 				<groupId>org.jvnet.ogc</groupId>
 				<artifactId>swecommon-v_2_0_0-schema</artifactId>
@@ -52,6 +57,10 @@
 								<episode>
 									 <groupId>org.jvnet.ogc</groupId>
 									 <artifactId>gml-v_3_2_1-schema</artifactId>
+								</episode>
+                                                                <episode>
+									 <groupId>org.jvnet.ogc</groupId>
+									 <artifactId>ws-notification-schema</artifactId>
 								</episode>
 								<episode>
 									 <groupId>org.jvnet.ogc</groupId>
@@ -74,6 +83,7 @@
 										  <delete dir="${basedir}/target/generated-sources/xjc/net/opengis/gml"/>
 										  <delete dir="${basedir}/target/generated-sources/xjc/org/isotc211"/>
 										  <delete dir="${basedir}/target/generated-sources/xjc/net/opengis/swe"/>
+                                                                                  <delete dir="${basedir}/target/generated-sources/xjc/org/oasis_open"/>
 									 </tasks>
 								</configuration>
 								<goals>
