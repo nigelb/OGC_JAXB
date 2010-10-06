@@ -42,6 +42,11 @@
 				<artifactId>swecommon-v_2_0_0-schema</artifactId>
 				<version>${project.version}</version>
 		  </dependency>
+                  <dependency>
+				<groupId>org.jvnet.ogc</groupId>
+				<artifactId>ws-addressing-schema</artifactId>
+				<version>${project.version}</version>
+		  </dependency>
 	 </dependencies>
 	 <build>
 		  <defaultGoal>install</defaultGoal>
@@ -61,6 +66,10 @@
                                                                 <episode>
 									 <groupId>org.jvnet.ogc</groupId>
 									 <artifactId>ws-notification-schema</artifactId>
+								</episode>
+                                                                  <episode>
+									 <groupId>org.jvnet.ogc</groupId>
+									 <artifactId>ws-addressing-schema</artifactId>
 								</episode>
 								<episode>
 									 <groupId>org.jvnet.ogc</groupId>
@@ -83,7 +92,8 @@
 										  <delete dir="${basedir}/target/generated-sources/xjc/net/opengis/gml"/>
 										  <delete dir="${basedir}/target/generated-sources/xjc/org/isotc211"/>
 										  <delete dir="${basedir}/target/generated-sources/xjc/net/opengis/swe"/>
-                                                                                  <delete dir="${basedir}/target/generated-sources/xjc/org/oasis_open"/>
+                                                                                  <delete dir="${basedir}/target/generated-sources/xjc/org"/>
+                                                                                  
 									 </tasks>
 								</configuration>
 								<goals>
