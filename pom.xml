@@ -138,8 +138,12 @@
 
                 <!-- SWE Service Common -->
 		<module>swes</module>
+                
 		<!-- TML -->
 		<module>tml</module>
+
+                <!-- w3c -->
+                <module>w3c</module>
 
  		<!-- WCS -->
 		<module>wcs</module>
@@ -152,6 +156,7 @@
 
  		<!-- WPS -->
 		<module>wps</module>
+
 
 		<module>examples</module>
 		<module>common</module>
