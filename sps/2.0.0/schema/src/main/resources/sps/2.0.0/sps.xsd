@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 (http://www.altova.com) by Thomas Ingold (SAIC) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:sps="http://www.opengis.net/sps/2.0" targetNamespace="http://www.opengis.net/sps/2.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<include schemaLocation="spsCommon.xsd"/>
+	<include schemaLocation="spsDescribeResultAccess.xsd"/>
+	<include schemaLocation="spsCancel.xsd"/>
+	<include schemaLocation="spsGetCapabilities.xsd"/>
+	<include schemaLocation="spsUpdate.xsd"/>
+	<include schemaLocation="spsGetTask.xsd"/>
+	<include schemaLocation="spsGetStatus.xsd"/>
+	<include schemaLocation="spsDescribeTasking.xsd"/>
+	<include schemaLocation="spsGetFeasibility.xsd"/>
+	<include schemaLocation="spsReserve.xsd"/>
+	<include schemaLocation="spsConfirm.xsd"/>
+	<include schemaLocation="spsSubmit.xsd"/>
+	<include schemaLocation="spsContents.xsd"/>
+</schema>

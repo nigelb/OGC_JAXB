@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 (http://www.altova.com) by Thomas Ingold (SAIC) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:swes="http://www.opengis.net/swes/2.0" targetNamespace="http://www.opengis.net/swes/2.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<import namespace="http://www.opengis.net/gml/3.2" schemaLocation="../../gml/3.2.1/gml.xsd"/>
+	<include schemaLocation="swesCommon.xsd"/>
+	<!-- ================================================= -->
+	<element name="DeleteSensor" type="swes:DeleteSensorType" substitutionGroup="swes:ExtensibleRequest"/>
+	<complexType name="DeleteSensorType">
+		<complexContent>
+			<extension base="swes:ExtensibleRequestType">
+				<sequence>
+					<element name="procedureIdentifier" type="gml:CodeType"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="DeleteSensorPropertyType">
+		<sequence minOccurs="0">
+			<element ref="swes:DeleteSensor"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+	<!-- ================================================= -->
+	<element name="DeleteSensorResponse" type="swes:DeleteSensorResponseType" substitutionGroup="swes:ExtensibleResponse"/>
+	<complexType name="DeleteSensorResponseType">
+		<complexContent>
+			<extension base="swes:ExtensibleResponseType">
+				<sequence>
+					<element name="deletedProcedure" type="gml:CodeType"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="DeleteSensorResponsePropertyType">
+		<sequence minOccurs="0">
+			<element ref="swes:DeleteSensorResponse"/>
+		</sequence>
+		<attributeGroup ref="gml:AssociationAttributeGroup"/>
+		<attributeGroup ref="gml:OwnershipAttributeGroup"/>
+	</complexType>
+</schema>
