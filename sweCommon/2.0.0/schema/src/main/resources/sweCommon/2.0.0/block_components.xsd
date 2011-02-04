@@ -1,9 +1,15 @@
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:swe="http://www.opengis.net/swe/2.0" targetNamespace="http://www.opengis.net/swe/2.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:swe="http://www.opengis.net/swe/2.0" targetNamespace="http://www.opengis.net/swe/2.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0.0">
     <annotation>
-        <documentation>SWE Common Data Model schema for data arrays and data stream descriptors. See requirements class http://www.opengis.net/spec/SWE/2.0/req/xsd-block-components/</documentation>
+        <documentation>SWE Common Data Model schema for data arrays and data stream descriptors. See requirements class http://www.opengis.net/spec/SWE/2.0/req/xsd-block-components/
+        
+        SWE Common is an OGC Standard.
+        Copyright (c) 2010 Open Geospatial Consortium, Inc. All Rights Reserved. 
+        To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
+        </documentation>
     </annotation>
     <include schemaLocation="simple_encodings.xsd"/>
-    <include schemaLocation="simple_components.xsd"/><!-- ================================================= -->
+    <include schemaLocation="simple_components.xsd"/>
+    <!-- ================================================= -->
     <element name="DataArray" substitutionGroup="swe:AbstractDataComponent" type="swe:DataArrayType">
         <annotation>
             <documentation>Implementation of ISO-11404 Array datatype. This defines an array of identical data components with a elementCount. Values are given as a block and can be encoded in different ways</documentation>

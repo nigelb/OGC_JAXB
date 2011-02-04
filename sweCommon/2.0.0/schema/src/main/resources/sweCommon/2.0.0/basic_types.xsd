@@ -1,8 +1,11 @@
-<!-- edited with XMLSpy v2011 (http://www.altova.com) by Thomas Ingold (SAIC) -->
-<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by SPOT IMAGE (SPOT IMAGE) -->
-<schema xmlns:swe="http://www.opengis.net/swe/2.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opengis.net/swe/2.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<schema targetNamespace="http://www.opengis.net/swe/2.0" xmlns:swe="http://www.opengis.net/swe/2.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0.0">
 	<annotation>
-		<documentation>Schema of simple basic types used in various places in the SWE Common Data Model</documentation>
+		<documentation>Schema of simple basic types used in various places in the SWE Common Data Model.
+		
+		SWE Common is an OGC Standard.
+		Copyright (c) 2010 Open Geospatial Consortium, Inc. All Rights Reserved. 
+		To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
+		</documentation>
 	</annotation>
 	<import namespace="http://www.w3.org/1999/xlink" schemaLocation="../../xlink/1.0.0/xlinks.xsd"/>
 	<!-- ================================================= -->
@@ -53,7 +56,7 @@
 	<!-- ================================================= -->
 	<complexType name="UnitReference">
 		<attribute name="code" type="swe:UomSymbol" use="optional"/>
-		<attributeGroup ref="swe:AssociationAttributeGroup"/>
+	  <attributeGroup ref="swe:AssociationAttributeGroup"/>
 	</complexType>
 	<simpleType name="UomSymbol">
 		<annotation>
@@ -76,7 +79,7 @@ It is also required that the symbol be an identifier for a unit of measure as sp
 	<complexType name="EncodedValuesPropertyType">
 		<complexContent>
 			<extension base="anyType">
-				<attributeGroup ref="swe:AssociationAttributeGroup"/>
+			  <attributeGroup ref="swe:AssociationAttributeGroup"/>
 			</extension>
 		</complexContent>
 	</complexType>
@@ -135,9 +138,9 @@ It is also required that the symbol be an identifier for a unit of measure as sp
 	<attributeGroup name="AssociationAttributeGroup">
 		<attributeGroup ref="xlink:simpleLink"/>
 	</attributeGroup>
-	<!-- ================================================= -->
-	<complexType name="Reference">
-		<attributeGroup ref="swe:AssociationAttributeGroup"/>
-	</complexType>
-	<!-- ================================================= -->
+  <!-- ================================================= -->
+  <complexType name="Reference">    
+    <attributeGroup ref="swe:AssociationAttributeGroup"/>
+  </complexType>
+  <!-- ================================================= -->
 </schema>
