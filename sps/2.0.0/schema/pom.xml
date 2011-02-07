@@ -74,7 +74,8 @@
 						</episode>
                                                 <episode>
 							<groupId>org.jvnet.ogc</groupId>
-							<artifactId>swes-v_2_0_0-schema</artifactId>					</episode>
+							<artifactId>swes-v_2_0_0-schema</artifactId>
+						</episode>
 						<episode>
 							<groupId>org.jvnet.ogc</groupId>
 							<artifactId>ows-v_1_1_0-schema</artifactId>

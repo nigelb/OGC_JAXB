@@ -6,54 +6,35 @@
 	 <artifactId>ws-addressing-schema</artifactId>
 	 <packaging>jar</packaging>
 	 <version>1.0.3-SNAPSHOT</version>
-	 <name>OGC W3C WS-Addressing Schema</name>
+	 <name>W3C WS-Addressing Schema</name>
 	 <parent>
-		  <groupId>org.jvnet.ogc</groupId>
-		  <artifactId>ws-addressing</artifactId>
-		  <version>1.0.3-SNAPSHOT</version>
-		  <relativePath>../pom.xml</relativePath>
+		<groupId>org.jvnet.ogc</groupId>
+		<artifactId>ws-addressing</artifactId>
+		<version>1.0.3-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
 	 </parent>
 	 <dependencies>
-		  <dependency>
-				<groupId>org.jvnet.jaxb2_commons</groupId>
-				<artifactId>jaxb2-basics-runtime</artifactId>
-		  </dependency>
-		  <dependency>
-				<groupId>com.sun.xml.bind</groupId>
-				<artifactId>jaxb-impl</artifactId>
-		  </dependency>		  		  
+		<dependency>
+			<groupId>org.jvnet.jaxb2_commons</groupId>
+			<artifactId>jaxb2-basics-runtime</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+		</dependency>		  		  
 	 </dependencies>
-	 <build>
-		  <defaultGoal>install</defaultGoal>
-		  <plugins>
-				<plugin>
-					 <groupId>org.jvnet.jaxb2.maven2</groupId>
-					 <artifactId>maven-jaxb2-plugin</artifactId>
-					 <configuration>
-						  <schemaIncludes>
-								<value>w3c/2005/08/addressing/ws-addr.xsd</value>
-						  </schemaIncludes>
-						  <episodes>
-						
-						  </episodes>
-					 </configuration>
-				</plugin>
-				<plugin>
-					 <artifactId>maven-antrun-plugin</artifactId>
-					 <executions>
-						  <execution>
-								<phase>process-sources</phase>
-								<configuration>
-									 <tasks>
-										
-									 </tasks>
-								</configuration>
-								<goals>
-									 <goal>run</goal>
-								</goals>
-						  </execution>
-					 </executions>
-				</plugin>
-		  </plugins>
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<plugins>
+			<plugin>
+				<groupId>org.jvnet.jaxb2.maven2</groupId>
+				<artifactId>maven-jaxb2-plugin</artifactId>
+				<configuration>
+					<schemaIncludes>
+						<value>w3c/2005/08/addressing/ws-addr.xsd</value>
+					</schemaIncludes>
+				</configuration>
+			</plugin>
+		</plugins>
 	 </build>
 </project>

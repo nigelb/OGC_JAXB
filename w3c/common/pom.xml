@@ -4,7 +4,7 @@
 	<groupId>org.jvnet.ogc</groupId>
 	<artifactId>w3c-common</artifactId>
 	<packaging>jar</packaging>
-	<name>OGC W3C Common</name>
+	<name>W3C Common</name>
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
 		<artifactId>w3c</artifactId>

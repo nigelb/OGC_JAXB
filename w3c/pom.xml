@@ -5,7 +5,7 @@
 	<groupId>org.jvnet.ogc</groupId>
 	<artifactId>w3c</artifactId>
 	<packaging>pom</packaging>
-	<name>OGC W3C</name>
+	<name>W3C Parent</name>
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
 		<artifactId>project</artifactId>

@@ -5,7 +5,7 @@
 	<groupId>org.jvnet.ogc</groupId>
 	<artifactId>ws-addressing</artifactId>
 	<packaging>pom</packaging>
-	<name>OGC W3C WS-Addressing</name>
+	<name>W3C WS-Addressing</name>
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
 		<artifactId>w3c</artifactId>

@@ -5,12 +5,11 @@
 	 <groupId>org.jvnet.ogc</groupId>
 	 <artifactId>ws-notification-schema</artifactId>
 	 <packaging>jar</packaging>
-	 <version>1.0.2-SNAPSHOT</version>
 	 <name>OASIS WS-Notification Schema</name>
 	 <parent>
 		  <groupId>org.jvnet.ogc</groupId>
 		  <artifactId>ws-notification</artifactId>
-		  <version>1.0.2-SNAPSHOT</version>
+		  <version>1.0.3-SNAPSHOT</version>
 		  <relativePath>../pom.xml</relativePath>
 	 </parent>
 	 <dependencies>
