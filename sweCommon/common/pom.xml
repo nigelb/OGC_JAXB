@@ -22,11 +22,11 @@
 			<artifactId>swecommon-v_1_0_1-schema</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<!-- ** dependency>
+		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>swecommon-v_2_0_0-schema</artifactId>
 			<version>${project.version}</version>
-		</dependency-->
+		</dependency>
 	</dependencies>
 	<build>
 		<defaultGoal>install</defaultGoal>
