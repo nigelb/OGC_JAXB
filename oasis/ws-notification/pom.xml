@@ -5,11 +5,11 @@
 	<groupId>org.jvnet.ogc</groupId>
 	<artifactId>ws-notification</artifactId>
 	<packaging>pom</packaging>
-	<name>WS-Notification</name>
+	<name>OASIS WS-Notification</name>
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
 		<artifactId>oasis</artifactId>
-		<version>1.0.3-SNAPSHOT</version>
+		<version>1.0.2-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<modules>

@@ -5,53 +5,36 @@
 	 <groupId>org.jvnet.ogc</groupId>
 	 <artifactId>ws-notification-schema</artifactId>
 	 <packaging>jar</packaging>
-	 <version>1.0.3-SNAPSHOT</version>
-	 <name>WS-Notification Schema</name>
+	 <version>1.0.2-SNAPSHOT</version>
+	 <name>OASIS WS-Notification Schema</name>
 	 <parent>
 		  <groupId>org.jvnet.ogc</groupId>
 		  <artifactId>ws-notification</artifactId>
-		  <version>1.0.3-SNAPSHOT</version>
+		  <version>1.0.2-SNAPSHOT</version>
 		  <relativePath>../pom.xml</relativePath>
 	 </parent>
 	 <dependencies>
-		  <dependency>
-				<groupId>org.jvnet.jaxb2_commons</groupId>
-				<artifactId>jaxb2-basics-runtime</artifactId>
-		  </dependency>
-		  <dependency>
-				<groupId>com.sun.xml.bind</groupId>
-				<artifactId>jaxb-impl</artifactId>
-		  </dependency>		
-	 </dependencies>
-	 <build>
-		  <defaultGoal>install</defaultGoal>
-		  <plugins>
-				<plugin>
-					 <groupId>org.jvnet.jaxb2.maven2</groupId>
-					 <artifactId>maven-jaxb2-plugin</artifactId>
-					 <configuration>
-						  <schemaIncludes>
-								<value>wsn/t-1.xsd</value>
-						  </schemaIncludes>
-						  <episodes>								
-						  </episodes>
-					 </configuration>
-				</plugin>
-				<plugin>
-					 <artifactId>maven-antrun-plugin</artifactId>
-					 <executions>
-						  <execution>
-								<phase>process-sources</phase>
-								<configuration>
-									 <tasks>										
-									 </tasks>
-								</configuration>
-								<goals>
-									 <goal>run</goal>
-								</goals>
-						  </execution>
-					 </executions>
-				</plugin>
-		  </plugins>
-	 </build>
+		<dependency>
+			<groupId>org.jvnet.jaxb2_commons</groupId>
+			<artifactId>jaxb2-basics-runtime</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+		</dependency>		
+	</dependencies>
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<plugins>
+			<plugin>
+				<groupId>org.jvnet.jaxb2.maven2</groupId>
+				<artifactId>maven-jaxb2-plugin</artifactId>
+				<configuration>
+					<schemaIncludes>
+						<value>wsn/t-1.xsd</value>
+					</schemaIncludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

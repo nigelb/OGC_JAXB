@@ -5,11 +5,11 @@
 	<groupId>org.jvnet.ogc</groupId>
 	<artifactId>oasis</artifactId>
 	<packaging>pom</packaging>
-	<name>OASIS</name>
+	<name>OASIS Parent</name>
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
 		<artifactId>project</artifactId>
-		<version>1.0.3-SNAPSHOT</version>
+		<version>1.0.2-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<modules>
