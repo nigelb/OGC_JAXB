@@ -22,9 +22,9 @@
 		</license>
 	</licenses>
 	<scm>
-		<connection>scm:svn:https://ogc.dev.java.net/svn/ogc/trunk/</connection>
-		<developerConnection>scm:svn:https://ogc.dev.java.net/svn/ogc/trunk/</developerConnection>
-		<url>https://ogc.dev.java.net/source/browse/ogc/trunk/</url>
+		<connection>scm:svn:https://svn.java.net/svn/ogc~svn/ogc-schemas/trunk/</connection>
+		<developerConnection>scm:svn:https://svn.java.net/svn/ogc~svn/ogc-schemas/trunk/</developerConnection>
+		<url>http://java.net/projects/ogc/sources/svn/show/ogc-schemas/trunk/</url>
 	</scm>
 	<issueManagement>
 		<system>JIRA</system>
