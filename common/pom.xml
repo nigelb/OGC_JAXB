@@ -14,6 +14,16 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
+			<artifactId>w3c-common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jvnet.ogc</groupId>
+			<artifactId>oasis-common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>context-common</artifactId>
 			<version>${project.version}</version>
 		</dependency>
@@ -105,6 +115,11 @@
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
 			<artifactId>swecommon-common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jvnet.ogc</groupId>
+			<artifactId>swes-common</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
