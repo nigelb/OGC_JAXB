@@ -5,12 +5,12 @@
 	 <groupId>org.jvnet.ogc</groupId>
 	 <artifactId>swes-v_2_0_0-schema</artifactId>
 	 <packaging>jar</packaging>
-	 <version>1.0.3-SNAPSHOT</version>
+	 <version>1.0.3</version>
 	 <name>OGC SWE Service Common Schema 2.0.0</name>
 	 <parent>
 		  <groupId>org.jvnet.ogc</groupId>
 		  <artifactId>swes-v_2_0_0</artifactId>
-		  <version>1.0.3-SNAPSHOT</version>
+		  <version>1.0.3</version>
 		  <relativePath>../pom.xml</relativePath>
 	 </parent>
 	 <dependencies>

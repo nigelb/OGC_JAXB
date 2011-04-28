@@ -9,7 +9,7 @@
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
 		<artifactId>om-v_1_0_0</artifactId>
-		<version>1.0.3-SNAPSHOT</version>
+		<version>1.0.3</version>
 	</parent>
 	<dependencies>
 		<dependency>
