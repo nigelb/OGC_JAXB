@@ -1,22 +1,18 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jvnet.ogc</groupId>
-	<artifactId>context</artifactId>
+	<artifactId>context-v_1_1_1</artifactId>
 	<packaging>pom</packaging>
-	<name>OGC Context</name>
+	<name>OGC Context 1.1.1</name>
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
-		<artifactId>project</artifactId>
+		<artifactId>context</artifactId>
 		<version>1.0.3</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<modules>
-		<module>1.0.0</module>
-		<module>1.1.0</module>
-		<module>1.1.1</module>
-		<module>common</module>
+		<module>schema</module>
 	</modules>
 	<build>
 		<defaultGoal>install</defaultGoal>
