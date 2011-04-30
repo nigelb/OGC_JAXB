@@ -73,7 +73,7 @@
 						<phase>process-sources</phase>
 						<configuration>
 							<tasks>
-								<!--delete dir="${basedir}/target/generated-sources/xjc/net/opengis/sld"/-->
+								<delete dir="${basedir}/target/generated-sources/xjc/net/opengis/sld"/>
 							</tasks>
 						</configuration>
 						<goals>
