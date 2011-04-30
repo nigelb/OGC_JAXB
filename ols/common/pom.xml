@@ -23,6 +23,11 @@
 			<artifactId>ols-v_1_2_0-schema</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.jvnet.ogc</groupId>
+			<artifactId>ols-v_1_2_1-schema</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<defaultGoal>install</defaultGoal>
