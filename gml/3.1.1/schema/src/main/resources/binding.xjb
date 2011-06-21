@@ -43,6 +43,45 @@
 		<jaxb:bindings node="xs:complexType[@name='EnvelopeType']">
 				<inheritance:implements>net.opengis.gml.v_3_1_1.SRSReferenceGroup</inheritance:implements>
 		</jaxb:bindings>
+
+
+
+		<!-- ...
+
+		<jaxb:bindings node="xs:complexType[@name='AbstractCurveType']">
+			<inheritance:implements>net.opengis.gml.AbstractCurveType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='AbstractGeometricPrimitiveType']">
+			<inheritance:implements>net.opengis.gml.AbstractGeometricPrimitiveType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='AbstractGeometryType']">
+			<inheritance:implements>net.opengis.gml.AbstractGeometryType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='CoordType']">
+			<inheritance:implements>net.opengis.gml.CoordType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='DirectPositionListType']">
+			<inheritance:implements>net.opengis.gml.DirectPositionListType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='DirectPositionType']">
+			<inheritance:implements>net.opengis.gml.DirectPositionType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='GeometryArrayPropertyType']">
+			<inheritance:implements>net.opengis.gml.GeometryArrayPropertyType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='GeometryPropertyType']">
+			<inheritance:implements>net.opengis.gml.GeometryPropertyType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='PointArrayPropertyType']">
+			<inheritance:implements>net.opengis.gml.PointArrayPropertyType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='PointPropertyType']">
+			<inheritance:implements>net.opengis.gml.PointPropertyType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='PointType']">
+			<inheritance:implements>net.opengis.gml.PointType</inheritance:implements>
+		</jaxb:bindings>
+		-->
 	</jaxb:bindings>
 
 
@@ -52,14 +91,76 @@
 		<jaxb:bindings node="xs:element[@name='_Object']">
 			<xjc:dom/>
 		</jaxb:bindings>
+
+		<!-- ...
+		<jaxb:bindings node="xs:complexType[@name='StringOrRefType']">
+			<inheritance:implements>net.opengis.gml.StringOrRefType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='MetaDataPropertyType']">
+			<inheritance:implements>net.opengis.gml.MetaDataPropertyType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='AbstractGMLType']">
+			<inheritance:implements>net.opengis.gml.AbstractGMLType</inheritance:implements>
+		</jaxb:bindings>
+
+		-->
+	</jaxb:bindings>
+
+	<jaxb:bindings schemaLocation="gml/3.1.1/base/basicTypes.xsd" 
+		node="/xs:schema">
+
+		<!-- ...
+		<jaxb:bindings node="xs:complexType[@name='CoordinatesType']">
+			<inheritance:implements>net.opengis.gml.CoordinatesType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='CodeType']">
+			<inheritance:implements>net.opengis.gml.CodeType</inheritance:implements>
+		</jaxb:bindings>
+		-->
 	</jaxb:bindings>
 
 	<jaxb:bindings 
 		schemaLocation="gml/3.1.1/base/geometryPrimitives.xsd" 
 		node="/xs:schema">
+
 		<jaxb:bindings node="xs:element[@name='_Solid']">
 			<jaxb:class name="ASolidElement"/>
 		</jaxb:bindings>
+	</jaxb:bindings>
+
+	<jaxb:bindings 
+		schemaLocation="gml/3.1.1/base/geometryAggregates.xsd" 
+		node="/xs:schema">
+
+		<!-- ...
+		<jaxb:bindings node="xs:complexType[@name='MultiGeometryPropertyType']">
+			<inheritance:implements>net.opengis.gml.MultiGeometryPropertyType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='MultiGeometryType']">
+			<inheritance:implements>net.opengis.gml.MultiGeometryType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='MultiLineStringPropertyType']">
+			<inheritance:implements>net.opengis.gml.MultiLineStringPropertyType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='MultiLineStringType']">
+			<inheritance:implements>net.opengis.gml.MultiLineStringType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='MultiPointPropertyType']">
+			<inheritance:implements>net.opengis.gml.MultiPointPropertyType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='MultiPointType']">
+			<inheritance:implements>net.opengis.gml.MultiPointType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='MultiPolygonPropertyType']">
+			<inheritance:implements>net.opengis.gml.MultiPolygonPropertyType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='MultiPolygonType']">
+			<inheritance:implements>net.opengis.gml.MultiPolygonType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='AbstractGeometricAggregateType']">
+			<inheritance:implements>net.opengis.gml.AbstractGeometricAggregateType</inheritance:implements>
+		</jaxb:bindings>
+		-->
 	</jaxb:bindings>
 
 
@@ -69,6 +170,15 @@
 		<jaxb:bindings node="xs:element[@name='_Curve']">
 			<jaxb:class name="ACurveElement"/>
 		</jaxb:bindings>
+
+		<!-- ...
+		<jaxb:bindings node="xs:complexType[@name='LineStringPropertyType']">
+			<inheritance:implements>net.opengis.gml.LineStringPropertyType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='LineStringType']">
+			<inheritance:implements>net.opengis.gml.LineStringType</inheritance:implements>
+		</jaxb:bindings>
+		-->
 	</jaxb:bindings>
 
 	<jaxb:bindings 
@@ -80,6 +190,30 @@
 		<jaxb:bindings node="xs:element[@name='_Ring']">
 			<jaxb:class name="ARingElement"/>
 		</jaxb:bindings>
+
+		<!-- ...
+		<jaxb:bindings node="xs:complexType[@name='PolygonType']">
+			<inheritance:implements>net.opengis.gml.PolygonType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='PolygonPropertyType']">
+			<inheritance:implements>net.opengis.gml.PolygonPropertyType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='LinearRingPropertyType']">
+			<inheritance:implements>net.opengis.gml.LinearRingPropertyType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='LinearRingType']">
+			<inheritance:implements>net.opengis.gml.LinearRingType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='AbstractSurfaceType']">
+			<inheritance:implements>net.opengis.gml.AbstractSurfaceType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='AbstractRingPropertyType']">
+			<inheritance:implements>net.opengis.gml.AbstractRingPropertyType</inheritance:implements>
+		</jaxb:bindings>
+		<jaxb:bindings node="xs:complexType[@name='AbstractRingType']">
+			<inheritance:implements>net.opengis.gml.AbstractRingType</inheritance:implements>
+		</jaxb:bindings>
+		-->
 	</jaxb:bindings>
 
 

@@ -13,6 +13,7 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<modules>
+		<module>api</module>
 		<module>1.0.0</module>
 		<module>2.0.0</module>
 		<module>2.1.1</module>
