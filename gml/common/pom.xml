@@ -83,7 +83,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.jvnet.ogc</groupId>
-			<artifactId>gml-api/artifactId>
+			<artifactId>gml-api</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
