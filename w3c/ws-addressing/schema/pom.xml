@@ -5,12 +5,12 @@
 	 <groupId>org.jvnet.ogc</groupId>
 	 <artifactId>ws-addressing-schema</artifactId>
 	 <packaging>jar</packaging>
-	 <version>1.0.3</version>
+	 <version>1.0.4-SNAPSHOT</version>
 	 <name>W3C WS-Addressing Schema</name>
 	 <parent>
 		<groupId>org.jvnet.ogc</groupId>
 		<artifactId>ws-addressing</artifactId>
-		<version>1.0.3</version>
+		<version>1.0.4-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	 </parent>
 	 <dependencies>
