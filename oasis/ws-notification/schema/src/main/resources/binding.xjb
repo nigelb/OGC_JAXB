@@ -10,9 +10,27 @@
 		</jaxb:globalBindings>
 
 		<jaxb:schemaBindings>
-			<jaxb:package name="net.oasis.wsn"/>
+			<jaxb:package name="net.oasis.wsn.t1"/>
 		</jaxb:schemaBindings>
 	</jaxb:bindings>
+        
+        <jaxb:bindings schemaLocation="wsn/b-2_local.xsd" node="/xs:schema">
+                <jaxb:schemaBindings>
+                    <jaxb:package name="net.oasis.wsn.b2"/>
+                </jaxb:schemaBindings>
+        </jaxb:bindings>
+        
+        <jaxb:bindings schemaLocation="wsn/bf-2.xsd" node="/xs:schema">
+                <jaxb:schemaBindings>
+                    <jaxb:package name="net.oasis.wsn.bf2"/>
+                </jaxb:schemaBindings>
+        </jaxb:bindings>
+        
+        <jaxb:bindings schemaLocation="wsn/br-2_local.xsd" node="/xs:schema">
+                <jaxb:schemaBindings>
+                    <jaxb:package name="net.oasis.wsn.br2"/>
+                </jaxb:schemaBindings>
+        </jaxb:bindings>
 
 	
 
