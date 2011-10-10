@@ -61,6 +61,9 @@
 				<configuration>
 					<schemaIncludes>
 						<value>sps/2.0.0/sps.xsd</value>
+                                                <value>wsn/b-2_local.xsd</value>
+                                                <value>wsn/bf-2.xsd</value>
+                                                <value>wsn/br-2_local.xsd</value>     
 					</schemaIncludes>
 					<!--episode>false</episode-->
 					<episodes>
