@@ -2,27 +2,18 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jvnet.ogc</groupId>
-	<artifactId>sos-common</artifactId>
-	<packaging>jar</packaging>
-	<name>OGC SOS Common</name>
+	<artifactId>sos-v_2_0_0</artifactId>
+	<packaging>pom</packaging>
+	<name>OGC SOS 2.0.0</name>
 	<parent>
 		<groupId>org.jvnet.ogc</groupId>
 		<artifactId>sos</artifactId>
 		<version>1.0.4-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-	<dependencies>
-		<dependency>
-			<groupId>org.jvnet.ogc</groupId>
-			<artifactId>sos-v_1_0_0-schema</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-                	<dependency>
-			<groupId>org.jvnet.ogc</groupId>
-			<artifactId>sos-v_2_0_0-schema</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-	</dependencies>
+	<modules>
+		<module>schema</module>
+	</modules>
 	<build>
 		<defaultGoal>install</defaultGoal>
 	</build>

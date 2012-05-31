@@ -1,0 +1,100 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.jvnet.ogc</groupId>
+    <artifactId>sos-v_2_0_0-schema</artifactId>
+    <packaging>jar</packaging>
+    <name>OGC SOS Schema 2.0.0</name>
+    <parent>
+        <groupId>org.jvnet.ogc</groupId>
+        <artifactId>sos-v_2_0_0</artifactId>
+        <version>1.0.4-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <dependencies>
+        <dependency>
+            <groupId>org.jvnet.jaxb2_commons</groupId>
+            <artifactId>jaxb2-basics-runtime</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jvnet.ogc</groupId>
+            <artifactId>gml-v_3_2_1-schema</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jvnet.ogc</groupId>
+            <artifactId>om-v_2_0_0-schema</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jvnet.ogc</groupId>
+            <artifactId>ows-v_1_1_0-schema</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jvnet.ogc</groupId>
+            <artifactId>swes-v_2_0_0-schema</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+              <dependency>
+            <groupId>org.jvnet.ogc</groupId>
+            <artifactId>filter-v_2_0_0-schema</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jvnet.ogc</groupId>
+            <artifactId>swecommon-v_2_0_0-schema</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <defaultGoal>install</defaultGoal>
+        <plugins>
+            <plugin>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+                <configuration>
+                    <schemaIncludes>
+                        <value>sos/*/sos.xsd</value>
+					
+                    </schemaIncludes>
+					
+                    <episodes>
+					
+                    </episodes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>process-sources</phase>
+                        <configuration>
+                            <tasks>
+                                <delete dir="${basedir}/target/generated-sources/xjc/net/opengis/gml"/>
+                                <delete dir="${basedir}/target/generated-sources/xjc/net/opengis/om"/>
+                                <delete dir="${basedir}/target/generated-sources/xjc/net/opengis/ows"/>
+                                <delete dir="${basedir}/target/generated-sources/xjc/us"/>
+                                <delete dir="${basedir}/target/generated-sources/xjc/org"/>
+                                <delete dir="${basedir}/target/generated-sources/xjc/net/opengis/fes"/>
+                                <delete dir="${basedir}/target/generated-sources/xjc/net/opengis/swe"/>                                
+                                <delete dir="${basedir}/target/generated-sources/xjc/net/opengis/swes"/>
+                                <delete dir="${basedir}/target/generated-sources/xjc/net/opengis/filter"/>
+								
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
