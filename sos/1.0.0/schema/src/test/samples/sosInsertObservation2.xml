@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<InsertObservation xmlns="http://www.opengis.net/sos/1.0" xmlns:om="http://www.opengis.net/om/1.0"
+                   xmlns:swe="http://www.opengis.net/swe/1.0.1" xmlns:gml="http://www.opengis.net/gml"
+                   xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns:sa="http://www.opengis.net/sampling/1.0"
+                   xsi:schemaLocation="http://www.opengis.net/sos/1.0 http://schemas.opengis.net/sos/1.0.0/sosAll.xsd"
+                   service="SOS" version="1.0.0">
+    <AssignedSensorId>urn:ogc:object:Sensor:MyOrg:Temp:6607</AssignedSensorId>
+    <om:Observation>
+        <om:samplingTime xlink:type="simple">
+            <gml:TimePeriod>
+                <gml:beginPosition>2012-01-11T12:02:53.000+10:00</gml:beginPosition>
+                <gml:endPosition>2012-01-11T12:02:53.000+10:00</gml:endPosition>
+            </gml:TimePeriod>
+        </om:samplingTime>
+        <om:procedure xlink:href="urn:ogc:object:Sensor:MyOrg:Temp:6607" xlink:type="simple"/>
+        <om:observedProperty xlink:type="simple">
+            <swe:CompositePhenomenon gml:id="cpid0" dimension="1">
+                <swe:component xlink:href="http://www.opengis.net/def/uom/ISO-8601/0/Gregorian" xlink:type="simple"/>
+                <swe:component xlink:type="simple"/>
+            </swe:CompositePhenomenon>
+        </om:observedProperty>
+        <om:featureOfInterest>
+            <gml:FeatureCollection>
+                <gml:featureMember>
+                    <sa:SamplingPoint gml:id="TestPosition">
+                        <gml:name>TestPosition</gml:name>
+                        <gml:Category/>
+                        <sa:sampledFeature/>
+                        <sa:position>
+                            <gml:Point>
+                                <gml:pos srsName="urn:ogc:def:crs:EPSG::4326">-77.8912 38.512 0.0</gml:pos>
+                            </gml:Point>
+                        </sa:position>
+                    </sa:SamplingPoint>
+                </gml:featureMember>
+            </gml:FeatureCollection>
+        </om:featureOfInterest>
+        <om:result xsi:type="swe:DataArrayPropertyType">
+            <swe:DataArray>
+                <swe:elementCount>
+                    <swe:Count>
+                        <swe:value>1</swe:value>
+                    </swe:Count>
+                </swe:elementCount>
+                <swe:elementType name="Components" xlink:type="simple">
+                    <swe:DataRecord>
+                        <swe:field name="Time" xlink:type="simple">
+                            <swe:Time definition="http://www.opengis.net/def/uom/ISO-8601/0/Gregorian"/>
+                        </swe:field>
+                        <swe:field name="Temperature" xlink:type="simple">
+                            <swe:Quantity definition="urn:semat:sensor:6607:temperature">
+                                <swe:uom code="Cel" xlink:type="simple"/>
+                            </swe:Quantity>
+                        </swe:field>
+                    </swe:DataRecord>
+                </swe:elementType>
+                <swe:encoding xlink:type="simple">
+                    <swe:TextBlock blockSeparator="&#10;" decimalSeparator="." tokenSeparator=","/>
+                </swe:encoding>
+                <swe:values xlink:type="simple">2012-01-11T12:02:53.000+10:00,24.918117229129667
+                </swe:values>
+            </swe:DataArray>
+        </om:result>
+    </om:Observation>
+</InsertObservation>

@@ -53,6 +53,7 @@
 						<configuration>
 							<tasks>
 								<delete dir="${basedir}/target/generated-sources/xjc/net/opengis/gml"/>
+								<delete file="${basedir}/target/generated-sources/xjc/net/opengis/swe/v_1_0_1/DataValuePropertyType.java"/>
 							</tasks>
 						</configuration>
 						<goals>

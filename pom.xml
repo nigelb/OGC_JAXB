@@ -164,9 +164,10 @@
 		<module>examples</module>
 		<module>common</module>
 		<module>dist</module>
-		
+        <module>tests</module>
 
-	</modules>
+
+    </modules>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
