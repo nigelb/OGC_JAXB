@@ -89,7 +89,7 @@ This also leaves us unable to populate this field via the JAXB classes that have
         //Insert the data into the nofe found by the XPath query.
         node.appendChild(doc.createTextNode("2012-01-11T12:02:53.000+10:00,24.918117229129667\n"));
 ```
-So I tweaked the [weCommon/1.0.1/schema/src/main/java/net/opengis/swe/v_1_0_1/DataValuePropertyType.java](/nigelb/OGC_JAXB/blob/master/sweCommon/1.0.1/schema/src/main/java/net/opengis/swe/v_1_0_1/DataValuePropertyType.java) file to be:
+So I tweaked the [sweCommon/1.0.1/schema/src/main/java/net/opengis/swe/v_1_0_1/DataValuePropertyType.java](/nigelb/OGC_JAXB/blob/master/sweCommon/1.0.1/schema/src/main/java/net/opengis/swe/v_1_0_1/DataValuePropertyType.java) file to be:
 ```java
     .
     .
