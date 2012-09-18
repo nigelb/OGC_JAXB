@@ -102,4 +102,8 @@ So I tweaked the [sweCommon/1.0.1/schema/src/main/java/net/opengis/swe/v_1_0_1/D
     .
     .
     .
-```    
+```  
+Which allows one to do this instead:
+```java
+	((DataArrayPropertyType) ins.getObservation().getResult()).getDataArray().getValues().getAny().add("2012-01-11T12:02:53.000+10:00,24.918117229129667\n");
+```
