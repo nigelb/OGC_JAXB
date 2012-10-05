@@ -53,7 +53,7 @@ which has the schema element:
 		</xs:complexContent>
 	</xs:complexType>
 ```
-The problem is that the class that is generated to implement this has the form:
+The problem is that the class generated for this this (schema element above) ends up defined like this:
 ```java
       .
       .
@@ -65,9 +65,9 @@ The problem is that the class that is generated to implement this has the form:
       .
       .
 ```
-Unfortunately a DOM [Text](http://docs.oracle.com/javase/1.4.2/docs/api/org/w3c/dom/Text.html) Node is not an element and not a node.
-So if we were to unmarshal [sos/1.0.0/schema/src/test/samples/sosInsertObservation2.xml](/nigelb/OGC_JAXB/blob/master/sos/1.0.0/schema/src/test/samples/sosInsertObservation2.xml) the any element would be empty.
-This also leaves us unable to populate this field via the JAXB classes that have been generated without doing something ridiculous like:
+Unfortunately a DOM [Text](http://docs.oracle.com/javase/1.4.2/docs/api/org/w3c/dom/Text.html) Node is a DOM Node instead of a DOM Element.
+So if we were to unmarshal [sos/1.0.0/schema/src/test/samples/sosInsertObservation2.xml](/nigelb/OGC_JAXB/blob/master/sos/1.0.0/schema/src/test/samples/sosInsertObservation2.xml) the `any` element would be `null`.
+This also leaves us unable to populate this field via the generated JAXB classes without doing something ridiculous like this:
 
 ```java
         InsertObservation insert = new InsertObservation();
